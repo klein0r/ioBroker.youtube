@@ -1,0 +1,79 @@
+{
+    "common": {
+        "name": "youtube",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "YouTube",
+        "titleLang": {
+            "en": "YouTube",
+            "de": "YouTube",
+            "ru": "YouTube",
+            "pt": "YouTube",
+            "nl": "YouTube",
+            "fr": "YouTube",
+            "it": "YouTube",
+            "es": "YouTube",
+            "pl": "YouTube",
+            "zh-cn": "YouTube"
+        },
+        "desc": {
+            "en": "Statistics like views, subscribers and videos",
+            "de": "Statistics like views, subscribers and videos",
+            "ru": "Statistics like views, subscribers and videos",
+            "pt": "Statistics like views, subscribers and videos",
+            "nl": "Statistics like views, subscribers and videos",
+            "fr": "Statistics like views, subscribers and videos",
+            "it": "Statistics like views, subscribers and videos",
+            "es": "Statistics like views, subscribers and videos",
+            "pl": "Statistics like views, subscribers and videos",
+            "zh-cn": "Statistics like views, subscribers and videos"
+        },
+        "authors": [
+            "Matthias Kleine <info@haus-automatisierung.com>"
+        ],
+        "keywords": [
+            "youtube",
+            "social",
+            "video"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "youtube.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.youtube/master/admin/youtube.png",
+        "readme": "https://github.com/klein0r/ioBroker.youtube/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "schedule",
+        "type": "misc-data",
+        "compact": true,
+        "materialize": true,
+        "dependencies": [
+            {
+                "admin": ">=3.0.0"
+            },
+            {
+                "js-controller": ">=1.4.2"
+            }
+        ]
+    },
+    "native": {
+        "option1": true,
+        "option2": "42"
+    },
+    "objects": [],
+    "instanceObjects": []
+}
