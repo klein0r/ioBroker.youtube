@@ -5,41 +5,17 @@
         "news": {
             "0.0.1": {
                 "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "zh-cn": "首次出版"
+                "de": "Erstveröffentlichung"
             }
         },
         "title": "YouTube",
         "titleLang": {
             "en": "YouTube",
-            "de": "YouTube",
-            "ru": "YouTube",
-            "pt": "YouTube",
-            "nl": "YouTube",
-            "fr": "YouTube",
-            "it": "YouTube",
-            "es": "YouTube",
-            "pl": "YouTube",
-            "zh-cn": "YouTube"
+            "de": "YouTube"
         },
         "desc": {
             "en": "Statistics like views, subscribers and videos",
-            "de": "Statistics like views, subscribers and videos",
-            "ru": "Statistics like views, subscribers and videos",
-            "pt": "Statistics like views, subscribers and videos",
-            "nl": "Statistics like views, subscribers and videos",
-            "fr": "Statistics like views, subscribers and videos",
-            "it": "Statistics like views, subscribers and videos",
-            "es": "Statistics like views, subscribers and videos",
-            "pl": "Statistics like views, subscribers and videos",
-            "zh-cn": "Statistics like views, subscribers and videos"
+            "de": "Statistics like views, subscribers and videos"
         },
         "authors": [
             "Matthias Kleine <info@haus-automatisierung.com>"
@@ -58,6 +34,7 @@
         "readme": "https://github.com/klein0r/ioBroker.youtube/blob/master/README.md",
         "loglevel": "info",
         "mode": "schedule",
+        "schedule": "*/5 * * * *",
         "type": "misc-data",
         "compact": true,
         "materialize": true,
@@ -75,5 +52,53 @@
         "option2": "42"
     },
     "objects": [],
-    "instanceObjects": []
+    "instanceObjects": [
+        {
+          "_id":  "statistics",
+          "type": "channel",
+          "common": {
+            "name": "Statistics"
+          },
+          "native": {}
+        },
+        {
+          "_id":  "statistics.viewCount",
+          "type": "state",
+          "common": {
+            "name":  "View Count",
+            "type":  "number",
+            "role":  "value",
+            "read":  true,
+            "write": false,
+            "def":   false
+          },
+          "native": {}
+        },
+        {
+          "_id":  "statistics.subscriberCount",
+          "type": "state",
+          "common": {
+            "name":  "Subscriber Count",
+            "type":  "number",
+            "role":  "value",
+            "read":  true,
+            "write": false,
+            "def":   false
+          },
+          "native": {}
+        },
+        {
+          "_id":  "statistics.videoCount",
+          "type": "state",
+          "common": {
+            "name":  "Video Count",
+            "type":  "number",
+            "role":  "value",
+            "read":  true,
+            "write": false,
+            "def":   false
+          },
+          "native": {}
+        }
+    ]
 }

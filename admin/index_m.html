@@ -1,7 +1,5 @@
 <html>
-
 <head>
-
     <!-- Load ioBroker scripts and styles-->
     <link rel="stylesheet" type="text/css" href="../../css/adapter.css" />
     <link rel="stylesheet" type="text/css" href="../../lib/css/materialize.css">
@@ -58,36 +56,24 @@
             callback(obj);
         }
     </script>
-
 </head>
-
 <body>
-
     <div class="m adapter-container">
-
         <div class="row">
             <div class="col s12 m4 l2">
                 <img src="youtube.png" class="logo">
             </div>
         </div>
-
-        <!-- Put your content here -->
-
-        <!-- For example columns with settings: -->
         <div class="row">
             <div class="col s6 input-field">
-                <input type="checkbox" class="value" id="option1" />
-                <label for="option1" class="translate">option1</label>
+                <input type="text" class="value" id="apiKey" />
+                <label for="apiKey" class="translate">API-Key</label>
             </div>
-
             <div class="col s6 input-field">
-                <input type="text" class="value" id="option2" />
-                <label for="option2" class="translate">option2</label>
+                <input type="text" class="value" id="channelId" />
+                <label for="channelId" class="translate">Channel-ID</label>
             </div>
         </div>
-
     </div>
-
 </body>
-
 </html>
