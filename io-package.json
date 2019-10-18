@@ -99,6 +99,66 @@
             "def":   false
           },
           "native": {}
+        },
+        {
+          "_id":  "snippet",
+          "type": "channel",
+          "common": {
+            "name": "Snippet"
+          },
+          "native": {}
+        },
+        {
+          "_id":  "snippet.title",
+          "type": "state",
+          "common": {
+            "name":  "Channel Title",
+            "type":  "string",
+            "role":  "value",
+            "read":  true,
+            "write": false,
+            "def":   false
+          },
+          "native": {}
+        },
+        {
+          "_id":  "snippet.description",
+          "type": "state",
+          "common": {
+            "name":  "Channel Description",
+            "type":  "string",
+            "role":  "value",
+            "read":  true,
+            "write": false,
+            "def":   false
+          },
+          "native": {}
+        },
+        {
+          "_id":  "snippet.customUrl",
+          "type": "state",
+          "common": {
+            "name":  "Channel Custom Url",
+            "type":  "string",
+            "role":  "value",
+            "read":  true,
+            "write": false,
+            "def":   false
+          },
+          "native": {}
+        },
+        {
+          "_id":  "snippet.publishedAt",
+          "type": "state",
+          "common": {
+            "name":  "Channel Publish Date",
+            "type":  "string",
+            "role":  "value.datetime",
+            "read":  true,
+            "write": false,
+            "def":   false
+          },
+          "native": {}
         }
     ]
 }

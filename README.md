@@ -25,9 +25,11 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
 ## Changelog
 
 ### 0.0.1
+
 * (Matthias Kleine) initial release
 
 ## License
+
 MIT License
 
 Copyright (c) 2019 Matthias Kleine

@@ -22,9 +22,12 @@ class Youtube extends utils.Adapter {
         var channelId = this.config.channelId;
 
         if (apiKey && channelId) {
+
+            // Documentation: https://developers.google.com/youtube/v3/docs/channels
+
             request(
                 {
-                    url: 'https://www.googleapis.com/youtube/v3/channels?part=statistics&id=' + channelId + '&key=' + apiKey,
+                    url: 'https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=' + channelId + '&key=' + apiKey,
                     json: true
                 },
                 function (error, response, content) {
@@ -39,6 +42,13 @@ class Youtube extends utils.Adapter {
                                 self.setState('statistics.viewCount', {val: firstItem.statistics.viewCount, ack: true});
                                 self.setState('statistics.subscriberCount', {val: firstItem.statistics.subscriberCount, ack: true});
                                 self.setState('statistics.videoCount', {val: firstItem.statistics.videoCount, ack: true});
+                            }
+
+                            if (firstItem.hasOwnProperty('snippet')) {
+                                self.setState('snippet.title', {val: firstItem.snippet.title, ack: true});
+                                self.setState('snippet.description', {val: firstItem.snippet.description, ack: true});
+                                self.setState('snippet.customUrl', {val: firstItem.snippet.customUrl, ack: true});
+                                self.setState('snippet.publishedAt', {val: firstItem.snippet.publishedAt, ack: true});
                             }
                         }
     
