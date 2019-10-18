@@ -54,6 +54,19 @@
     "objects": [],
     "instanceObjects": [
         {
+          "_id":  "lastUpdate",
+          "type": "state",
+          "common": {
+            "name":  "Last Update",
+            "type":  "string",
+            "role":  "value.datetime",
+            "read":  true,
+            "write": false,
+            "def":   false
+          },
+          "native": {}
+        },
+        {
           "_id":  "statistics",
           "type": "channel",
           "common": {
@@ -157,6 +170,14 @@
             "read":  true,
             "write": false,
             "def":   false
+          },
+          "native": {}
+        },
+        {
+          "_id":  "video",
+          "type": "channel",
+          "common": {
+            "name": "Latest Videos"
           },
           "native": {}
         }
