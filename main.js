@@ -19,9 +19,10 @@ class Youtube extends utils.Adapter {
     }
 
     async onReady() {
-        var self = this;
-        var apiKey = this.config.apiKey;
-        var channelId = this.config.channelId;
+        const self = this;
+
+        const apiKey = this.config.apiKey;
+        const channelId = this.config.channelId;
 
         if (apiKey && channelId) {
 
@@ -39,19 +40,19 @@ class Youtube extends utils.Adapter {
 
                     if (!error && response.statusCode == 200) {
 
-                        if (content && content.hasOwnProperty('items') && Array.isArray(content['items']) && content['items'].length > 0) {
-                            var firstItem = content['items'][0];
+                        if (content && Object.prototype.hasOwnProperty.call(content, 'items') && Array.isArray(content['items']) && content['items'].length > 0) {
+                            const firstItem = content['items'][0];
 
-                            let updateTime = new Date();
+                            const updateTime = new Date();
                             self.setState('lastUpdate', {val: new Date(updateTime - updateTime.getTimezoneOffset() * 60000).toISOString(), ack: true});
 
-                            if (firstItem.hasOwnProperty('statistics')) {
+                            if (Object.prototype.hasOwnProperty.call(firstItem, 'statistics')) {
                                 self.setState('statistics.viewCount', {val: firstItem.statistics.viewCount, ack: true});
                                 self.setState('statistics.subscriberCount', {val: firstItem.statistics.subscriberCount, ack: true});
                                 self.setState('statistics.videoCount', {val: firstItem.statistics.videoCount, ack: true});
                             }
 
-                            if (firstItem.hasOwnProperty('snippet')) {
+                            if (Object.prototype.hasOwnProperty.call(firstItem, 'snippet')) {
                                 self.setState('snippet.title', {val: firstItem.snippet.title, ack: true});
                                 self.setState('snippet.description', {val: firstItem.snippet.description, ack: true});
                                 self.setState('snippet.customUrl', {val: firstItem.snippet.customUrl, ack: true});
@@ -81,11 +82,11 @@ class Youtube extends utils.Adapter {
 
                     if (!error && response.statusCode == 200) {
 
-                        if (content && content.hasOwnProperty('items') && Array.isArray(content['items']) && content['items'].length > 0) {
-                            for (var i = 0; i < content['items'].length; i++) {
+                        if (content && Object.prototype.hasOwnProperty.call(content, 'items') && Array.isArray(content['items']) && content['items'].length > 0) {
+                            for (let i = 0; i < content['items'].length; i++) {
 
-                                var v = content['items'][i];
-                                var path = 'video.' + i + '.';
+                                const v = content['items'][i];
+                                const path = 'video.' + i + '.';
 
                                 self.setObjectNotExists(path + 'id', {
                                     type: 'state',
