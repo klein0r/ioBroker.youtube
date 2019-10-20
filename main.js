@@ -30,18 +30,20 @@ class Youtube extends utils.Adapter {
             request(
                 {
                     url: 'https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=' + channelId + '&key=' + apiKey,
-                    json: true
+                    json: true,
+                    timeout: 4500
                 },
-                function (error, response, content) {
-                    self.log.debug('channels request done');
-
-                    let updateTime = new Date();
-                    self.setState('lastUpdate', {val: new Date(updateTime - updateTime.getTimezoneOffset() * 60000).toISOString(), ack: true});
+                (error, response, content) => {
+                    self.log.debug('youtube/v3/channels - Request done');
+                    self.log.debug('received data (' + response.statusCode + '): ' + JSON.stringify(content));
 
                     if (!error && response.statusCode == 200) {
 
                         if (content && content.hasOwnProperty('items') && Array.isArray(content['items']) && content['items'].length > 0) {
                             var firstItem = content['items'][0];
+
+                            let updateTime = new Date();
+                            self.setState('lastUpdate', {val: new Date(updateTime - updateTime.getTimezoneOffset() * 60000).toISOString(), ack: true});
 
                             if (firstItem.hasOwnProperty('statistics')) {
                                 self.setState('statistics.viewCount', {val: firstItem.statistics.viewCount, ack: true});
@@ -55,10 +57,14 @@ class Youtube extends utils.Adapter {
                                 self.setState('snippet.customUrl', {val: firstItem.snippet.customUrl, ack: true});
                                 self.setState('snippet.publishedAt', {val: firstItem.snippet.publishedAt, ack: true});
                             }
+                        } else {
+                            self.log.warn('youtube/v3/channels - received empty response - check channel id');
                         }
-    
+
                     } else if (error) {
                         self.log.warn(error);
+                    } else {
+                        self.log.error('youtube/v3/channels - Status Code: ' + response.statusCode + ' / Content: ' + JSON.stringify(content));
                     }
                 }
             );
@@ -66,10 +72,12 @@ class Youtube extends utils.Adapter {
             request(
                 {
                     url: 'https://www.googleapis.com/youtube/v3/search?part=id,snippet&type=video&order=date&maxResults=5&channelId=' + channelId + '&key=' + apiKey,
-                    json: true
+                    json: true,
+                    timeout: 4500
                 },
-                function (error, response, content) {
-                    self.log.debug('search request done');
+                (error, response, content) => {
+                    self.log.debug('youtube/v3/search Request done');
+                    self.log.debug('received data (' + response.statusCode + '): ' + JSON.stringify(content));
 
                     if (!error && response.statusCode == 200) {
 
@@ -144,10 +152,14 @@ class Youtube extends utils.Adapter {
                                 });
                                 self.setState(path + 'description', {val: v.snippet.description, ack: true});
                             }
+                        } else {
+                            self.log.warn('youtube/v3/search - received empty response - check channel id');
                         }
-    
+
                     } else if (error) {
                         self.log.warn(error);
+                    } else {
+                        self.log.error('youtube/v3/search - Status Code: ' + response.statusCode + ' / Content: ' + JSON.stringify(content));
                     }
                 }
             );
