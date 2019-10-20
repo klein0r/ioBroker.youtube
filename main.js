@@ -13,7 +13,9 @@ class Youtube extends utils.Adapter {
             ...options,
             name: 'youtube',
         });
+
         this.on('ready', this.onReady.bind(this));
+        this.on('unload', this.onUnload.bind(this));
     }
 
     async onReady() {
@@ -55,7 +57,7 @@ class Youtube extends utils.Adapter {
                             }
                         }
     
-                    } else {
+                    } else if (error) {
                         self.log.warn(error);
                     }
                 }
@@ -144,7 +146,7 @@ class Youtube extends utils.Adapter {
                             }
                         }
     
-                    } else {
+                    } else if (error) {
                         self.log.warn(error);
                     }
                 }
