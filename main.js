@@ -23,6 +23,7 @@ class Youtube extends utils.Adapter {
 
         const self = this;
         const apiKey = this.config.apiKey;
+        const enableVideoInformation = this.config.enableVideoInformation;
 
         self.log.debug('youtube/v3/channels - Request init - ' + id);
 
@@ -166,109 +167,110 @@ class Youtube extends utils.Adapter {
                 }
             );
 
-            // Fill latest video information
-            request(
-                {
-                    url: 'https://www.googleapis.com/youtube/v3/search?part=id,snippet&type=video&order=date&maxResults=5&channelId=' + id + '&key=' + apiKey,
-                    json: true,
-                    timeout: 4500
-                },
-                (error, response, content) => {
-                    self.log.debug('youtube/v3/search Request done');
-                    self.log.debug('received data (' + response.statusCode + '): ' + JSON.stringify(content));
+            if (enableVideoInformation) {
+                // Fill latest video information
+                request(
+                    {
+                        url: 'https://www.googleapis.com/youtube/v3/search?part=id,snippet&type=video&order=date&maxResults=5&channelId=' + id + '&key=' + apiKey,
+                        json: true,
+                        timeout: 4500
+                    },
+                    (error, response, content) => {
+                        self.log.debug('youtube/v3/search Request done');
+                        self.log.debug('received data (' + response.statusCode + '): ' + JSON.stringify(content));
 
-                    if (!error && response.statusCode == 200) {
+                        if (!error && response.statusCode == 200) {
+    
+                            if (content && Object.prototype.hasOwnProperty.call(content, 'items') && Array.isArray(content['items']) && content['items'].length > 0) {
+                                for (let i = 0; i < content['items'].length; i++) {
 
-                        if (content && Object.prototype.hasOwnProperty.call(content, 'items') && Array.isArray(content['items']) && content['items'].length > 0) {
-                            for (let i = 0; i < content['items'].length; i++) {
+                                    const v = content['items'][i];
+                                    const path = cpath + '.video.' + i + '.';
 
-                                const v = content['items'][i];
-                                const path = cpath + '.video.' + i + '.';
+                                    self.setObjectNotExists(path, {
+                                        type: 'channel',
+                                        common: {
+                                            name: 'Video data ' + (i + 1)
+                                        },
+                                        native: {}
+                                    });
 
-                                self.setObjectNotExists(path, {
-                                    type: 'channel',
-                                    common: {
-                                        name: 'Video data ' + (i + 1)
-                                    },
-                                    native: {}
-                                });
+                                    self.setObjectNotExists(path + 'id', {
+                                        type: 'state',
+                                        common: {
+                                            name: 'Id',
+                                            type: 'string',
+                                            role: 'media.playid',
+                                            read: true,
+                                            write: false
+                                        },
+                                        native: {}
+                                    });
+                                    self.setState(path + 'id', {val: v.id.videoId, ack: true});
 
-                                self.setObjectNotExists(path + 'id', {
-                                    type: 'state',
-                                    common: {
-                                        name: 'Id',
-                                        type: 'string',
-                                        role: 'media.playid',
-                                        read: true,
-                                        write: false
-                                    },
-                                    native: {}
-                                });
-                                self.setState(path + 'id', {val: v.id.videoId, ack: true});
+                                    self.setObjectNotExists(path + 'url', {
+                                        type: 'state',
+                                        common: {
+                                            name: 'URL',
+                                            type: 'string',
+                                            role: 'url.blank',
+                                            read: true,
+                                            write: false
+                                        },
+                                        native: {}
+                                    });
+                                    self.setState(path + 'url', {val: 'https://youtu.be/' + v.id.videoId, ack: true});
 
-                                self.setObjectNotExists(path + 'url', {
-                                    type: 'state',
-                                    common: {
-                                        name: 'URL',
-                                        type: 'string',
-                                        role: 'url.blank',
-                                        read: true,
-                                        write: false
-                                    },
-                                    native: {}
-                                });
-                                self.setState(path + 'url', {val: 'https://youtu.be/' + v.id.videoId, ack: true});
+                                    self.setObjectNotExists(path + 'title', {
+                                        type: 'state',
+                                        common: {
+                                            name: 'Title',
+                                            type: 'string',
+                                            role: 'media.title',
+                                            read: true,
+                                            write: false
+                                        },
+                                        native: {}
+                                    });
+                                    self.setState(path + 'title', {val: v.snippet.title, ack: true});
 
-                                self.setObjectNotExists(path + 'title', {
-                                    type: 'state',
-                                    common: {
-                                        name: 'Title',
-                                        type: 'string',
-                                        role: 'media.title',
-                                        read: true,
-                                        write: false
-                                    },
-                                    native: {}
-                                });
-                                self.setState(path + 'title', {val: v.snippet.title, ack: true});
+                                    self.setObjectNotExists(path + 'published', {
+                                        type: 'state',
+                                        common: {
+                                            name: 'Published',
+                                            type: 'string',
+                                            role: 'media.date',
+                                            read: true,
+                                            write: false
+                                        },
+                                        native: {}
+                                    });
+                                    self.setState(path + 'published', {val: v.snippet.publishedAt, ack: true});
 
-                                self.setObjectNotExists(path + 'published', {
-                                    type: 'state',
-                                    common: {
-                                        name: 'Published',
-                                        type: 'string',
-                                        role: 'media.date',
-                                        read: true,
-                                        write: false
-                                    },
-                                    native: {}
-                                });
-                                self.setState(path + 'published', {val: v.snippet.publishedAt, ack: true});
-
-                                self.setObjectNotExists(path + 'description', {
-                                    type: 'state',
-                                    common: {
-                                        name: 'Description',
-                                        type: 'string',
-                                        role: 'state',
-                                        read: true,
-                                        write: false
-                                    },
-                                    native: {}
-                                });
-                                self.setState(path + 'description', {val: v.snippet.description, ack: true});
+                                    self.setObjectNotExists(path + 'description', {
+                                        type: 'state',
+                                        common: {
+                                            name: 'Description',
+                                            type: 'string',
+                                            role: 'state',
+                                            read: true,
+                                            write: false
+                                        },
+                                        native: {}
+                                    });
+                                    self.setState(path + 'description', {val: v.snippet.description, ack: true});
+                                }
+                            } else {
+                                self.log.warn('youtube/v3/search - received empty response - check channel id');
                             }
+                        } else if (error) {
+                            self.log.warn(error);
                         } else {
-                            self.log.warn('youtube/v3/search - received empty response - check channel id');
+                            self.log.error('youtube/v3/search - Status Code: ' + response.statusCode + ' / Content: ' + JSON.stringify(content));
                         }
-
-                    } else if (error) {
-                        self.log.warn(error);
-                    } else {
-                        self.log.error('youtube/v3/search - Status Code: ' + response.statusCode + ' / Content: ' + JSON.stringify(content));
                     }
-                }
-            );
+                );
+            }
         }
     }
 
