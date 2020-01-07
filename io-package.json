@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "youtube",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "news": {
+            "0.0.3": {
+                "en": "Support for multiple channels",
+                "de": "Unterstützung für mehrere Kanäle"
+            }
             "0.0.2": {
                 "en": "improved error handling",
                 "de": "Fehlerbehandlung verbessert"
