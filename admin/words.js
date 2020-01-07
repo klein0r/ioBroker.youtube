@@ -6,12 +6,28 @@ systemDictionary = {
         'en': 'Adapter settings for youtube',
         'de': 'Adaptereinstellungen für youtube'
     },
-    'API-Key': {
+    'main settings': {
+        'en': 'Main Settings',
+        'de': 'Haupteinstellungen'
+    },
+    'api key': {
         'en': 'API-Key',
         'de': 'API-Schlüssel'
     },
-    'Channel-ID': {
+    'channel id': {
         'en': 'Channel-ID',
         'de': 'Kanal-ID'
+    },
+    'channels': {
+        'en': 'Channels',
+        'de': 'Kanäle'
+    },
+    'custom channel name': {
+        'en': 'Custom Channel Name',
+        'de': 'Eigener Name'
+    },
+    'add': {
+        'en': 'add',
+        'de': 'hinzufügen'
     }
 };

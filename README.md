@@ -22,6 +22,7 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
 2. Create a new API key
 3. Add "YouTube Data API v3" of the library
 4. Use that API-Key in the options panel
+5. Add multiple channels in the channels tab by using the id and a custom name
 
 ## Changelog
 
