@@ -25,7 +25,19 @@ class Youtube extends utils.Adapter {
         const apiKey = this.config.apiKey;
         const enableVideoInformation = this.config.enableVideoInformation;
 
-        self.log.debug('youtube/v3/channels - Request init - ' + id);
+        this.log.debug('youtube/v3/channels - Request init - ' + id);
+
+        this.setObjectNotExists(cpath + '.lastUpdate', {
+            type: 'state',
+            common: {
+                name: 'Last Update',
+                type: 'string',
+                role: 'value.datetime',
+                read: true,
+                write: false
+            },
+            native: {}
+        });
 
         this.setObjectNotExists(cpath + '.statistics', {
             type: 'channel',
@@ -144,17 +156,20 @@ class Youtube extends utils.Adapter {
                             const firstItem = content['items'][0];
 
                             if (Object.prototype.hasOwnProperty.call(firstItem, 'statistics')) {
-                                self.setState(cpath + 'statistics.viewCount', {val: firstItem.statistics.viewCount, ack: true});
-                                self.setState(cpath + 'statistics.subscriberCount', {val: firstItem.statistics.subscriberCount, ack: true});
-                                self.setState(cpath + 'statistics.videoCount', {val: firstItem.statistics.videoCount, ack: true});
+                                self.setState(cpath + '.statistics.viewCount', {val: firstItem.statistics.viewCount, ack: true});
+                                self.setState(cpath + '.statistics.subscriberCount', {val: firstItem.statistics.subscriberCount, ack: true});
+                                self.setState(cpath + '.statistics.videoCount', {val: firstItem.statistics.videoCount, ack: true});
                             }
 
                             if (Object.prototype.hasOwnProperty.call(firstItem, 'snippet')) {
-                                self.setState(cpath + 'snippet.title', {val: firstItem.snippet.title, ack: true});
-                                self.setState(cpath + 'snippet.description', {val: firstItem.snippet.description, ack: true});
-                                self.setState(cpath + 'snippet.customUrl', {val: firstItem.snippet.customUrl, ack: true});
-                                self.setState(cpath + 'snippet.publishedAt', {val: firstItem.snippet.publishedAt, ack: true});
+                                self.setState(cpath + '.snippet.title', {val: firstItem.snippet.title, ack: true});
+                                self.setState(cpath + '.snippet.description', {val: firstItem.snippet.description, ack: true});
+                                self.setState(cpath + '.snippet.customUrl', {val: firstItem.snippet.customUrl, ack: true});
+                                self.setState(cpath + '.snippet.publishedAt', {val: firstItem.snippet.publishedAt, ack: true});
                             }
+
+                            const updateTime = new Date();
+                            this.setState(cpath + '.lastUpdate', {val: new Date(updateTime - updateTime.getTimezoneOffset() * 60000).toISOString(), ack: true});
                         } else {
                             self.log.warn('youtube/v3/channels - received empty response - check channel id');
                         }
@@ -295,9 +310,6 @@ class Youtube extends utils.Adapter {
                 this.getChannelData(channel.id, 'channels.' + cleanChannelName);
             }
         }
-
-        const updateTime = new Date();
-        this.setState('lastUpdate', {val: new Date(updateTime - updateTime.getTimezoneOffset() * 60000).toISOString(), ack: true});
 
         setTimeout(this.stop.bind(this), 30000);
     }

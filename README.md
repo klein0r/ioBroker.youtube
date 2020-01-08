@@ -26,6 +26,10 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
 
 ## Changelog
 
+### 0.0.5
+
+* (klein0r) Bugfix
+
 ### 0.0.4
 
 * (klein0r) Added more options
