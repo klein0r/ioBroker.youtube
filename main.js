@@ -309,9 +309,9 @@ class Youtube extends utils.Adapter {
 
                 this.getChannelData(channel.id, 'channels.' + cleanChannelName);
             }
-        }
 
-        setTimeout(this.stop.bind(this), 30000);
+            setTimeout(this.stop.bind(this), 30000);
+        }
     }
 
     onUnload(callback) {

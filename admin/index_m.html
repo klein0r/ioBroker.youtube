@@ -35,9 +35,15 @@
 
             onChange(false);
 
-            values2table('channels', settings.channels || [], onChange);
+            values2table('channels', settings.channels || [{id: 'UCRDCsZvUg75Bibp9qYbHivw', name: 'HausAutomatisierungCom'}], onChange);
 
             if (M) M.updateTextFields();
+        }
+
+        function removeDuplicates(myArr, prop) {
+            return myArr.filter((obj, pos, arr) => {
+                return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+            });
         }
 
         function save(callback) {
@@ -51,7 +57,7 @@
                 }
             });
 
-            let channels = table2values('channels');
+            let channels = removeDuplicates(table2values('channels'), 'id');
 
             // Sort channels by name before saving
             obj.channels = channels.sort(function(a, b) {
