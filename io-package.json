@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "youtube",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "news": {
+            "0.0.6": {
+                "en": "Collect YouTube information after configuration changes",
+                "de": "Daten von YouTube abholen, nachdem die Konfiguration gespeichert wurde"
+            },
             "0.0.5": {
                 "en": "Bugfix",
                 "de": "Bugfix"
@@ -51,6 +55,7 @@
         "readme": "https://github.com/klein0r/ioBroker.youtube/blob/master/README.md",
         "loglevel": "info",
         "mode": "schedule",
+        "allowInit": true,
         "schedule": "0 0 * * *",
         "type": "misc-data",
         "compact": true,
