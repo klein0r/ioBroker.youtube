@@ -51,7 +51,14 @@
                 }
             });
 
-            obj.channels = table2values('channels');
+            let channels = table2values('channels');
+
+            // Sort channels by name before saving
+            obj.channels = channels.sort(function(a, b) {
+                const textA = a.name.toUpperCase();
+                const textB = b.name.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            });
 
             callback(obj);
         }
