@@ -64,7 +64,7 @@
         "localLink": "%web_protocol%://%ip%:%web_port%/vis/edit.html",
         "restartAdapters": [
             "vis"
-        ]
+        ],
         "dependencies": [
             {
                 "js-controller": ">=1.4.2"
