@@ -44,7 +44,8 @@
             "youtube",
             "social",
             "video",
-            "web"
+            "web",
+            "vis"
         ],
         "license": "MIT",
         "platform": "Javascript/Node.js",
@@ -60,8 +61,15 @@
         "type": "misc-data",
         "compact": true,
         "materialize": true,
+        "localLink": "%web_protocol%://%ip%:%web_port%/vis/edit.html",
+        "restartAdapters": [
+            "vis"
+        ]
         "dependencies": [
-            { "js-controller": ">=1.4.2" }
+            {
+                "js-controller": ">=1.4.2"
+            },
+            "vis"
         ]
     },
     "native": {
