@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "youtube",
-        "version": "0.0.6",
+        "version": "0.0.7",
         "news": {
+            "0.0.7": {
+                "en": "Added VIS widget",
+                "de": "VIS widget hinzugefügt"
+            },
             "0.0.6": {
                 "en": "Collect YouTube information after configuration changes",
                 "de": "Daten von YouTube abholen, nachdem die Konfiguration gespeichert wurde"
