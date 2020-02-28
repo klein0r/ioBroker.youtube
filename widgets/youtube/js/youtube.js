@@ -16,7 +16,7 @@ $.get( 'adapter/youtube/words.js', function(script) {
 
 // this code can be placed directly in youtube.html
 vis.binds['youtube'] = {
-    version: '0.0.1',
+    version: '0.0.12',
     showVersion: function () {
         if (vis.binds['youtube'].version) {
             console.log('Version youtube: ' + vis.binds['youtube'].version);
@@ -32,20 +32,12 @@ vis.binds['youtube'] = {
             }, 100);
         }
 
-        var text = '';
-        text += 'OID: ' + data.oid + '</div><br>';
-        text += 'OID value: <span class="myset-value">' + vis.states[data.oid + '.val'] + '</span><br>';
-        text += 'Color: <span style="color: ' + data.myColor + '">' + data.myColor + '</span><br>';
-        text += 'extraAttr: ' + data.extraAttr + '<br>';
-        text += 'Browser instance: ' + vis.instance + '<br>';
-        text += 'htmlText: <textarea readonly style="width:100%">' + (data.htmlText || '') + '</textarea><br>';
-
-        $('#' + widgetID).html(text);
+        $div.find('.current-value').html(vis.states[data.oid + '.val']);
 
         // subscribe on updates of value
         if (data.oid) {
             vis.states.bind(data.oid + '.val', function (e, newVal, oldVal) {
-                $div.find('.youtube-value').html(newVal);
+                $div.find('.current-value').html(newVal);
             });
         }
     }

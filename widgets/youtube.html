@@ -8,37 +8,18 @@
 <link rel="stylesheet" href="widgets/youtube/css/style.css" />
 <script type="text/javascript" src="widgets/youtube/js/youtube.js"></script>
 
-<script id="tplYoutubeShowInstance"
-        type="text/ejs"
-        class="vis-tpl"
-        data-vis-prev='<div id="prev_tplMysetShowInstance" style="position: relative; text-align: initial;padding: 4px "><div class="vis-widget_prev " style="width: 280px; height: 159px;" > <div class="myset-class vis-widget-prev-body " style="padding:2px"> OID: hm-rpc.0.EEQ0006629.1.STATE<br> OID value: true<br> Color: <span style="color: rgb(128, 0, 0);">#800000</span><br> htmlText: <textarea readonly="" style="width:100%">asda</textarea></div>'
-        data-vis-attrs="oid/id;myColor/color;htmlText/text;"
-        data-vis-attrs0="group.extraYoutube;extraAttr"
-        data-vis-set="youtube"
-        data-vis-type="helper"
-        data-vis-name="Show instance">
-    <div class="vis-widget <%== this.data.attr('class') %>" style="width:230px; height:210px;" id="<%= this.data.attr('wid') %>" >
-        <div class="youtube-class vis-widget-body <%== this.data.attr('class') %>" style="padding:2px" >
-            OID: <%= this.data.attr('oid') %><br>
-            OID value: <%== vis.states[this.data.attr('oid') + '.val'] %><br>
-            Color: <span style="color: <%= this.data.attr('myColor') %>"><%= this.data.attr('myColor') %></span><br>
-            extraAttr: <%== this.data.attr('extraAttr') %><br>
-            Browser instance: <%= vis.instance %><br>
-            htmlText: <textarea readonly style="width: calc(100% - 10px)"><%== this.data.attr('htmlText') %></textarea><br>
-        </div>
-    </div>
-</script>
-
 <script id="tplYoutubeHelper"
         type="text/ejs"
         class="vis-tpl"
-        data-vis-prev='<div id="prev_tplYoutubeHelper" style="position: relative; text-align: initial;padding: 4px "><div class="vis-widget_prev " style="width: 280px; height: 159px;" > <div class="myset-class vis-widget-prev-body " style="padding:2px"> OID: hm-rpc.0.EEQ0006629.1.STATE<br> OID value: true<br> Color: <span style="color: rgb(128, 0, 0);">#800000</span><br> htmlText: <textarea readonly="" style="width:100%">asda</textarea></div>'
-        data-vis-attrs="oid/id;myColor/color;htmlText/text;"
+        data-vis-prev='<div id="prev_tplYoutubeHelper" style="position: relative; text-align: initial;padding: 4px "><div class="vis-widget_prev youtube-widget" style="width: 175px; height: 190px;"><span class="current-value">50000</div></div>'
+        data-vis-attrs="oid/id;"
         data-vis-attrs0="group.extraYoutube;extraAttr"
         data-vis-set="youtube"
         data-vis-type="helper"
         data-vis-name="Helper">
-    <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%
-        vis.binds.youtube.createWidget(this.data.wid, this.view, this.data, this.style);
-    %></div>
+    <div class="vis-widget youtube-widget <%== this.data.attr('class') %>" style="overflow: visible; width: 175px; height: 190px;" id="<%= this.data.attr('wid') %>">
+        <span class="current-value">
+            <% vis.binds.youtube.createWidget(this.data.wid, this.view, this.data, this.style); %>
+        </span>
+    </div>
 </script>
