@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "youtube",
-        "version": "0.0.7",
+        "version": "0.0.8",
         "news": {
+            "0.0.8": {
+                "en": "Removed link from overview",
+                "de": "Link aus der Übersicht entfernt"
+            },
             "0.0.7": {
                 "en": "Added VIS widget",
                 "de": "VIS widget hinzugefügt"
@@ -65,7 +69,6 @@
         "type": "misc-data",
         "compact": true,
         "materialize": true,
-        "localLink": "%web_protocol%://%ip%:%web_port%/vis/edit.html",
         "restartAdapters": [
             "vis"
         ],
