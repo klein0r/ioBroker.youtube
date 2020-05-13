@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "youtube",
-        "version": "0.0.8",
+        "version": "0.0.9",
         "news": {
+            "0.0.9": {
+                "en": "Updated depencencies",
+                "de": "Abhängigkeiten aktualisiert"
+            },
             "0.0.8": {
                 "en": "Removed link from overview",
                 "de": "Link aus der Übersicht entfernt"
@@ -68,6 +72,8 @@
         "schedule": "0 0 * * *",
         "type": "misc-data",
         "compact": true,
+        "connectionType": "cloud",
+        "dataSource": "poll",
         "materialize": true,
         "restartAdapters": [
             "vis"
