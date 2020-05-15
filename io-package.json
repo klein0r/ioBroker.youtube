@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "youtube",
-        "version": "0.0.10",
+        "version": "0.0.11",
         "news": {
+            "0.0.11": {
+                "en": "setTimeout found in main.js, but no clearTimeout detected",
+                "de": "setTimeout found in main.js, but no clearTimeout detected"
+            },
             "0.0.10": {
                 "en": "Added missing translations",
                 "de": "Fehlende Übersetzungen hinzugefügt"
