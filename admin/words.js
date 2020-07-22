@@ -38,6 +38,18 @@ systemDictionary = {
         "pl": "Klucz API",
         "zh-cn": "api密钥"
     },
+    "enable video information": {
+        "en": "add video information",
+        "de": "Videoinformationen hinzufügen",
+        "ru": "добавить видео информацию",
+        "pt": "adicionar informações de vídeo",
+        "nl": "video-informatie toevoegen",
+        "fr": "ajouter des informations vidéo",
+        "it": "aggiungi informazioni sul video",
+        "es": "agregar información de video",
+        "pl": "dodaj informacje wideo",
+        "zh-cn": "添加视频信息"
+    },
     "channel id": {
         "en": "channel id",
         "de": "Kanal ID",
