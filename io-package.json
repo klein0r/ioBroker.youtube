@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "youtube",
-        "version": "0.0.12",
+        "version": "0.0.13",
         "news": {
+            "0.0.13": {
+                "en": "Changed to new library",
+                "de": "Neue Library eingebunden"
+            },
             "0.0.12": {
                 "en": "Added json summary",
                 "de": "JSON-Datenpunkt hinzugefügt"
