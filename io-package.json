@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "youtube",
-        "version": "0.0.13",
+        "version": "1.0.0",
         "news": {
+            "1.0.0": {
+                "en": "First stable release",
+                "de": "Erster stable Release"
+            },
             "0.0.13": {
                 "en": "Changed to new library",
                 "de": "Neue Library eingebunden"
