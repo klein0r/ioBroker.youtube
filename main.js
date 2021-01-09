@@ -351,7 +351,7 @@ class Youtube extends utils.Adapter {
                 clearTimeout(this.killTimeout);
             }
 
-            this.log.info('cleaned everything up...');
+            this.log.debug('cleaned everything up...');
             callback();
         } catch (e) {
             callback();
