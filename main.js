@@ -217,7 +217,7 @@ class Youtube extends utils.Adapter {
                                     const v = content['items'][i];
                                     const path = cpath + '.video.' + i + '.';
 
-                                    this.setObjectNotExists(path, {
+                                    this.setObjectNotExists(path.slice(0, -1), { // remove trailing dot
                                         type: 'channel',
                                         common: {
                                             name: 'Video data ' + (i + 1)
