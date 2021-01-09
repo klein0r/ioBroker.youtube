@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "youtube",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "news": {
+            "1.0.1": {
+                "en": "Fixed trailing dot in channel error message",
+                "de": "Fehler behoben - Datenpunkt darf nicht mit einem Punkt enden"
+            },
             "1.0.0": {
                 "en": "First stable release",
                 "de": "Erster stable Release"
