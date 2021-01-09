@@ -24,7 +24,7 @@ class Youtube extends utils.Adapter {
     async getChannelData(id, cpath) {
         // Documentation: https://developers.google.com/youtube/v3/docs/channels
 
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
 
             const apiKey = this.config.apiKey;
             const enableVideoInformation = this.config.enableVideoInformation;
@@ -151,7 +151,7 @@ class Youtube extends utils.Adapter {
                     timeout: 4500,
                     responseType: 'json'
                 }).then(
-                    function (response) {
+                    (response) => {
                         this.log.debug('youtube/v3/channels - Request done - ' + id);
                         this.log.debug('received data (' + response.status + '): ' + JSON.stringify(response.data));
 
@@ -188,11 +188,11 @@ class Youtube extends utils.Adapter {
                         } else {
                             this.log.warn('youtube/v3/channels - received empty response - check channel id');
                         }
-                    }.bind(this)
+                    }
                 ).catch(
-                    function (error) {
+                    (error) => {
                         reject(error);
-                    }.bind(this)
+                    }
                 );
 
                 if (enableVideoInformation) {
@@ -205,7 +205,7 @@ class Youtube extends utils.Adapter {
                         timeout: 4500,
                         responseType: 'json'
                     }).then(
-                        function (response) {
+                        (response) => {
                             this.log.debug('youtube/v3/search Request done - ' + id);
                             this.log.debug('received data (' + response.status + '): ' + JSON.stringify(response.data));
 
@@ -294,17 +294,17 @@ class Youtube extends utils.Adapter {
                                 this.log.warn('youtube/v3/search - received empty response - check channel id');
                             }
 
-                        }.bind(this)
+                        }
                     ).catch(
-                        function (error) {
+                        (error) => {
                             this.log.warn(error);
-                        }.bind(this)
+                        }
                     );
                 }
             } else {
                 reject('API Key not configured');
             }
-        }.bind(this));
+        });
     }
 
     async onReady() {
