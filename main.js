@@ -197,6 +197,7 @@ class Youtube extends utils.Adapter {
 
                 if (enableVideoInformation) {
                     // Fill latest video information
+                    // Documentation: https://developers.google.com/youtube/v3/docs/search/list
 
                     axios({
                         method: 'get',
