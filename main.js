@@ -33,8 +33,8 @@ class Youtube extends utils.Adapter {
                 type: 'state',
                 common: {
                     name: 'Last Update',
-                    type: 'string',
-                    role: 'value.datetime',
+                    type: 'number',
+                    role: 'date',
                     read: true,
                     write: false
                 },
@@ -133,8 +133,8 @@ class Youtube extends utils.Adapter {
                 type: 'state',
                 common: {
                     name: 'Channel Publish Date',
-                    type: 'string',
-                    role: 'value.datetime',
+                    type: 'number',
+                    role: 'date',
                     read: true,
                     write: false
                 },
@@ -170,7 +170,7 @@ class Youtube extends utils.Adapter {
                                 this.setState(cpath + '.snippet.title', {val: firstItem.snippet.title, ack: true});
                                 this.setState(cpath + '.snippet.description', {val: firstItem.snippet.description, ack: true});
                                 this.setState(cpath + '.snippet.customUrl', {val: firstItem.snippet.customUrl, ack: true});
-                                this.setState(cpath + '.snippet.publishedAt', {val: firstItem.snippet.publishedAt, ack: true});
+                                this.setState(cpath + '.snippet.publishedAt', {val: new Date(firstItem.snippet.publishedAt).getTime(), ack: true});
                             }
 
                             if (Object.prototype.hasOwnProperty.call(firstItem, 'statistics') && Object.prototype.hasOwnProperty.call(firstItem, 'snippet')) {
@@ -184,7 +184,7 @@ class Youtube extends utils.Adapter {
                             }
 
                             const updateTime = new Date();
-                            this.setState(cpath + '.lastUpdate', {val: new Date(updateTime - updateTime.getTimezoneOffset() * 60000).toISOString(), ack: true});
+                            this.setState(cpath + '.lastUpdate', {val: new Date(updateTime - updateTime.getTimezoneOffset() * 60000).getTime(), ack: true});
                         } else {
                             this.log.warn('youtube/v3/channels - received empty response - check channel id');
                         }
@@ -268,14 +268,14 @@ class Youtube extends utils.Adapter {
                                         type: 'state',
                                         common: {
                                             name: 'Published',
-                                            type: 'string',
-                                            role: 'media.date',
+                                            type: 'number',
+                                            role: 'date',
                                             read: true,
                                             write: false
                                         },
                                         native: {}
                                     });
-                                    this.setState(path + 'published', {val: v.snippet.publishedAt, ack: true});
+                                    this.setState(path + 'published', {val: new Date(v.snippet.publishedAt).getTime(), ack: true});
 
                                     this.setObjectNotExists(path + 'description', {
                                         type: 'state',
