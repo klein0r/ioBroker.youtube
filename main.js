@@ -310,38 +310,78 @@ class Youtube extends utils.Adapter {
 
     async onReady() {
         const channels = this.config.channels;
-
         const channelDataList = [];
 
-        if (channels && Array.isArray(channels)) {
-            this.log.debug('Found other channels, fetching data');
+        this.getChannelsOf(
+            'channels',
+            async (err, states) => {
 
-            for (const c in channels) {
-                const channel = channels[c];
-                const cleanChannelName = channel.name.replace(/\s/g,'');
+                const channelsAll = [];
+                const channelsKeep = [];
 
-                this.setObjectNotExists('channels.' + cleanChannelName, {
-                    type: 'channel',
-                    common: {
-                        name: channel.name
-                    },
-                    native: {}
-                });
+                // Collect all types
+                if (states) {
+                    for (let i = 0; i < states.length; i++) {
+                        const id = this.removeNamespace(states[i]._id);
 
-                const channelData = await this.getChannelData(channel.id, 'channels.' + cleanChannelName);
-                if (typeof channelData !== 'undefined') {
-                    channelDataList.push(channelData);
+                        // Check if the state is a direct child (e.g. type.YourTrashType)
+                        if (id.split('.').length === 2) {
+                            channelsAll.push(id);
+                        }
+                    }
+                }
+
+                if (channels && Array.isArray(channels)) {
+                    this.log.debug('Found ' + channels.length + ' channels, fetching data');
+
+                    for (const c in channels) {
+                        const channel = channels[c];
+                        const cleanChannelName = channel.name.replace(/\s/g,'');
+
+                        channelsKeep.push('channels.' + cleanChannelName);
+
+                        this.setObjectNotExists('channels.' + cleanChannelName, {
+                            type: 'channel',
+                            common: {
+                                name: channel.name
+                            },
+                            native: {}
+                        });
+
+                        const channelData = await this.getChannelData(channel.id, 'channels.' + cleanChannelName);
+                        if (typeof channelData === 'object') {
+                            channelDataList.push(channelData);
+                        }
+                    }
+
+                    channelDataList.sort(function(a, b) {
+                        return b.subscriberCount - a.subscriberCount;
+                    });
+
+                    this.setState('summary.json', {val: JSON.stringify(channelDataList), ack: true});
+                } else {
+                    this.log.warn('No channels configured');
+                }
+
+                // Delete non existent channels
+                for (let i = 0; i < channelsAll.length; i++) {
+                    const id = channelsAll[i];
+
+                    if (channelsKeep.indexOf(id) === -1) {
+                        this.delObject(id, {recursive: true}, () => {
+                            this.log.debug('Channel deleted: ' + id);
+                        });
+                    }
                 }
             }
+        );
 
-            channelDataList.sort(function(a, b) {
-                return b.subscriberCount - a.subscriberCount;
-            });
+        this.killTimeout = setTimeout(this.stop.bind(this), 60000);
+    }
 
-            this.setState('summary.json', {val: JSON.stringify(channelDataList), ack: true});
-
-            this.killTimeout = setTimeout(this.stop.bind(this), 30000);
-        }
+    removeNamespace(id) {
+        const re = new RegExp(this.namespace + '*\.', 'g');
+        return id.replace(re, '');
     }
 
     onUnload(callback) {
