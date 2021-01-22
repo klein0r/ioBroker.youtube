@@ -61,10 +61,34 @@ class Youtube extends utils.Adapter {
                 native: {}
             });
 
+            this.setObjectNotExists(cpath + '.statistics.videoViewCountAvg', {
+                type: 'state',
+                common: {
+                    name: 'Avg views per video',
+                    type: 'number',
+                    role: 'value',
+                    read: true,
+                    write: false
+                },
+                native: {}
+            });
+
             this.setObjectNotExists(cpath + '.statistics.subscriberCount', {
                 type: 'state',
                 common: {
                     name: 'Subscriber Count',
+                    type: 'number',
+                    role: 'value',
+                    read: true,
+                    write: false
+                },
+                native: {}
+            });
+
+            this.setObjectNotExists(cpath + '.statistics.videoSubscriberCountAvg', {
+                type: 'state',
+                common: {
+                    name: 'Avg subscribers per video',
                     type: 'number',
                     role: 'value',
                     read: true,
@@ -162,7 +186,9 @@ class Youtube extends utils.Adapter {
 
                             if (Object.prototype.hasOwnProperty.call(firstItem, 'statistics')) {
                                 this.setState(cpath + '.statistics.viewCount', {val: firstItem.statistics.viewCount, ack: true});
+                                this.setState(cpath + '.statistics.videoViewCountAvg', {val: Math.round(firstItem.statistics.viewCount / firstItem.statistics.videoCount), ack: true});
                                 this.setState(cpath + '.statistics.subscriberCount', {val: firstItem.statistics.subscriberCount, ack: true});
+                                this.setState(cpath + '.statistics.videoSubscriberCountAvg', {val: Math.round(firstItem.statistics.subscriberCount / firstItem.statistics.videoCount), ack: true});
                                 this.setState(cpath + '.statistics.videoCount', {val: firstItem.statistics.videoCount, ack: true});
                             }
 
@@ -324,7 +350,7 @@ class Youtube extends utils.Adapter {
                     for (let i = 0; i < states.length; i++) {
                         const id = this.removeNamespace(states[i]._id);
 
-                        // Check if the state is a direct child (e.g. type.YourTrashType)
+                        // Check if the state is a direct child (e.g. channels.HausAutomatisierungCom)
                         if (id.split('.').length === 2) {
                             channelsAll.push(id);
                         }
@@ -373,6 +399,8 @@ class Youtube extends utils.Adapter {
                         });
                     }
                 }
+
+                this.stop();
             }
         );
 
