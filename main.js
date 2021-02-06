@@ -228,7 +228,7 @@ class Youtube extends utils.Adapter {
                         timeout: 4500,
                         responseType: 'json'
                     }).then(
-                        (response) => {
+                        async (response) => {
                             this.log.debug('youtube/v3/search Request done - ' + id);
                             this.log.debug('received data (' + response.status + '): ' + JSON.stringify(response.data));
 
@@ -240,7 +240,7 @@ class Youtube extends utils.Adapter {
                                     const v = content['items'][i];
                                     const path = cpath + '.video.' + i + '.';
 
-                                    this.setObjectNotExists(path.slice(0, -1), { // remove trailing dot
+                                    await this.setObjectNotExists(path.slice(0, -1), { // remove trailing dot
                                         type: 'channel',
                                         common: {
                                             name: 'Video data ' + (i + 1)
@@ -248,7 +248,7 @@ class Youtube extends utils.Adapter {
                                         native: {}
                                     });
 
-                                    this.setObjectNotExists(path + 'id', {
+                                    await this.setObjectNotExists(path + 'id', {
                                         type: 'state',
                                         common: {
                                             name: 'Id',
@@ -261,7 +261,7 @@ class Youtube extends utils.Adapter {
                                     });
                                     this.setState(path + 'id', {val: v.id.videoId, ack: true});
 
-                                    this.setObjectNotExists(path + 'url', {
+                                    await this.setObjectNotExists(path + 'url', {
                                         type: 'state',
                                         common: {
                                             name: 'URL',
@@ -274,7 +274,7 @@ class Youtube extends utils.Adapter {
                                     });
                                     this.setState(path + 'url', {val: 'https://youtu.be/' + v.id.videoId, ack: true});
 
-                                    this.setObjectNotExists(path + 'title', {
+                                    await this.setObjectNotExists(path + 'title', {
                                         type: 'state',
                                         common: {
                                             name: 'Title',
@@ -287,7 +287,7 @@ class Youtube extends utils.Adapter {
                                     });
                                     this.setState(path + 'title', {val: v.snippet.title, ack: true});
 
-                                    this.setObjectNotExists(path + 'published', {
+                                    await this.setObjectNotExists(path + 'published', {
                                         type: 'state',
                                         common: {
                                             name: 'Published',
@@ -300,7 +300,7 @@ class Youtube extends utils.Adapter {
                                     });
                                     this.setState(path + 'published', {val: new Date(v.snippet.publishedAt).getTime(), ack: true});
 
-                                    this.setObjectNotExists(path + 'description', {
+                                    await this.setObjectNotExists(path + 'description', {
                                         type: 'state',
                                         common: {
                                             name: 'Description',
@@ -362,7 +362,7 @@ class Youtube extends utils.Adapter {
 
                         channelsKeep.push('channels.' + cleanChannelName);
 
-                        this.setObjectNotExists('channels.' + cleanChannelName, {
+                        await this.setObjectNotExists('channels.' + cleanChannelName, {
                             type: 'channel',
                             common: {
                                 name: channel.name
@@ -395,8 +395,6 @@ class Youtube extends utils.Adapter {
                         });
                     }
                 }
-
-                this.stop();
             }
         );
 
