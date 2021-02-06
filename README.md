@@ -29,6 +29,7 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
 ### 1.0.3
 
 * (klein0r) Remove forbidden chars from state
+* (klein0r) Fixed async object creation
 
 ### 1.0.2
 
