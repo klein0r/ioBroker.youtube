@@ -24,146 +24,146 @@ class Youtube extends utils.Adapter {
     async getChannelData(id, cpath) {
         // Documentation: https://developers.google.com/youtube/v3/docs/channels
 
+        const apiKey = this.config.apiKey;
+        const enableVideoInformation = this.config.enableVideoInformation;
+
+        await this.setObjectNotExistsAsync(cpath + '.lastUpdate', {
+            type: 'state',
+            common: {
+                name: 'Last Update',
+                type: 'number',
+                role: 'date',
+                read: true,
+                write: false
+            },
+            native: {}
+        });
+
+        await this.setObjectNotExistsAsync(cpath + '.statistics', {
+            type: 'channel',
+            common: {
+                name: 'Statistics'
+            },
+            native: {}
+        });
+
+        await this.setObjectNotExistsAsync(cpath + '.statistics.viewCount', {
+            type: 'state',
+            common: {
+                name: 'View Count',
+                type: 'number',
+                role: 'value',
+                read: true,
+                write: false
+            },
+            native: {}
+        });
+
+        await this.setObjectNotExistsAsync(cpath + '.statistics.videoViewCountAvg', {
+            type: 'state',
+            common: {
+                name: 'Avg views per video',
+                type: 'number',
+                role: 'value',
+                read: true,
+                write: false
+            },
+            native: {}
+        });
+
+        await this.setObjectNotExistsAsync(cpath + '.statistics.subscriberCount', {
+            type: 'state',
+            common: {
+                name: 'Subscriber Count',
+                type: 'number',
+                role: 'value',
+                read: true,
+                write: false
+            },
+            native: {}
+        });
+
+        await this.setObjectNotExistsAsync(cpath + '.statistics.videoSubscriberCountAvg', {
+            type: 'state',
+            common: {
+                name: 'Avg subscribers per video',
+                type: 'number',
+                role: 'value',
+                read: true,
+                write: false
+            },
+            native: {}
+        });
+
+        await this.setObjectNotExistsAsync(cpath + '.statistics.videoCount', {
+            type: 'state',
+            common: {
+                name: 'Video Count',
+                type: 'number',
+                role: 'value',
+                read: true,
+                write: false
+            },
+            native: {}
+        });
+
+        await this.setObjectNotExistsAsync(cpath + '.snippet', {
+            type: 'channel',
+            common: {
+                name: 'Snippet'
+            },
+            native: {}
+        });
+
+        await this.setObjectNotExistsAsync(cpath + '.snippet.title', {
+            type: 'state',
+            common: {
+                name: 'Channel Title',
+                type: 'string',
+                role: 'value',
+                read: true,
+                write: false
+            },
+            native: {}
+        });
+
+        await this.setObjectNotExistsAsync(cpath + '.snippet.description', {
+            type: 'state',
+            common: {
+                name: 'Channel Description',
+                type: 'string',
+                role: 'value',
+                read: true,
+                write: false
+            },
+            native: {}
+        });
+
+        await this.setObjectNotExistsAsync(cpath + '.snippet.customUrl', {
+            type: 'state',
+            common: {
+                name: 'Channel Custom Url',
+                type: 'string',
+                role: 'value',
+                read: true,
+                write: false
+            },
+            native: {}
+        });
+
+        await this.setObjectNotExistsAsync(cpath + '.snippet.publishedAt', {
+            type: 'state',
+            common: {
+                name: 'Channel Publish Date',
+                type: 'number',
+                role: 'date',
+                read: true,
+                write: false
+            },
+            native: {}
+        });
+
         return new Promise((resolve, reject) => {
-
-            const apiKey = this.config.apiKey;
-            const enableVideoInformation = this.config.enableVideoInformation;
-
-            this.setObjectNotExists(cpath + '.lastUpdate', {
-                type: 'state',
-                common: {
-                    name: 'Last Update',
-                    type: 'number',
-                    role: 'date',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
-
-            this.setObjectNotExists(cpath + '.statistics', {
-                type: 'channel',
-                common: {
-                    name: 'Statistics'
-                },
-                native: {}
-            });
-
-            this.setObjectNotExists(cpath + '.statistics.viewCount', {
-                type: 'state',
-                common: {
-                    name: 'View Count',
-                    type: 'number',
-                    role: 'value',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
-
-            this.setObjectNotExists(cpath + '.statistics.videoViewCountAvg', {
-                type: 'state',
-                common: {
-                    name: 'Avg views per video',
-                    type: 'number',
-                    role: 'value',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
-
-            this.setObjectNotExists(cpath + '.statistics.subscriberCount', {
-                type: 'state',
-                common: {
-                    name: 'Subscriber Count',
-                    type: 'number',
-                    role: 'value',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
-
-            this.setObjectNotExists(cpath + '.statistics.videoSubscriberCountAvg', {
-                type: 'state',
-                common: {
-                    name: 'Avg subscribers per video',
-                    type: 'number',
-                    role: 'value',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
-
-            this.setObjectNotExists(cpath + '.statistics.videoCount', {
-                type: 'state',
-                common: {
-                    name: 'Video Count',
-                    type: 'number',
-                    role: 'value',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
-
-            this.setObjectNotExists(cpath + '.snippet', {
-                type: 'channel',
-                common: {
-                    name: 'Snippet'
-                },
-                native: {}
-            });
-
-            this.setObjectNotExists(cpath + '.snippet.title', {
-                type: 'state',
-                common: {
-                    name: 'Channel Title',
-                    type: 'string',
-                    role: 'value',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
-
-            this.setObjectNotExists(cpath + '.snippet.description', {
-                type: 'state',
-                common: {
-                    name: 'Channel Description',
-                    type: 'string',
-                    role: 'value',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
-
-            this.setObjectNotExists(cpath + '.snippet.customUrl', {
-                type: 'state',
-                common: {
-                    name: 'Channel Custom Url',
-                    type: 'string',
-                    role: 'value',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
-
-            this.setObjectNotExists(cpath + '.snippet.publishedAt', {
-                type: 'state',
-                common: {
-                    name: 'Channel Publish Date',
-                    type: 'number',
-                    role: 'date',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
 
             if (apiKey) {
                 this.log.debug('youtube/v3/channels - Request init - ' + id);
@@ -215,11 +215,7 @@ class Youtube extends utils.Adapter {
                             this.log.warn('youtube/v3/channels - received empty response - check channel id');
                         }
                     }
-                ).catch(
-                    (error) => {
-                        reject(error);
-                    }
-                );
+                ).catch(reject);
 
                 if (enableVideoInformation) {
                     // Fill latest video information
@@ -362,7 +358,7 @@ class Youtube extends utils.Adapter {
 
                     for (const c in channels) {
                         const channel = channels[c];
-                        const cleanChannelName = channel.name.replace(/\s/g,'');
+                        const cleanChannelName = channel.name.replace(/\s/g, '').replace(/[^\p{Ll}\p{Lu}\p{Nd}]+/gu, '_');
 
                         channelsKeep.push('channels.' + cleanChannelName);
 

@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "youtube",
-        "version": "1.0.2",
+        "version": "1.0.3",
         "news": {
+            "1.0.3": {
+                "en": "Remove forbidden chars from state",
+                "de": "Nicht erlaubte Zeichen aus Name entfernen"
+            },
             "1.0.2": {
                 "en": "Delete unsed states",
                 "de": "Ungenutzte Datenpunkte löschen"
