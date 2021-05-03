@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "youtube",
-        "version": "1.0.3",
+        "version": "1.1.0",
         "news": {
+            "1.1.0": {
+                "en": "Encrypt sensitive information",
+                "de": "Verschlüsselung von sensiblen Daten"
+            },
             "1.0.3": {
                 "en": "Remove forbidden chars from state",
                 "de": "Nicht erlaubte Zeichen aus Name entfernen"
@@ -116,6 +120,12 @@
             }
         ]
     },
+    "protectedNative": [
+        "apiKey"
+    ],
+    "encryptedNative": [
+        "apiKey"
+    ],
     "native": {
         "apiKey": "",
         "enableVideoInformation": false
