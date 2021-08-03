@@ -8,7 +8,7 @@
 [![installed](http://iobroker.live/badges/youtube-installed.svg)](http://iobroker.live/badges/youtube-installed.svg)
 [![Dependency Status](https://img.shields.io/david/klein0r/iobroker.youtube.svg)](https://david-dm.org/klein0r/iobroker.youtube)
 [![Known Vulnerabilities](https://snyk.io/test/github/klein0r/ioBroker.youtube/badge.svg)](https://snyk.io/test/github/klein0r/ioBroker.youtube)
-[![Build Status](http://img.shields.io/travis/klein0r/ioBroker.youtube.svg)](https://travis-ci.org/klein0r/ioBroker.youtube)
+[![Build Status](http://img.shields.io/travis/klein0r/ioBroker.youtube.svg)](https://travis-ci.com/klein0r/ioBroker.youtube)
 
 [![NPM](https://nodei.co/npm/iobroker.youtube.png?downloads=true)](https://nodei.co/npm/iobroker.youtube/)
 
