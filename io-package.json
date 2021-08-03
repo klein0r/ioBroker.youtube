@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "youtube",
-        "version": "1.1.0",
+        "version": "1.1.1",
         "news": {
+            "1.1.1": {
+                "en": "Updated dependencies",
+                "de": "Abhängigkeiten aktualisiert"
+            },
             "1.1.0": {
                 "en": "Encrypt sensitive information",
                 "de": "Verschlüsselung von sensiblen Daten"
@@ -22,58 +26,6 @@
             "1.0.0": {
                 "en": "First stable release",
                 "de": "Erster stable Release"
-            },
-            "0.0.13": {
-                "en": "Changed to new library",
-                "de": "Neue Library eingebunden"
-            },
-            "0.0.12": {
-                "en": "Added json summary",
-                "de": "JSON-Datenpunkt hinzugefügt"
-            },
-            "0.0.11": {
-                "en": "setTimeout found in main.js, but no clearTimeout detected",
-                "de": "setTimeout found in main.js, but no clearTimeout detected"
-            },
-            "0.0.10": {
-                "en": "Added missing translations",
-                "de": "Fehlende Übersetzungen hinzugefügt"
-            },
-            "0.0.9": {
-                "en": "Updated depencencies",
-                "de": "Abhängigkeiten aktualisiert"
-            },
-            "0.0.8": {
-                "en": "Removed link from overview",
-                "de": "Link aus der Übersicht entfernt"
-            },
-            "0.0.7": {
-                "en": "Added VIS widget",
-                "de": "VIS widget hinzugefügt"
-            },
-            "0.0.6": {
-                "en": "Collect YouTube information after configuration changes",
-                "de": "Daten von YouTube abholen, nachdem die Konfiguration gespeichert wurde"
-            },
-            "0.0.5": {
-                "en": "Bugfix",
-                "de": "Bugfix"
-            },
-            "0.0.4": {
-                "en": "Added more options",
-                "de": "Mehr Optionen hinzugefügt"
-            },
-            "0.0.3": {
-                "en": "Support for multiple channels",
-                "de": "Unterstützung für mehrere Kanäle"
-            },
-            "0.0.2": {
-                "en": "improved error handling",
-                "de": "Fehlerbehandlung verbessert"
-            },
-            "0.0.1": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung"
             }
         },
         "title": "YouTube",

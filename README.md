@@ -26,6 +26,10 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
 
 ## Changelog
 
+### 1.1.1
+
+* (klein0r) Updated dependencies
+
 ### 1.1.0
 
 * (klein0r) Encrypt sensitive information **(BREAKING CHANGE - RE-ENTER YOUR API KEY)**
