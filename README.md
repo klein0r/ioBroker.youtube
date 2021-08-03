@@ -28,7 +28,7 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
 
 ### 1.1.0
 
-* (klein0r) Encrypt sensitive information
+* (klein0r) Encrypt sensitive information **(BREAKING CHANGE - RE-ENTER YOUR API KEY)**
 
 ### 1.0.3
 
