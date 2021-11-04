@@ -17,6 +17,15 @@
                     "newLine": true,
                     "type": "checkbox",
                     "label": "Enable video information"
+                },
+                "_ioBrokerKursBanner": {
+                    "newLine": true,
+                    "type": "staticImage",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "href": "https://haus-automatisierung.com/iobroker-kurs/?refid=iobroker-youtube",
+                    "src": "https://haus-automatisierung.com/images/ads/ioBroker-Kurs.png"
                 }
             }
         },
