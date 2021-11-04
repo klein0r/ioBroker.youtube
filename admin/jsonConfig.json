@@ -1,0 +1,57 @@
+{
+    "i18n": true,
+    "type": "tabs",
+    "items": {
+        "_options": {
+            "type": "panel",
+            "label": "Options",
+            "items": {
+                "apiKey": {
+                    "type": "text",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "API-Key"
+                },
+                "enableVideoInformation": {
+                    "newLine": true,
+                    "type": "checkbox",
+                    "label": "Enable video information"
+                }
+            }
+        },
+        "_advanced": {
+            "type": "panel",
+            "label": "Channels",
+            "items": {
+                "channels": {
+                    "type": "table",
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "label": "Channels",
+                    "items": [
+                        {
+                            "type": "text",
+                            "attr": "name",
+                            "width": "50%",
+                            "title": "Channel name",
+                            "filter": true,
+                            "sort": true,
+                            "default": ""
+                        },
+                        {
+                            "type": "text",
+                            "attr": "id",
+                            "width": "50%",
+                            "title": "Channel id",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
