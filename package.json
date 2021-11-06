@@ -1,6 +1,6 @@
 {
   "name": "iobroker.youtube",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "ioBroker YouTube Adapter",
   "author": {
     "name": "Matthias Kleine",
@@ -67,7 +67,8 @@
     "www/",
     "io-package.json",
     "LICENSE",
-    "main.js"
+    "main.js",
+    "widgets/"
   ],
   "scripts": {
     "watch:parcel": "parcel admin/src/index.jsx -d admin/build",

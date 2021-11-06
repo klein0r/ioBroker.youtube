@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "youtube",
-        "version": "2.0.1",
+        "version": "2.0.2",
         "news": {
+            "2.0.2": {
+                "en": "Fixed missing VIS widget",
+                "de": "Fehlendes VIS widget wieder hinzugefügt"
+            },
             "2.0.1": {
                 "en": "Fixed missing translations",
                 "de": "Fehlende Übersetzungen hinzugefügt"
