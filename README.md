@@ -34,7 +34,7 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
 
 ## Changelog
 
-### 2.0.2
+### 2.0.3
 
 * (klein0r) Fixed missing VIS widget
 
