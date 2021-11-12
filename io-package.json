@@ -61,7 +61,6 @@
         ],
         "license": "MIT",
         "platform": "Javascript/Node.js",
-        "main": "main.js",
         "icon": "youtube.png",
         "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.youtube/master/admin/youtube.png",
         "enabled": true,
@@ -74,7 +73,6 @@
         "compact": true,
         "connectionType": "cloud",
         "dataSource": "poll",
-        "materialize": true,
         "adminUI": {
             "config": "json"
         },
