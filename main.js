@@ -185,18 +185,18 @@ class Youtube extends utils.Adapter {
                             const firstItem = content['items'][0];
 
                             if (Object.prototype.hasOwnProperty.call(firstItem, 'statistics')) {
-                                this.setState(cpath + '.statistics.viewCount', {val: firstItem.statistics.viewCount, ack: true});
-                                this.setState(cpath + '.statistics.videoViewCountAvg', {val: Math.round(firstItem.statistics.viewCount / firstItem.statistics.videoCount), ack: true});
-                                this.setState(cpath + '.statistics.subscriberCount', {val: firstItem.statistics.subscriberCount, ack: true});
-                                this.setState(cpath + '.statistics.videoSubscriberCountAvg', {val: Math.round(firstItem.statistics.subscriberCount / firstItem.statistics.videoCount), ack: true});
-                                this.setState(cpath + '.statistics.videoCount', {val: firstItem.statistics.videoCount, ack: true});
+                                this.setStateAsync(cpath + '.statistics.viewCount', {val: firstItem.statistics.viewCount, ack: true});
+                                this.setStateAsync(cpath + '.statistics.videoViewCountAvg', {val: Math.round(firstItem.statistics.viewCount / firstItem.statistics.videoCount), ack: true});
+                                this.setStateAsync(cpath + '.statistics.subscriberCount', {val: firstItem.statistics.subscriberCount, ack: true});
+                                this.setStateAsync(cpath + '.statistics.videoSubscriberCountAvg', {val: Math.round(firstItem.statistics.subscriberCount / firstItem.statistics.videoCount), ack: true});
+                                this.setStateAsync(cpath + '.statistics.videoCount', {val: firstItem.statistics.videoCount, ack: true});
                             }
 
                             if (Object.prototype.hasOwnProperty.call(firstItem, 'snippet')) {
-                                this.setState(cpath + '.snippet.title', {val: firstItem.snippet.title, ack: true});
-                                this.setState(cpath + '.snippet.description', {val: firstItem.snippet.description, ack: true});
-                                this.setState(cpath + '.snippet.customUrl', {val: firstItem.snippet.customUrl, ack: true});
-                                this.setState(cpath + '.snippet.publishedAt', {val: new Date(firstItem.snippet.publishedAt).getTime(), ack: true});
+                                this.setStateAsync(cpath + '.snippet.title', {val: firstItem.snippet.title, ack: true});
+                                this.setStateAsync(cpath + '.snippet.description', {val: firstItem.snippet.description, ack: true});
+                                this.setStateAsync(cpath + '.snippet.customUrl', {val: firstItem.snippet.customUrl, ack: true});
+                                this.setStateAsync(cpath + '.snippet.publishedAt', {val: new Date(firstItem.snippet.publishedAt).getTime(), ack: true});
                             }
 
                             if (Object.prototype.hasOwnProperty.call(firstItem, 'statistics') && Object.prototype.hasOwnProperty.call(firstItem, 'snippet')) {
@@ -210,7 +210,7 @@ class Youtube extends utils.Adapter {
                             }
 
                             const updateTime = new Date();
-                            this.setState(cpath + '.lastUpdate', {val: new Date(updateTime - updateTime.getTimezoneOffset() * 60000).getTime(), ack: true});
+                            this.setStateAsync(cpath + '.lastUpdate', {val: new Date(updateTime - updateTime.getTimezoneOffset() * 60000).getTime(), ack: true});
                         } else {
                             this.log.warn('youtube/v3/channels - received empty response - check channel id');
                         }
@@ -259,7 +259,7 @@ class Youtube extends utils.Adapter {
                                         },
                                         native: {}
                                     });
-                                    this.setState(path + 'id', {val: v.id.videoId, ack: true});
+                                    await this.setStateAsync(path + 'id', {val: v.id.videoId, ack: true});
 
                                     await this.setObjectNotExists(path + 'url', {
                                         type: 'state',
@@ -272,7 +272,7 @@ class Youtube extends utils.Adapter {
                                         },
                                         native: {}
                                     });
-                                    this.setState(path + 'url', {val: 'https://youtu.be/' + v.id.videoId, ack: true});
+                                    await this.setStateAsync(path + 'url', {val: 'https://youtu.be/' + v.id.videoId, ack: true});
 
                                     await this.setObjectNotExists(path + 'title', {
                                         type: 'state',
@@ -285,7 +285,7 @@ class Youtube extends utils.Adapter {
                                         },
                                         native: {}
                                     });
-                                    this.setState(path + 'title', {val: v.snippet.title, ack: true});
+                                    await this.setStateAsync(path + 'title', {val: v.snippet.title, ack: true});
 
                                     await this.setObjectNotExists(path + 'published', {
                                         type: 'state',
@@ -298,7 +298,7 @@ class Youtube extends utils.Adapter {
                                         },
                                         native: {}
                                     });
-                                    this.setState(path + 'published', {val: new Date(v.snippet.publishedAt).getTime(), ack: true});
+                                    await this.setStateAsync(path + 'published', {val: new Date(v.snippet.publishedAt).getTime(), ack: true});
 
                                     await this.setObjectNotExists(path + 'description', {
                                         type: 'state',
@@ -311,7 +311,7 @@ class Youtube extends utils.Adapter {
                                         },
                                         native: {}
                                     });
-                                    this.setState(path + 'description', {val: v.snippet.description, ack: true});
+                                    await this.setStateAsync(path + 'description', {val: v.snippet.description, ack: true});
                                 }
                             } else {
                                 this.log.warn('youtube/v3/search - received empty response - check channel id');
@@ -380,7 +380,7 @@ class Youtube extends utils.Adapter {
                         return b.subscriberCount - a.subscriberCount;
                     });
 
-                    this.setState('summary.json', {val: JSON.stringify(channelDataList), ack: true});
+                    await this.setStateAsync('summary.json', {val: JSON.stringify(channelDataList), ack: true});
                 } else {
                     this.log.warn('No channels configured');
                 }
