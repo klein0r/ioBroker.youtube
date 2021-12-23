@@ -30,7 +30,18 @@ class Youtube extends utils.Adapter {
         await this.setObjectNotExistsAsync(cpath + '.lastUpdate', {
             type: 'state',
             common: {
-                name: 'Last Update',
+                name: {
+                    en: 'Last Update',
+                    de: 'Letztes Update',
+                    ru: 'Последнее обновление',
+                    pt: 'Última atualização',
+                    nl: 'Laatste update',
+                    fr: 'Dernière mise à jour',
+                    it: 'Ultimo aggiornamento',
+                    es: 'Última actualización',
+                    pl: 'Ostatnia aktualizacja',
+                    'zh-cn': '最后更新'
+                },
                 type: 'number',
                 role: 'date',
                 read: true,
@@ -42,15 +53,36 @@ class Youtube extends utils.Adapter {
         await this.setObjectNotExistsAsync(cpath + '.statistics', {
             type: 'channel',
             common: {
-                name: 'Statistics'
-            },
-            native: {}
+                name: {
+                    en: 'Statistics',
+                    de: 'Statistiken',
+                    ru: 'Статистика',
+                    pt: 'Estatisticas',
+                    nl: 'Statistieken',
+                    fr: 'Statistiques',
+                    it: 'Statistiche',
+                    es: 'Estadísticas',
+                    pl: 'Statystyka',
+                    'zh-cn': '统计数据'
+                }
+            }
         });
 
         await this.setObjectNotExistsAsync(cpath + '.statistics.viewCount', {
             type: 'state',
             common: {
-                name: 'View Count',
+                name: {
+                    en: 'View Count',
+                    de: 'Anzahl der Aufrufe',
+                    ru: 'Счетчик просмотров',
+                    pt: 'Ver contagem',
+                    nl: 'Kijkcijfers',
+                    fr: 'Nombre de vues',
+                    it: 'Visualizza conteggio',
+                    es: 'Conteo de visitas',
+                    pl: 'Licznik wyświetleń',
+                    'zh-cn': '查看次数'
+                },
                 type: 'number',
                 role: 'value',
                 read: true,
@@ -62,7 +94,18 @@ class Youtube extends utils.Adapter {
         await this.setObjectNotExistsAsync(cpath + '.statistics.videoViewCountAvg', {
             type: 'state',
             common: {
-                name: 'Avg views per video',
+                name: {
+                    en: 'Avg views per video',
+                    de: 'Durchschnittliche Aufrufe pro Video',
+                    ru: 'Среднее количество просмотров на видео',
+                    pt: 'Média de visualizações por vídeo',
+                    nl: 'Gem. weergaven per video',
+                    fr: 'Vues moyennes par vidéo',
+                    it: 'Media visualizzazioni per video',
+                    es: 'Promedio de visualizaciones por video',
+                    pl: 'Średnia liczba wyświetleń na film',
+                    'zh-cn': '每个视频的平均观看次数'
+                },
                 type: 'number',
                 role: 'value',
                 read: true,
@@ -74,7 +117,18 @@ class Youtube extends utils.Adapter {
         await this.setObjectNotExistsAsync(cpath + '.statistics.subscriberCount', {
             type: 'state',
             common: {
-                name: 'Subscriber Count',
+                name: {
+                    en: 'Subscriber Count',
+                    de: 'Abonnentenzahl',
+                    ru: 'Количество подписчиков',
+                    pt: 'Contagem de assinantes',
+                    nl: 'Aantal abonnees',
+                    fr: 'Nombre d\'abonnés',
+                    it: 'Numero di iscritti',
+                    es: 'Cuenta de suscriptores',
+                    pl: 'Liczba subskrybentów',
+                    'zh-cn': '订阅人数'
+                },
                 type: 'number',
                 role: 'value',
                 read: true,
@@ -86,7 +140,18 @@ class Youtube extends utils.Adapter {
         await this.setObjectNotExistsAsync(cpath + '.statistics.videoSubscriberCountAvg', {
             type: 'state',
             common: {
-                name: 'Avg subscribers per video',
+                name: {
+                    en: 'Avg subscribers per video',
+                    de: 'Durchschnittliche Abonnenten pro Video',
+                    ru: 'Среднее количество подписчиков на видео',
+                    pt: 'Média de assinantes por vídeo',
+                    nl: 'Gem. abonnees per video',
+                    fr: 'Nombre moyen d\'abonnés par vidéo',
+                    it: 'Iscritti medi per video',
+                    es: 'Promedio de suscriptores por video',
+                    pl: 'Średnia liczba subskrybentów na film',
+                    'zh-cn': '每个视频的平均订阅人数'
+                },
                 type: 'number',
                 role: 'value',
                 read: true,
@@ -98,7 +163,18 @@ class Youtube extends utils.Adapter {
         await this.setObjectNotExistsAsync(cpath + '.statistics.videoCount', {
             type: 'state',
             common: {
-                name: 'Video Count',
+                name: {
+                    en: 'Video Count',
+                    de: 'Videoanzahl',
+                    ru: 'Количество видео',
+                    pt: 'Contagem de Vídeo',
+                    nl: 'Aantal video\'s',
+                    fr: 'Nombre de vidéos',
+                    it: 'Conteggio video',
+                    es: 'Recuento de videos',
+                    pl: 'Liczba filmów',
+                    'zh-cn': '视频数'
+                },
                 type: 'number',
                 role: 'value',
                 read: true,
@@ -110,15 +186,36 @@ class Youtube extends utils.Adapter {
         await this.setObjectNotExistsAsync(cpath + '.snippet', {
             type: 'channel',
             common: {
-                name: 'Snippet'
-            },
-            native: {}
+                name: {
+                    en: 'Snippet',
+                    de: 'Ausschnitt',
+                    ru: 'Фрагмент',
+                    pt: 'Trecho',
+                    nl: 'fragment',
+                    fr: 'Fragment',
+                    it: 'Frammento',
+                    es: 'Retazo',
+                    pl: 'Skrawek',
+                    'zh-cn': '片段'
+                }
+            }
         });
 
         await this.setObjectNotExistsAsync(cpath + '.snippet.title', {
             type: 'state',
             common: {
-                name: 'Channel Title',
+                name: {
+                    en: 'Channel name',
+                    de: 'Kanal Name',
+                    ru: 'Название канала',
+                    pt: 'Nome do canal',
+                    nl: 'Kanaal naam',
+                    fr: 'Nom du canal',
+                    it: 'Nome del canale',
+                    es: 'Nombre del Canal',
+                    pl: 'Nazwa kanału',
+                    'zh-cn': '频道名称'
+                },
                 type: 'string',
                 role: 'value',
                 read: true,
@@ -130,7 +227,18 @@ class Youtube extends utils.Adapter {
         await this.setObjectNotExistsAsync(cpath + '.snippet.description', {
             type: 'state',
             common: {
-                name: 'Channel Description',
+                name: {
+                    en: 'Channel Description',
+                    de: 'Kanal Beschreibung',
+                    ru: 'Описание канала',
+                    pt: 'Descrição do canal',
+                    nl: 'Kanaal beschrijving',
+                    fr: 'Description de la chaîne',
+                    it: 'Descrizione del canale',
+                    es: 'Descripción del canal',
+                    pl: 'Opis kanału',
+                    'zh-cn': '频道说明'
+                },
                 type: 'string',
                 role: 'value',
                 read: true,
@@ -142,7 +250,18 @@ class Youtube extends utils.Adapter {
         await this.setObjectNotExistsAsync(cpath + '.snippet.customUrl', {
             type: 'state',
             common: {
-                name: 'Channel Custom Url',
+                name: {
+                    en: 'Channel Custom Url',
+                    de: 'Benutzerdefinierte Kanal-URL',
+                    ru: 'Пользовательский URL канала',
+                    pt: 'URL personalizado do canal',
+                    nl: 'Aangepaste kanaal-URL',
+                    fr: 'URL personnalisée de la chaîne',
+                    it: 'URL personalizzato del canale',
+                    es: 'URL personalizada del canal',
+                    pl: 'Niestandardowy adres URL kanału',
+                    'zh-cn': '频道自定义网址'
+                },
                 type: 'string',
                 role: 'value',
                 read: true,
@@ -154,7 +273,18 @@ class Youtube extends utils.Adapter {
         await this.setObjectNotExistsAsync(cpath + '.snippet.publishedAt', {
             type: 'state',
             common: {
-                name: 'Channel Publish Date',
+                name: {
+                    en: 'Channel Publish Date',
+                    de: 'Datum der Veröffentlichung des Kanals',
+                    ru: 'Дата публикации канала',
+                    pt: 'Data de Publicação do Canal',
+                    nl: 'Publicatiedatum kanaal',
+                    fr: 'Date de publication de la chaîne',
+                    it: 'Data di pubblicazione del canale',
+                    es: 'Fecha de publicación del canal',
+                    pl: 'Data publikacji kanału',
+                    'zh-cn': '频道发布日期'
+                },
                 type: 'number',
                 role: 'date',
                 read: true,
@@ -234,6 +364,24 @@ class Youtube extends utils.Adapter {
 
                             const content = response.data;
 
+                            await this.setObjectNotExists(cpath + '.video', {
+                                type: 'channel',
+                                common: {
+                                    name: {
+                                        en: 'Videos',
+                                        de: 'Videos',
+                                        ru: 'Видео',
+                                        pt: 'Vídeos',
+                                        nl: 'Videos',
+                                        fr: 'Vidéos',
+                                        it: 'Video',
+                                        es: 'Videos',
+                                        pl: 'Filmy',
+                                        'zh-cn': '影片'
+                                    }
+                                }
+                            });
+
                             if (content && Object.prototype.hasOwnProperty.call(content, 'items') && Array.isArray(content['items']) && content['items'].length > 0) {
                                 for (let i = 0; i < content['items'].length; i++) {
 
@@ -244,14 +392,24 @@ class Youtube extends utils.Adapter {
                                         type: 'channel',
                                         common: {
                                             name: 'Video data ' + (i + 1)
-                                        },
-                                        native: {}
+                                        }
                                     });
 
                                     await this.setObjectNotExists(path + 'id', {
                                         type: 'state',
                                         common: {
-                                            name: 'Id',
+                                            name: {
+                                                en: 'Video ID',
+                                                de: 'Video-ID',
+                                                ru: 'ID видео',
+                                                pt: 'ID do vídeo',
+                                                nl: 'Video-ID',
+                                                fr: 'Identifiant de la vidéo',
+                                                it: 'ID video',
+                                                es: 'ID de video',
+                                                pl: 'Identyfikator wideo',
+                                                'zh-cn': '视频标识'
+                                            },
                                             type: 'string',
                                             role: 'media.playid',
                                             read: true,
@@ -264,7 +422,18 @@ class Youtube extends utils.Adapter {
                                     await this.setObjectNotExists(path + 'url', {
                                         type: 'state',
                                         common: {
-                                            name: 'URL',
+                                            name: {
+                                                en: 'Video URL',
+                                                de: 'Video-URL',
+                                                ru: 'URL видео',
+                                                pt: 'URL do vídeo',
+                                                nl: 'Video URL',
+                                                fr: 'URL de la vidéo',
+                                                it: 'URL del video',
+                                                es: 'URL del vídeo',
+                                                pl: 'URL wideo',
+                                                'zh-cn': '视频网址'
+                                            },
                                             type: 'string',
                                             role: 'url.blank',
                                             read: true,
@@ -277,7 +446,18 @@ class Youtube extends utils.Adapter {
                                     await this.setObjectNotExists(path + 'title', {
                                         type: 'state',
                                         common: {
-                                            name: 'Title',
+                                            name: {
+                                                en: 'Video Title',
+                                                de: 'Videotitel',
+                                                ru: 'Название видео',
+                                                pt: 'Título do vídeo',
+                                                nl: 'titel van de video',
+                                                fr: 'titre de la vidéo',
+                                                it: 'Titolo del video',
+                                                es: 'Titulo del Video',
+                                                pl: 'Tytuł Filmu',
+                                                'zh-cn': '影片名称'
+                                            },
                                             type: 'string',
                                             role: 'media.title',
                                             read: true,
@@ -290,7 +470,18 @@ class Youtube extends utils.Adapter {
                                     await this.setObjectNotExists(path + 'published', {
                                         type: 'state',
                                         common: {
-                                            name: 'Published',
+                                            name: {
+                                                en: 'Publishing date',
+                                                de: 'Erscheinungsdatum',
+                                                ru: 'Дата публикации',
+                                                pt: 'Data de publicação',
+                                                nl: 'Publicatiedatum',
+                                                fr: 'Date de publication',
+                                                it: 'Data di pubblicazione',
+                                                es: 'Fecha de publicación',
+                                                pl: 'Data publikacji',
+                                                'zh-cn': '出版日期'
+                                            },
                                             type: 'number',
                                             role: 'date',
                                             read: true,
@@ -303,7 +494,18 @@ class Youtube extends utils.Adapter {
                                     await this.setObjectNotExists(path + 'description', {
                                         type: 'state',
                                         common: {
-                                            name: 'Description',
+                                            name: {
+                                                en: 'Description',
+                                                de: 'Beschreibung',
+                                                ru: 'Описание',
+                                                pt: 'Descrição',
+                                                nl: 'Beschrijving',
+                                                fr: 'La description',
+                                                it: 'Descrizione',
+                                                es: 'Descripción',
+                                                pl: 'Opis',
+                                                'zh-cn': '描述'
+                                            },
                                             type: 'string',
                                             role: 'state',
                                             read: true,
@@ -366,8 +568,7 @@ class Youtube extends utils.Adapter {
                             type: 'channel',
                             common: {
                                 name: channel.name
-                            },
-                            native: {}
+                            }
                         });
 
                         const channelData = await this.getChannelData(channel.id, 'channels.' + cleanChannelName);

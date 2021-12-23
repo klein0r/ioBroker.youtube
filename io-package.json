@@ -106,7 +106,18 @@
           "_id":  "channels",
           "type": "channel",
           "common": {
-            "name": "YouTube Channels"
+            "name": {
+                "en": "YouTube Channels",
+                "de": "YouTube-Kanäle",
+                "ru": "Каналы YouTube",
+                "pt": "Canais do YouTube",
+                "nl": "YouTube-kanalen",
+                "fr": "Chaînes YouTube",
+                "it": "Canali YouTube",
+                "es": "Canales de YouTube",
+                "pl": "Kanały YouTube",
+                "zh-cn": "YouTube 频道"
+            }
           },
           "native": {}
         },
@@ -114,7 +125,18 @@
           "_id":  "summary",
           "type": "channel",
           "common": {
-            "name": "Channel summary"
+            "name": {
+                "en": "Channel summary",
+                "de": "Kanalzusammenfassung",
+                "ru": "Сводка канала",
+                "pt": "Resumo do canal",
+                "nl": "Kanaaloverzicht",
+                "fr": "Résumé de la chaîne",
+                "it": "Riepilogo del canale",
+                "es": "Resumen del canal",
+                "pl": "Podsumowanie kanału",
+                "zh-cn": "频道摘要"
+            }
           },
           "native": {}
         },
@@ -122,7 +144,18 @@
             "_id": "summary.json",
             "type": "state",
             "common": {
-                "name": "JSON string for tables",
+                "name": {
+                    "en": "JSON string for tables",
+                    "de": "JSON-String für Tabellen",
+                    "ru": "Строка JSON для таблиц",
+                    "pt": "String JSON para tabelas",
+                    "nl": "JSON-tekenreeks voor tabellen",
+                    "fr": "Chaîne JSON pour les tableaux",
+                    "it": "Stringa JSON per tabelle",
+                    "es": "Cadena JSON para tablas",
+                    "pl": "Ciąg JSON dla tabel",
+                    "zh-cn": "表的 JSON 字符串"
+                },
                 "type": "string",
                 "role": "value",
                 "read": true,

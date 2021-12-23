@@ -45,6 +45,7 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
 
 ### **WORK IN PROGRESS**
 
+* (klein0r) Translated all objects
 * (klein0r) Updated dependencies
 
 ### 2.0.3
