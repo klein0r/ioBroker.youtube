@@ -40,14 +40,29 @@
         "de": "Nicht erlaubte Zeichen aus Name entfernen"
       }
     },
-    "title": "YouTube",
     "titleLang": {
       "en": "YouTube",
-      "de": "YouTube"
+      "de": "Youtube",
+      "ru": "YouTube",
+      "pt": "YouTube",
+      "nl": "YouTube",
+      "fr": "Youtube",
+      "it": "Youtube",
+      "es": "Youtube",
+      "pl": "Youtube",
+      "zh-cn": "YouTube"
     },
     "desc": {
       "en": "Statistics like views, subscribers and videos",
-      "de": "Statistiken wie Aufrufe, Abonnenten und Videos"
+      "de": "Statistiken wie Aufrufe, Abonnenten und Videos",
+      "ru": "Статистика, такая как просмотры, подписчики и видео",
+      "pt": "Estatísticas como visualizações, inscritos e vídeos",
+      "nl": "Statistieken zoals weergaven, abonnees en video's",
+      "fr": "Statistiques comme les vues, les abonnés et les vidéos",
+      "it": "Statistiche come visualizzazioni, iscritti e video",
+      "es": "Estadísticas como vistas, suscriptores y videos.",
+      "pl": "Statystyki, takie jak wyświetlenia, subskrybenci i filmy",
+      "zh-cn": "观看次数、订阅者和视频等统计数据"
     },
     "authors": [
       "Matthias Kleine <info@haus-automatisierung.com>"
@@ -56,8 +71,7 @@
       "youtube",
       "social",
       "video",
-      "web",
-      "vis"
+      "web"
     ],
     "license": "MIT",
     "platform": "Javascript/Node.js",
