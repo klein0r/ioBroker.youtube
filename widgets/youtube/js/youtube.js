@@ -1,18 +1,17 @@
 /*
     ioBroker.vis YouTube Widget-Set
 
-    version: "0.0.7"
-
-    Copyright 2020 Matthias Kleine info@haus-automatisierung.com
+    Copyright 2022 Matthias Kleine info@haus-automatisierung.com
 */
 'use strict';
 
 // add translations for edit mode
-$.get( 'adapter/youtube/words.js', function(script) {
-    let translation = script.substring(script.indexOf('{'), script.length);
-    translation = translation.substring(0, translation.lastIndexOf(';'));
-    $.extend(systemDictionary, JSON.parse(translation));
-});
+$.extend(
+    true,
+    systemDictionary,
+    {
+    }
+);
 
 // this code can be placed directly in youtube.html
 vis.binds['youtube'] = {

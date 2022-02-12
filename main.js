@@ -65,7 +65,8 @@ class Youtube extends utils.Adapter {
                     pl: 'Statystyka',
                     'zh-cn': '统计数据'
                 }
-            }
+            },
+            native: {}
         });
 
         await this.setObjectNotExistsAsync(cpath + '.statistics.viewCount', {
