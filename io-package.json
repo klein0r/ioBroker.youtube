@@ -157,7 +157,7 @@
           "zh-cn": "表的 JSON 字符串"
         },
         "type": "string",
-        "role": "value",
+        "role": "json",
         "read": true,
         "write": false
       },

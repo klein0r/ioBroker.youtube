@@ -198,7 +198,8 @@ class Youtube extends utils.Adapter {
                     pl: 'Skrawek',
                     'zh-cn': '片段'
                 }
-            }
+            },
+            native: {}
         });
 
         await this.setObjectNotExistsAsync(cpath + '.snippet.title', {
@@ -217,7 +218,7 @@ class Youtube extends utils.Adapter {
                     'zh-cn': '频道名称'
                 },
                 type: 'string',
-                role: 'value',
+                role: 'text',
                 read: true,
                 write: false
             },
@@ -240,7 +241,7 @@ class Youtube extends utils.Adapter {
                     'zh-cn': '频道说明'
                 },
                 type: 'string',
-                role: 'value',
+                role: 'text',
                 read: true,
                 write: false
             },
@@ -263,7 +264,7 @@ class Youtube extends utils.Adapter {
                     'zh-cn': '频道自定义网址'
                 },
                 type: 'string',
-                role: 'value',
+                role: 'text',
                 read: true,
                 write: false
             },
@@ -379,7 +380,8 @@ class Youtube extends utils.Adapter {
                                         pl: 'Filmy',
                                         'zh-cn': '影片'
                                     }
-                                }
+                                },
+                                native: {}
                             });
 
                             if (content && Object.prototype.hasOwnProperty.call(content, 'items') && Array.isArray(content['items']) && content['items'].length > 0) {
@@ -392,7 +394,8 @@ class Youtube extends utils.Adapter {
                                         type: 'channel',
                                         common: {
                                             name: 'Video data ' + (i + 1)
-                                        }
+                                        },
+                                        native: {}
                                     });
 
                                     await this.setObjectNotExists(path + 'id', {
@@ -507,7 +510,7 @@ class Youtube extends utils.Adapter {
                                                 'zh-cn': '描述'
                                             },
                                             type: 'string',
-                                            role: 'state',
+                                            role: 'text',
                                             read: true,
                                             write: false
                                         },
@@ -568,7 +571,8 @@ class Youtube extends utils.Adapter {
                             type: 'channel',
                             common: {
                                 name: channel.name
-                            }
+                            },
+                            native: {}
                         });
 
                         const channelData = await this.getChannelData(channel.id, 'channels.' + cleanChannelName);
