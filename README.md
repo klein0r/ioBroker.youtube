@@ -45,6 +45,7 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
 ### **WORK IN PROGRESS**
 
 * (klein0r) Updated state roles
+* (klein0r) Added hint for Admin 4 configuration
 
 ### 2.0.4 (2021-12-23)
 
