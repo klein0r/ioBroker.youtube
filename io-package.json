@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "youtube",
-    "version": "2.0.4",
+    "version": "3.0.0",
     "news": {
+      "3.0.0": {
+        "en": "Updated state roles\nAdded hint for Admin 4 configuration",
+        "de": "Statusrollen aktualisiert\nHinweis für die Konfiguration von Admin 4 hinzugefügt",
+        "ru": "Обновлены роли состояния\nДобавлена подсказка для конфигурации Admin 4",
+        "pt": "Funções de estado atualizadas\nAdicionada dica para configuração do Admin 4",
+        "nl": "Bijgewerkte statusrollen\nHint toegevoegd voor configuratie van Admin 4",
+        "fr": "Rôles d'état mis à jour\nAjout d'un indice pour la configuration d'Admin 4",
+        "it": "Ruoli statali aggiornati\nAggiunto suggerimento per la configurazione dell'amministratore 4",
+        "es": "Roles de estado actualizados\nSugerencia agregada para la configuración de Admin 4",
+        "pl": "Zaktualizowane role stanowe\nDodano wskazówkę dotyczącą konfiguracji Admin 4",
+        "zh-cn": "更新了状态角色\n添加了 Admin 4 配置的提示"
+      },
       "2.0.4": {
         "en": "Translated all objects\nUpdated dependencies",
         "de": "Alle Objekte übersetzt\nAktualisierte Abhängigkeiten",
@@ -34,10 +46,6 @@
       "1.1.0": {
         "en": "Encrypt sensitive information",
         "de": "Verschlüsselung von sensiblen Daten"
-      },
-      "1.0.3": {
-        "en": "Remove forbidden chars from state",
-        "de": "Nicht erlaubte Zeichen aus Name entfernen"
       }
     },
     "titleLang": {

@@ -42,7 +42,7 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.0.0 (2022-02-12)
 
 * (klein0r) Updated state roles
 * (klein0r) Added hint for Admin 4 configuration
