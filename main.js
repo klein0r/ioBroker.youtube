@@ -15,8 +15,6 @@ class Youtube extends utils.Adapter {
             name: adapterName,
         });
 
-        this.killTimeout = null;
-
         this.on('ready', this.onReady.bind(this));
         this.on('unload', this.onUnload.bind(this));
     }
@@ -576,9 +574,13 @@ class Youtube extends utils.Adapter {
                             native: {}
                         });
 
-                        const channelData = await this.getChannelData(channel.id, 'channels.' + cleanChannelName);
-                        if (typeof channelData === 'object') {
-                            channelDataList.push(channelData);
+                        try {
+                            const channelData = await this.getChannelData(channel.id, 'channels.' + cleanChannelName);
+                            if (typeof channelData === 'object') {
+                                channelDataList.push(channelData);
+                            }
+                        } catch (err) {
+                            this.log.debug(`Unable to get channel data for "${channel.id}": ${err}`);
                         }
                     }
 
@@ -604,7 +606,7 @@ class Youtube extends utils.Adapter {
             }
         );
 
-        this.killTimeout = setTimeout(this.stop.bind(this), 60000);
+        this.stop();
     }
 
     removeNamespace(id) {
@@ -614,12 +616,6 @@ class Youtube extends utils.Adapter {
 
     onUnload(callback) {
         try {
-
-            if (this.killTimeout) {
-                this.log.debug('clearing kill timeout');
-                clearTimeout(this.killTimeout);
-            }
-
             this.log.debug('cleaned everything up...');
             callback();
         } catch (e) {
