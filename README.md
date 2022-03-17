@@ -46,6 +46,7 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
 
 * (klein0r) Just perform video info request if previous request was successful
 * (klein0r) Improved error handling when API key is missing
+* (klein0r) Updated logging
 
 ### 3.0.0 (2022-02-12)
 
