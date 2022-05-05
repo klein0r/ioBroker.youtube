@@ -4,11 +4,10 @@
 'use strict';
 
 const utils = require('@iobroker/adapter-core');
-const axios = require('axios');
+const axios = require('axios').default;
 const adapterName = require('./package.json').name.split('.').pop();
 
 class Youtube extends utils.Adapter {
-
     constructor(options) {
         super({
             ...options,
@@ -37,14 +36,14 @@ class Youtube extends utils.Adapter {
                     it: 'Ultimo aggiornamento',
                     es: 'Última actualización',
                     pl: 'Ostatnia aktualizacja',
-                    'zh-cn': '最后更新'
+                    'zh-cn': '最后更新',
                 },
                 type: 'number',
                 role: 'date',
                 read: true,
-                write: false
+                write: false,
             },
-            native: {}
+            native: {},
         });
 
         await this.setObjectNotExistsAsync(`${cpath}.statistics`, {
@@ -60,10 +59,10 @@ class Youtube extends utils.Adapter {
                     it: 'Statistiche',
                     es: 'Estadísticas',
                     pl: 'Statystyka',
-                    'zh-cn': '统计数据'
-                }
+                    'zh-cn': '统计数据',
+                },
             },
-            native: {}
+            native: {},
         });
 
         await this.setObjectNotExistsAsync(`${cpath}.statistics.viewCount`, {
@@ -79,14 +78,14 @@ class Youtube extends utils.Adapter {
                     it: 'Visualizza conteggio',
                     es: 'Conteo de visitas',
                     pl: 'Licznik wyświetleń',
-                    'zh-cn': '查看次数'
+                    'zh-cn': '查看次数',
                 },
                 type: 'number',
                 role: 'value',
                 read: true,
-                write: false
+                write: false,
             },
-            native: {}
+            native: {},
         });
 
         await this.setObjectNotExistsAsync(`${cpath}.statistics.videoViewCountAvg`, {
@@ -102,14 +101,14 @@ class Youtube extends utils.Adapter {
                     it: 'Media visualizzazioni per video',
                     es: 'Promedio de visualizaciones por video',
                     pl: 'Średnia liczba wyświetleń na film',
-                    'zh-cn': '每个视频的平均观看次数'
+                    'zh-cn': '每个视频的平均观看次数',
                 },
                 type: 'number',
                 role: 'value',
                 read: true,
-                write: false
+                write: false,
             },
-            native: {}
+            native: {},
         });
 
         await this.setObjectNotExistsAsync(`${cpath}.statistics.subscriberCount`, {
@@ -121,18 +120,18 @@ class Youtube extends utils.Adapter {
                     ru: 'Количество подписчиков',
                     pt: 'Contagem de assinantes',
                     nl: 'Aantal abonnees',
-                    fr: 'Nombre d\'abonnés',
+                    fr: "Nombre d'abonnés",
                     it: 'Numero di iscritti',
                     es: 'Cuenta de suscriptores',
                     pl: 'Liczba subskrybentów',
-                    'zh-cn': '订阅人数'
+                    'zh-cn': '订阅人数',
                 },
                 type: 'number',
                 role: 'value',
                 read: true,
-                write: false
+                write: false,
             },
-            native: {}
+            native: {},
         });
 
         await this.setObjectNotExistsAsync(`${cpath}.statistics.videoSubscriberCountAvg`, {
@@ -144,18 +143,18 @@ class Youtube extends utils.Adapter {
                     ru: 'Среднее количество подписчиков на видео',
                     pt: 'Média de assinantes por vídeo',
                     nl: 'Gem. abonnees per video',
-                    fr: 'Nombre moyen d\'abonnés par vidéo',
+                    fr: "Nombre moyen d'abonnés par vidéo",
                     it: 'Iscritti medi per video',
                     es: 'Promedio de suscriptores por video',
                     pl: 'Średnia liczba subskrybentów na film',
-                    'zh-cn': '每个视频的平均订阅人数'
+                    'zh-cn': '每个视频的平均订阅人数',
                 },
                 type: 'number',
                 role: 'value',
                 read: true,
-                write: false
+                write: false,
             },
-            native: {}
+            native: {},
         });
 
         await this.setObjectNotExistsAsync(`${cpath}.statistics.videoCount`, {
@@ -166,19 +165,19 @@ class Youtube extends utils.Adapter {
                     de: 'Videoanzahl',
                     ru: 'Количество видео',
                     pt: 'Contagem de Vídeo',
-                    nl: 'Aantal video\'s',
+                    nl: "Aantal video's",
                     fr: 'Nombre de vidéos',
                     it: 'Conteggio video',
                     es: 'Recuento de videos',
                     pl: 'Liczba filmów',
-                    'zh-cn': '视频数'
+                    'zh-cn': '视频数',
                 },
                 type: 'number',
                 role: 'value',
                 read: true,
-                write: false
+                write: false,
             },
-            native: {}
+            native: {},
         });
 
         await this.setObjectNotExistsAsync(`${cpath}.snippet`, {
@@ -194,10 +193,10 @@ class Youtube extends utils.Adapter {
                     it: 'Frammento',
                     es: 'Retazo',
                     pl: 'Skrawek',
-                    'zh-cn': '片段'
-                }
+                    'zh-cn': '片段',
+                },
             },
-            native: {}
+            native: {},
         });
 
         await this.setObjectNotExistsAsync(`${cpath}.snippet.title`, {
@@ -213,14 +212,14 @@ class Youtube extends utils.Adapter {
                     it: 'Nome del canale',
                     es: 'Nombre del Canal',
                     pl: 'Nazwa kanału',
-                    'zh-cn': '频道名称'
+                    'zh-cn': '频道名称',
                 },
                 type: 'string',
                 role: 'text',
                 read: true,
-                write: false
+                write: false,
             },
-            native: {}
+            native: {},
         });
 
         await this.setObjectNotExistsAsync(`${cpath}.snippet.description`, {
@@ -236,14 +235,14 @@ class Youtube extends utils.Adapter {
                     it: 'Descrizione del canale',
                     es: 'Descripción del canal',
                     pl: 'Opis kanału',
-                    'zh-cn': '频道说明'
+                    'zh-cn': '频道说明',
                 },
                 type: 'string',
                 role: 'text',
                 read: true,
-                write: false
+                write: false,
             },
-            native: {}
+            native: {},
         });
 
         await this.setObjectNotExistsAsync(`${cpath}.snippet.customUrl`, {
@@ -259,14 +258,14 @@ class Youtube extends utils.Adapter {
                     it: 'URL personalizzato del canale',
                     es: 'URL personalizada del canal',
                     pl: 'Niestandardowy adres URL kanału',
-                    'zh-cn': '频道自定义网址'
+                    'zh-cn': '频道自定义网址',
                 },
                 type: 'string',
                 role: 'text',
                 read: true,
-                write: false
+                write: false,
             },
-            native: {}
+            native: {},
         });
 
         await this.setObjectNotExistsAsync(`${cpath}.snippet.publishedAt`, {
@@ -282,18 +281,17 @@ class Youtube extends utils.Adapter {
                     it: 'Data di pubblicazione del canale',
                     es: 'Fecha de publicación del canal',
                     pl: 'Data publikacji kanału',
-                    'zh-cn': '频道发布日期'
+                    'zh-cn': '频道发布日期',
                 },
                 type: 'number',
                 role: 'date',
                 read: true,
-                write: false
+                write: false,
             },
-            native: {}
+            native: {},
         });
 
         return new Promise((resolve, reject) => {
-
             if (apiKey) {
                 this.log.debug(`[getChannelData] youtube/v3/channels - request init: ${id}`);
 
@@ -302,9 +300,9 @@ class Youtube extends utils.Adapter {
                     baseURL: 'https://www.googleapis.com/youtube/v3/',
                     url: `/channels?part=snippet,statistics&id=${id}&key=${apiKey}`,
                     timeout: 4500,
-                    responseType: 'json'
-                }).then(
-                    async (response) => {
+                    responseType: 'json',
+                })
+                    .then(async (response) => {
                         this.log.debug(`[getChannelData] youtube/v3/channels - received data for ${id} (${response.status}): ${JSON.stringify(response.data)}`);
 
                         const content = response.data;
@@ -313,22 +311,25 @@ class Youtube extends utils.Adapter {
                             const firstItem = content['items'][0];
 
                             if (Object.prototype.hasOwnProperty.call(firstItem, 'statistics')) {
-                                await this.setStateAsync(`${cpath}.statistics.viewCount`, {val: parseInt(firstItem.statistics.viewCount), ack: true});
-                                await this.setStateAsync(`${cpath}.statistics.videoViewCountAvg`, {val: Math.round(firstItem.statistics.viewCount / firstItem.statistics.videoCount), ack: true});
-                                await this.setStateAsync(`${cpath}.statistics.subscriberCount`, {val: parseInt(firstItem.statistics.subscriberCount), ack: true});
-                                await this.setStateAsync(`${cpath}.statistics.videoSubscriberCountAvg`, {val: Math.round(firstItem.statistics.subscriberCount / firstItem.statistics.videoCount), ack: true});
-                                await this.setStateAsync(`${cpath}.statistics.videoCount`, {val: parseInt(firstItem.statistics.videoCount), ack: true});
+                                await this.setStateAsync(`${cpath}.statistics.viewCount`, { val: parseInt(firstItem.statistics.viewCount), ack: true });
+                                await this.setStateAsync(`${cpath}.statistics.videoViewCountAvg`, { val: Math.round(firstItem.statistics.viewCount / firstItem.statistics.videoCount), ack: true });
+                                await this.setStateAsync(`${cpath}.statistics.subscriberCount`, { val: parseInt(firstItem.statistics.subscriberCount), ack: true });
+                                await this.setStateAsync(`${cpath}.statistics.videoSubscriberCountAvg`, {
+                                    val: Math.round(firstItem.statistics.subscriberCount / firstItem.statistics.videoCount),
+                                    ack: true,
+                                });
+                                await this.setStateAsync(`${cpath}.statistics.videoCount`, { val: parseInt(firstItem.statistics.videoCount), ack: true });
                             }
 
                             if (Object.prototype.hasOwnProperty.call(firstItem, 'snippet')) {
-                                await this.setStateAsync(`${cpath}.snippet.title`, {val: firstItem.snippet.title, ack: true});
-                                await this.setStateAsync(`${cpath}.snippet.description`, {val: firstItem.snippet.description, ack: true});
-                                await this.setStateAsync(`${cpath}.snippet.customUrl`, {val: firstItem.snippet.customUrl, ack: true});
-                                await this.setStateAsync(`${cpath}.snippet.publishedAt`, {val: new Date(firstItem.snippet.publishedAt).getTime(), ack: true});
+                                await this.setStateAsync(`${cpath}.snippet.title`, { val: firstItem.snippet.title, ack: true });
+                                await this.setStateAsync(`${cpath}.snippet.description`, { val: firstItem.snippet.description, ack: true });
+                                await this.setStateAsync(`${cpath}.snippet.customUrl`, { val: firstItem.snippet.customUrl, ack: true });
+                                await this.setStateAsync(`${cpath}.snippet.publishedAt`, { val: new Date(firstItem.snippet.publishedAt).getTime(), ack: true });
                             }
 
                             const updateTime = new Date();
-                            await this.setStateAsync(`${cpath}.lastUpdate`, {val: new Date(updateTime - updateTime.getTimezoneOffset() * 60000).getTime(), ack: true});
+                            await this.setStateAsync(`${cpath}.lastUpdate`, { val: new Date(updateTime.getTime() - updateTime.getTimezoneOffset() * 60000).getTime(), ack: true });
 
                             if (enableVideoInformation) {
                                 await this.getChannelVideoData(id, cpath);
@@ -340,7 +341,7 @@ class Youtube extends utils.Adapter {
                                     title: firstItem.snippet.title,
                                     subscriberCount: firstItem.statistics.subscriberCount,
                                     viewCount: firstItem.statistics.viewCount,
-                                    videoCount: firstItem.statistics.videoCount
+                                    videoCount: firstItem.statistics.videoCount,
                                 });
                             } else {
                                 reject(`[getChannelData] youtube/v3/channels - missing statistic information in response`);
@@ -348,8 +349,8 @@ class Youtube extends utils.Adapter {
                         } else {
                             reject(`[getChannelData] youtube/v3/channels - received empty response - check channel id: ${id}`);
                         }
-                    }
-                ).catch(reject);
+                    })
+                    .catch(reject);
             } else {
                 reject('[getChannelData] API Key not configured');
             }
@@ -372,14 +373,13 @@ class Youtube extends utils.Adapter {
                     it: 'Video',
                     es: 'Videos',
                     pl: 'Filmy',
-                    'zh-cn': '影片'
-                }
+                    'zh-cn': '影片',
+                },
             },
-            native: {}
+            native: {},
         });
 
-        return new Promise((resolve, reject) => {
-
+        return new Promise((resolve) => {
             const apiKey = this.config.apiKey;
 
             this.log.debug(`[getChannelVideoData] youtube/v3/search - request init: ${id}`);
@@ -389,25 +389,24 @@ class Youtube extends utils.Adapter {
                 baseURL: 'https://www.googleapis.com/youtube/v3/',
                 url: `/search?part=id,snippet&type=video&order=date&maxResults=5&channelId=${id}&key=${apiKey}`,
                 timeout: 4500,
-                responseType: 'json'
-            }).then(
-                async (response) => {
+                responseType: 'json',
+            })
+                .then(async (response) => {
                     this.log.debug(`[getChannelVideoData] youtube/v3/search - received data for ${id} (${response.status}): ${JSON.stringify(response.data)}`);
 
                     const content = response.data;
 
                     if (content && Object.prototype.hasOwnProperty.call(content, 'items') && Array.isArray(content['items']) && content['items'].length > 0) {
                         for (let i = 0; i < content['items'].length; i++) {
-
                             const v = content['items'][i];
                             const path = `${cpath}.video.${i}`;
 
                             await this.setObjectNotExistsAsync(path, {
                                 type: 'channel',
                                 common: {
-                                    name: 'Video data ' + (i + 1)
+                                    name: 'Video data ' + (i + 1),
                                 },
-                                native: {}
+                                native: {},
                             });
 
                             await this.setObjectNotExistsAsync(`${path}.id`, {
@@ -423,16 +422,16 @@ class Youtube extends utils.Adapter {
                                         it: 'ID video',
                                         es: 'ID de video',
                                         pl: 'Identyfikator wideo',
-                                        'zh-cn': '视频标识'
+                                        'zh-cn': '视频标识',
                                     },
                                     type: 'string',
                                     role: 'media.playid',
                                     read: true,
-                                    write: false
+                                    write: false,
                                 },
-                                native: {}
+                                native: {},
                             });
-                            await this.setStateAsync(`${path}.id`, {val: v.id.videoId, ack: true});
+                            await this.setStateAsync(`${path}.id`, { val: v.id.videoId, ack: true });
 
                             await this.setObjectNotExistsAsync(`${path}.url`, {
                                 type: 'state',
@@ -447,16 +446,16 @@ class Youtube extends utils.Adapter {
                                         it: 'URL del video',
                                         es: 'URL del vídeo',
                                         pl: 'URL wideo',
-                                        'zh-cn': '视频网址'
+                                        'zh-cn': '视频网址',
                                     },
                                     type: 'string',
                                     role: 'url.blank',
                                     read: true,
-                                    write: false
+                                    write: false,
                                 },
-                                native: {}
+                                native: {},
                             });
-                            await this.setStateAsync(`${path}.url`, {val: 'https://youtu.be/' + v.id.videoId, ack: true});
+                            await this.setStateAsync(`${path}.url`, { val: 'https://youtu.be/' + v.id.videoId, ack: true });
 
                             await this.setObjectNotExistsAsync(`${path}.title`, {
                                 type: 'state',
@@ -471,16 +470,16 @@ class Youtube extends utils.Adapter {
                                         it: 'Titolo del video',
                                         es: 'Titulo del Video',
                                         pl: 'Tytuł Filmu',
-                                        'zh-cn': '影片名称'
+                                        'zh-cn': '影片名称',
                                     },
                                     type: 'string',
                                     role: 'media.title',
                                     read: true,
-                                    write: false
+                                    write: false,
                                 },
-                                native: {}
+                                native: {},
                             });
-                            await this.setStateAsync(`${path}.title`, {val: v.snippet.title, ack: true});
+                            await this.setStateAsync(`${path}.title`, { val: v.snippet.title, ack: true });
 
                             await this.setObjectNotExistsAsync(`${path}.published`, {
                                 type: 'state',
@@ -495,16 +494,16 @@ class Youtube extends utils.Adapter {
                                         it: 'Data di pubblicazione',
                                         es: 'Fecha de publicación',
                                         pl: 'Data publikacji',
-                                        'zh-cn': '出版日期'
+                                        'zh-cn': '出版日期',
                                     },
                                     type: 'number',
                                     role: 'date',
                                     read: true,
-                                    write: false
+                                    write: false,
                                 },
-                                native: {}
+                                native: {},
                             });
-                            await this.setStateAsync(`${path}.published`, {val: new Date(v.snippet.publishedAt).getTime(), ack: true});
+                            await this.setStateAsync(`${path}.published`, { val: new Date(v.snippet.publishedAt).getTime(), ack: true });
 
                             await this.setObjectNotExistsAsync(`${path}.description`, {
                                 type: 'state',
@@ -519,27 +518,27 @@ class Youtube extends utils.Adapter {
                                         it: 'Descrizione',
                                         es: 'Descripción',
                                         pl: 'Opis',
-                                        'zh-cn': '描述'
+                                        'zh-cn': '描述',
                                     },
                                     type: 'string',
                                     role: 'text',
                                     read: true,
-                                    write: false
+                                    write: false,
                                 },
-                                native: {}
+                                native: {},
                             });
-                            await this.setStateAsync(`${path}.description`, {val: v.snippet.description, ack: true});
+                            await this.setStateAsync(`${path}.description`, { val: v.snippet.description, ack: true });
                         }
                     } else {
                         this.log.warn(`[getChannelVideoData] youtube/v3/search - received empty response - check channel id: ${id}`);
                     }
 
                     resolve(true);
-                }
-            ).catch((err) => {
-                this.log.error(`[getChannelVideoData] youtube/v3/search - unable to fetch data for: ${id}`);
-                resolve(false);
-            });
+                })
+                .catch((err) => {
+                    this.log.error(`[getChannelVideoData] youtube/v3/search - unable to fetch data for: ${id}: ${err}`);
+                    resolve(false);
+                });
         });
     }
 
@@ -576,9 +575,9 @@ class Youtube extends utils.Adapter {
                 await this.setObjectNotExistsAsync(`channels.${cleanChannelName}`, {
                     type: 'channel',
                     common: {
-                        name: channel.name
+                        name: channel.name,
                     },
-                    native: {}
+                    native: {},
                 });
 
                 try {
@@ -591,11 +590,11 @@ class Youtube extends utils.Adapter {
                 }
             }
 
-            channelDataList.sort(function(a, b) {
+            channelDataList.sort(function (a, b) {
                 return b.subscriberCount - a.subscriberCount;
             });
 
-            await this.setStateAsync('summary.json', {val: JSON.stringify(channelDataList), ack: true});
+            await this.setStateAsync('summary.json', { val: JSON.stringify(channelDataList), ack: true });
         } else {
             this.log.warn('[onReady] No channels configured - check instance configuration');
         }
@@ -605,7 +604,7 @@ class Youtube extends utils.Adapter {
             const id = channelsAll[i];
 
             if (channelsKeep.indexOf(id) === -1) {
-                await this.delObjectAsync(id, {recursive: true});
+                await this.delObjectAsync(id, { recursive: true });
                 this.log.debug(`[onReady] Channel deleted: ${id}`);
             }
         }

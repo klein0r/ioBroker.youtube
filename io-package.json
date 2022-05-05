@@ -1,198 +1,186 @@
 {
-  "common": {
-    "name": "youtube",
-    "version": "3.0.1",
-    "news": {
-      "3.0.1": {
-        "en": "Just perform video info request if previous request was successful\nImproved error handling when API key is missing\nUpdated logging",
-        "de": "Führen Sie einfach eine Video-Info-Anfrage durch, wenn die vorherige Anfrage erfolgreich war\nVerbesserte Fehlerbehandlung bei fehlendem API-Schlüssel\nAktualisierte Protokollierung",
-        "ru": "Просто выполните запрос информации о видео, если предыдущий запрос был успешным\nУлучшена обработка ошибок при отсутствии ключа API.\nОбновлено ведение журнала",
-        "pt": "Basta realizar a solicitação de informações do vídeo se a solicitação anterior foi bem-sucedida\nTratamento de erros aprimorado quando a chave de API está ausente\nRegistro atualizado",
-        "nl": "Voer gewoon een video-infoverzoek uit als het vorige verzoek succesvol was\nVerbeterde foutafhandeling wanneer API-sleutel ontbreekt\nBijgewerkte logboekregistratie",
-        "fr": "Effectuez simplement une demande d'informations sur la vidéo si la demande précédente a réussi\nAmélioration de la gestion des erreurs lorsque la clé API est manquante\nJournalisation mise à jour",
-        "it": "Basta eseguire la richiesta di informazioni sul video se la richiesta precedente ha avuto esito positivo\nGestione degli errori migliorata quando manca la chiave API\nRegistrazione aggiornata",
-        "es": "Simplemente realice una solicitud de información de video si la solicitud anterior fue exitosa\nManejo de errores mejorado cuando falta la clave API\nRegistro actualizado",
-        "pl": "Po prostu wyślij żądanie informacji o filmie, jeśli poprzednie żądanie zakończyło się powodzeniem\nPoprawiona obsługa błędów w przypadku braku klucza API\nZaktualizowane logowanie",
-        "zh-cn": "如果之前的请求成功，只需执行视频信息请求\n改进了 API 密钥丢失时的错误处理\n更新的日志记录"
-      },
-      "3.0.0": {
-        "en": "Updated state roles\nAdded hint for Admin 4 configuration",
-        "de": "Statusrollen aktualisiert\nHinweis für die Konfiguration von Admin 4 hinzugefügt",
-        "ru": "Обновлены роли состояния\nДобавлена подсказка для конфигурации Admin 4",
-        "pt": "Funções de estado atualizadas\nAdicionada dica para configuração do Admin 4",
-        "nl": "Bijgewerkte statusrollen\nHint toegevoegd voor configuratie van Admin 4",
-        "fr": "Rôles d'état mis à jour\nAjout d'un indice pour la configuration d'Admin 4",
-        "it": "Ruoli statali aggiornati\nAggiunto suggerimento per la configurazione dell'amministratore 4",
-        "es": "Roles de estado actualizados\nSugerencia agregada para la configuración de Admin 4",
-        "pl": "Zaktualizowane role stanowe\nDodano wskazówkę dotyczącą konfiguracji Admin 4",
-        "zh-cn": "更新了状态角色\n添加了 Admin 4 配置的提示"
-      },
-      "2.0.4": {
-        "en": "Translated all objects\nUpdated dependencies",
-        "de": "Alle Objekte übersetzt\nAktualisierte Abhängigkeiten",
-        "ru": "Переведены все объекты\nОбновленные зависимости",
-        "pt": "Todos os objetos traduzidos\nDependências atualizadas",
-        "nl": "Alle objecten vertaald\nBijgewerkte afhankelijkheden",
-        "fr": "Traduit tous les objets\nDépendances mises à jour",
-        "it": "Tradotto tutti gli oggetti\nDipendenze aggiornate",
-        "es": "Traducido todos los objetos\nDependencias actualizadas",
-        "pl": "Przetłumaczono wszystkie obiekty\nZaktualizowane zależności",
-        "zh-cn": "翻译所有对象\n更新的依赖项"
-      },
-      "2.0.3": {
-        "en": "Fixed missing VIS widget",
-        "de": "Fehlendes VIS widget wieder hinzugefügt"
-      },
-      "2.0.1": {
-        "en": "Fixed missing translations",
-        "de": "Fehlende Übersetzungen hinzugefügt"
-      },
-      "2.0.0": {
-        "en": "Admin 5 Support",
-        "de": "Admin 5 Support"
-      },
-      "1.1.1": {
-        "en": "Updated dependencies",
-        "de": "Abhängigkeiten aktualisiert"
-      }
-    },
-    "titleLang": {
-      "en": "YouTube",
-      "de": "Youtube",
-      "ru": "YouTube",
-      "pt": "YouTube",
-      "nl": "YouTube",
-      "fr": "Youtube",
-      "it": "Youtube",
-      "es": "Youtube",
-      "pl": "Youtube",
-      "zh-cn": "YouTube"
-    },
-    "desc": {
-      "en": "Statistics like views, subscribers and videos",
-      "de": "Statistiken wie Aufrufe, Abonnenten und Videos",
-      "ru": "Статистика, такая как просмотры, подписчики и видео",
-      "pt": "Estatísticas como visualizações, inscritos e vídeos",
-      "nl": "Statistieken zoals weergaven, abonnees en video's",
-      "fr": "Statistiques comme les vues, les abonnés et les vidéos",
-      "it": "Statistiche come visualizzazioni, iscritti e video",
-      "es": "Estadísticas como vistas, suscriptores y videos.",
-      "pl": "Statystyki, takie jak wyświetlenia, subskrybenci i filmy",
-      "zh-cn": "观看次数、订阅者和视频等统计数据"
-    },
-    "authors": [
-      "Matthias Kleine <info@haus-automatisierung.com>"
-    ],
-    "keywords": [
-      "youtube",
-      "social",
-      "video",
-      "web"
-    ],
-    "license": "MIT",
-    "platform": "Javascript/Node.js",
-    "icon": "youtube.png",
-    "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.youtube/master/admin/youtube.png",
-    "enabled": true,
-    "readme": "https://github.com/klein0r/ioBroker.youtube/blob/master/README.md",
-    "loglevel": "info",
-    "mode": "schedule",
-    "allowInit": true,
-    "schedule": "0 0 * * *",
-    "type": "misc-data",
-    "compact": true,
-    "connectionType": "cloud",
-    "dataSource": "poll",
-    "materialize": true,
-    "adminUI": {
-      "config": "json"
-    },
-    "restartAdapters": [
-      "vis"
-    ],
-    "dependencies": [
-      {
-        "js-controller": ">=4.0.15"
-      }
-    ],
-    "globalDependencies": [
-      {
-        "admin": ">=5.3.2"
-      }
-    ]
-  },
-  "protectedNative": [
-    "apiKey"
-  ],
-  "encryptedNative": [
-    "apiKey"
-  ],
-  "native": {
-    "apiKey": "",
-    "enableVideoInformation": false
-  },
-  "objects": [],
-  "instanceObjects": [
-    {
-      "_id": "channels",
-      "type": "channel",
-      "common": {
-        "name": {
-          "en": "YouTube Channels",
-          "de": "YouTube-Kanäle",
-          "ru": "Каналы YouTube",
-          "pt": "Canais do YouTube",
-          "nl": "YouTube-kanalen",
-          "fr": "Chaînes YouTube",
-          "it": "Canali YouTube",
-          "es": "Canales de YouTube",
-          "pl": "Kanały YouTube",
-          "zh-cn": "YouTube 频道"
-        }
-      },
-      "native": {}
-    },
-    {
-      "_id": "summary",
-      "type": "channel",
-      "common": {
-        "name": {
-          "en": "Channel summary",
-          "de": "Kanalzusammenfassung",
-          "ru": "Сводка канала",
-          "pt": "Resumo do canal",
-          "nl": "Kanaaloverzicht",
-          "fr": "Résumé de la chaîne",
-          "it": "Riepilogo del canale",
-          "es": "Resumen del canal",
-          "pl": "Podsumowanie kanału",
-          "zh-cn": "频道摘要"
-        }
-      },
-      "native": {}
-    },
-    {
-      "_id": "summary.json",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "JSON string for tables",
-          "de": "JSON-String für Tabellen",
-          "ru": "Строка JSON для таблиц",
-          "pt": "String JSON para tabelas",
-          "nl": "JSON-tekenreeks voor tabellen",
-          "fr": "Chaîne JSON pour les tableaux",
-          "it": "Stringa JSON per tabelle",
-          "es": "Cadena JSON para tablas",
-          "pl": "Ciąg JSON dla tabel",
-          "zh-cn": "表的 JSON 字符串"
+    "common": {
+        "name": "youtube",
+        "version": "3.0.1",
+        "news": {
+            "3.0.1": {
+                "en": "Just perform video info request if previous request was successful\nImproved error handling when API key is missing\nUpdated logging",
+                "de": "Führen Sie einfach eine Video-Info-Anfrage durch, wenn die vorherige Anfrage erfolgreich war\nVerbesserte Fehlerbehandlung bei fehlendem API-Schlüssel\nAktualisierte Protokollierung",
+                "ru": "Просто выполните запрос информации о видео, если предыдущий запрос был успешным\nУлучшена обработка ошибок при отсутствии ключа API.\nОбновлено ведение журнала",
+                "pt": "Basta realizar a solicitação de informações do vídeo se a solicitação anterior foi bem-sucedida\nTratamento de erros aprimorado quando a chave de API está ausente\nRegistro atualizado",
+                "nl": "Voer gewoon een video-infoverzoek uit als het vorige verzoek succesvol was\nVerbeterde foutafhandeling wanneer API-sleutel ontbreekt\nBijgewerkte logboekregistratie",
+                "fr": "Effectuez simplement une demande d'informations sur la vidéo si la demande précédente a réussi\nAmélioration de la gestion des erreurs lorsque la clé API est manquante\nJournalisation mise à jour",
+                "it": "Basta eseguire la richiesta di informazioni sul video se la richiesta precedente ha avuto esito positivo\nGestione degli errori migliorata quando manca la chiave API\nRegistrazione aggiornata",
+                "es": "Simplemente realice una solicitud de información de video si la solicitud anterior fue exitosa\nManejo de errores mejorado cuando falta la clave API\nRegistro actualizado",
+                "pl": "Po prostu wyślij żądanie informacji o filmie, jeśli poprzednie żądanie zakończyło się powodzeniem\nPoprawiona obsługa błędów w przypadku braku klucza API\nZaktualizowane logowanie",
+                "zh-cn": "如果之前的请求成功，只需执行视频信息请求\n改进了 API 密钥丢失时的错误处理\n更新的日志记录"
+            },
+            "3.0.0": {
+                "en": "Updated state roles\nAdded hint for Admin 4 configuration",
+                "de": "Statusrollen aktualisiert\nHinweis für die Konfiguration von Admin 4 hinzugefügt",
+                "ru": "Обновлены роли состояния\nДобавлена подсказка для конфигурации Admin 4",
+                "pt": "Funções de estado atualizadas\nAdicionada dica para configuração do Admin 4",
+                "nl": "Bijgewerkte statusrollen\nHint toegevoegd voor configuratie van Admin 4",
+                "fr": "Rôles d'état mis à jour\nAjout d'un indice pour la configuration d'Admin 4",
+                "it": "Ruoli statali aggiornati\nAggiunto suggerimento per la configurazione dell'amministratore 4",
+                "es": "Roles de estado actualizados\nSugerencia agregada para la configuración de Admin 4",
+                "pl": "Zaktualizowane role stanowe\nDodano wskazówkę dotyczącą konfiguracji Admin 4",
+                "zh-cn": "更新了状态角色\n添加了 Admin 4 配置的提示"
+            },
+            "2.0.4": {
+                "en": "Translated all objects\nUpdated dependencies",
+                "de": "Alle Objekte übersetzt\nAktualisierte Abhängigkeiten",
+                "ru": "Переведены все объекты\nОбновленные зависимости",
+                "pt": "Todos os objetos traduzidos\nDependências atualizadas",
+                "nl": "Alle objecten vertaald\nBijgewerkte afhankelijkheden",
+                "fr": "Traduit tous les objets\nDépendances mises à jour",
+                "it": "Tradotto tutti gli oggetti\nDipendenze aggiornate",
+                "es": "Traducido todos los objetos\nDependencias actualizadas",
+                "pl": "Przetłumaczono wszystkie obiekty\nZaktualizowane zależności",
+                "zh-cn": "翻译所有对象\n更新的依赖项"
+            },
+            "2.0.3": {
+                "en": "Fixed missing VIS widget",
+                "de": "Fehlendes VIS widget wieder hinzugefügt"
+            },
+            "2.0.1": {
+                "en": "Fixed missing translations",
+                "de": "Fehlende Übersetzungen hinzugefügt"
+            },
+            "2.0.0": {
+                "en": "Admin 5 Support",
+                "de": "Admin 5 Support"
+            },
+            "1.1.1": {
+                "en": "Updated dependencies",
+                "de": "Abhängigkeiten aktualisiert"
+            }
         },
-        "type": "string",
-        "role": "json",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    }
-  ]
+        "titleLang": {
+            "en": "YouTube",
+            "de": "Youtube",
+            "ru": "YouTube",
+            "pt": "YouTube",
+            "nl": "YouTube",
+            "fr": "Youtube",
+            "it": "Youtube",
+            "es": "Youtube",
+            "pl": "Youtube",
+            "zh-cn": "YouTube"
+        },
+        "desc": {
+            "en": "Statistics like views, subscribers and videos",
+            "de": "Statistiken wie Aufrufe, Abonnenten und Videos",
+            "ru": "Статистика, такая как просмотры, подписчики и видео",
+            "pt": "Estatísticas como visualizações, inscritos e vídeos",
+            "nl": "Statistieken zoals weergaven, abonnees en video's",
+            "fr": "Statistiques comme les vues, les abonnés et les vidéos",
+            "it": "Statistiche come visualizzazioni, iscritti e video",
+            "es": "Estadísticas como vistas, suscriptores y videos.",
+            "pl": "Statystyki, takie jak wyświetlenia, subskrybenci i filmy",
+            "zh-cn": "观看次数、订阅者和视频等统计数据"
+        },
+        "authors": ["Matthias Kleine <info@haus-automatisierung.com>"],
+        "keywords": ["youtube", "social", "video", "web"],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "icon": "youtube.png",
+        "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.youtube/master/admin/youtube.png",
+        "enabled": true,
+        "readme": "https://github.com/klein0r/ioBroker.youtube/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "schedule",
+        "allowInit": true,
+        "schedule": "0 0 * * *",
+        "type": "misc-data",
+        "compact": true,
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "materialize": true,
+        "adminUI": {
+            "config": "json"
+        },
+        "restartAdapters": ["vis"],
+        "dependencies": [
+            {
+                "js-controller": ">=4.0.15"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.3.2"
+            }
+        ]
+    },
+    "protectedNative": ["apiKey"],
+    "encryptedNative": ["apiKey"],
+    "native": {
+        "apiKey": "",
+        "enableVideoInformation": false,
+        "channels": []
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "channels",
+            "type": "channel",
+            "common": {
+                "name": {
+                    "en": "YouTube Channels",
+                    "de": "YouTube-Kanäle",
+                    "ru": "Каналы YouTube",
+                    "pt": "Canais do YouTube",
+                    "nl": "YouTube-kanalen",
+                    "fr": "Chaînes YouTube",
+                    "it": "Canali YouTube",
+                    "es": "Canales de YouTube",
+                    "pl": "Kanały YouTube",
+                    "zh-cn": "YouTube 频道"
+                }
+            },
+            "native": {}
+        },
+        {
+            "_id": "summary",
+            "type": "channel",
+            "common": {
+                "name": {
+                    "en": "Channel summary",
+                    "de": "Kanalzusammenfassung",
+                    "ru": "Сводка канала",
+                    "pt": "Resumo do canal",
+                    "nl": "Kanaaloverzicht",
+                    "fr": "Résumé de la chaîne",
+                    "it": "Riepilogo del canale",
+                    "es": "Resumen del canal",
+                    "pl": "Podsumowanie kanału",
+                    "zh-cn": "频道摘要"
+                }
+            },
+            "native": {}
+        },
+        {
+            "_id": "summary.json",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "JSON string for tables",
+                    "de": "JSON-String für Tabellen",
+                    "ru": "Строка JSON для таблиц",
+                    "pt": "String JSON para tabelas",
+                    "nl": "JSON-tekenreeks voor tabellen",
+                    "fr": "Chaîne JSON pour les tableaux",
+                    "it": "Stringa JSON per tabelle",
+                    "es": "Cadena JSON para tablas",
+                    "pl": "Ciąg JSON dla tabel",
+                    "zh-cn": "表的 JSON 字符串"
+                },
+                "type": "string",
+                "role": "json",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        }
+    ]
 }
