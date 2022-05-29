@@ -103,7 +103,7 @@
         "restartAdapters": ["vis"],
         "dependencies": [
             {
-                "js-controller": ">=4.0.15"
+                "js-controller": ">=3.3.22"
             }
         ],
         "globalDependencies": [

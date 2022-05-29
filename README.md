@@ -56,7 +56,7 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
 
 NodeJS 14.x is required (NodeJS 12.x is EOL)
 
-* (klein0r) Updated depedency for js-controller to 4.0.15
+* (klein0r) Fixed last update time
 
 ### 3.0.1 (2022-03-17)
 

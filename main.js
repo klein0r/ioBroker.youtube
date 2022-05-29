@@ -312,7 +312,10 @@ class Youtube extends utils.Adapter {
 
                             if (firstItem?.statistics) {
                                 await this.setStateChangedAsync(`${cpath}.statistics.viewCount`, { val: parseInt(firstItem.statistics.viewCount), ack: true });
-                                await this.setStateChangedAsync(`${cpath}.statistics.videoViewCountAvg`, { val: Math.round(firstItem.statistics.viewCount / firstItem.statistics.videoCount), ack: true });
+                                await this.setStateChangedAsync(`${cpath}.statistics.videoViewCountAvg`, {
+                                    val: Math.round(firstItem.statistics.viewCount / firstItem.statistics.videoCount),
+                                    ack: true,
+                                });
                                 await this.setStateChangedAsync(`${cpath}.statistics.subscriberCount`, { val: parseInt(firstItem.statistics.subscriberCount), ack: true });
                                 await this.setStateChangedAsync(`${cpath}.statistics.videoSubscriberCountAvg`, {
                                     val: Math.round(firstItem.statistics.subscriberCount / firstItem.statistics.videoCount),
@@ -328,8 +331,7 @@ class Youtube extends utils.Adapter {
                                 await this.setStateChangedAsync(`${cpath}.snippet.publishedAt`, { val: new Date(firstItem.snippet.publishedAt).getTime(), ack: true });
                             }
 
-                            const updateTime = new Date();
-                            await this.setStateAsync(`${cpath}.lastUpdate`, { val: new Date(updateTime.getTime() - updateTime.getTimezoneOffset() * 60000).getTime(), ack: true });
+                            await this.setStateAsync(`${cpath}.lastUpdate`, { val: new Date().getTime(), ack: true });
 
                             if (enableVideoInformation) {
                                 await this.getChannelVideoData(id, cpath);
