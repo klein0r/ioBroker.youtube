@@ -52,7 +52,7 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 4.0.0 (2022-05-29)
 
 NodeJS 14.x is required (NodeJS 12.x is EOL)
 
@@ -77,10 +77,6 @@ NodeJS 14.x is required (NodeJS 12.x is EOL)
 ### 2.0.3 (2021-11-07)
 
 * (klein0r) Fixed missing VIS widget
-
-### 2.0.1 (2021-11-06)
-
-* (klein0r) Fixed missing translations
 
 ## License
 
