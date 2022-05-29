@@ -1,6 +1,3 @@
-/* jshint -W097 */
-/* jshint strict: false */
-/* jslint node: true */
 'use strict';
 
 const utils = require('@iobroker/adapter-core');
@@ -15,6 +12,78 @@ class Youtube extends utils.Adapter {
         });
 
         this.on('ready', this.onReady.bind(this));
+    }
+
+    async onReady() {
+        const channels = this.config.channels;
+        const channelDataList = [];
+
+        const states = await this.getChannelsOfAsync('channels');
+
+        const channelsAll = [];
+        const channelsKeep = [];
+
+        // Collect all channels
+        if (states) {
+            for (let i = 0; i < states.length; i++) {
+                const id = this.removeNamespace(states[i]._id);
+
+                // Check if the state is a direct child (e.g. channels.HausAutomatisierungCom)
+                if (id.split('.').length === 2) {
+                    channelsAll.push(id);
+                }
+            }
+        }
+
+        if (channels && Array.isArray(channels)) {
+            this.log.debug(`[onReady] found ${channels.length} channels in config, fetching data`);
+
+            for (const c in channels) {
+                const channel = channels[c];
+                const cleanChannelName = channel.name.replace(/\s/g, '').replace(/[^\p{Ll}\p{Lu}\p{Nd}]+/gu, '_');
+
+                channelsKeep.push(`channels.${cleanChannelName}`);
+
+                await this.setObjectNotExistsAsync(`channels.${cleanChannelName}`, {
+                    type: 'channel',
+                    common: {
+                        name: channel.name,
+                    },
+                    native: {},
+                });
+
+                try {
+                    const channelData = await this.getChannelData(channel.id, `channels.${cleanChannelName}`);
+                    if (typeof channelData === 'object') {
+                        channelDataList.push(channelData);
+                    }
+                } catch (err) {
+                    this.log.warn(`${err}`);
+                }
+            }
+
+            channelDataList.sort((a, b) => {
+                return b.subscriberCount - a.subscriberCount;
+            });
+
+            await this.setStateAsync('summary.json', { val: JSON.stringify(channelDataList), ack: true });
+        } else {
+            this.log.warn('[onReady] No channels configured - check instance configuration');
+        }
+
+        // Delete non existent channels
+        for (let i = 0; i < channelsAll.length; i++) {
+            const id = channelsAll[i];
+
+            if (channelsKeep.indexOf(id) === -1) {
+                await this.delObjectAsync(id, { recursive: true });
+                this.log.debug(`[onReady] Channel deleted: ${id}`);
+            }
+        }
+
+        this.log.debug(`[onReady] everything done - instance will stop soon`);
+
+        this.stop();
     }
 
     async getChannelData(id, cpath) {
@@ -542,78 +611,6 @@ class Youtube extends utils.Adapter {
                     resolve(false);
                 });
         });
-    }
-
-    async onReady() {
-        const channels = this.config.channels;
-        const channelDataList = [];
-
-        const states = await this.getChannelsOfAsync('channels');
-
-        const channelsAll = [];
-        const channelsKeep = [];
-
-        // Collect all types
-        if (states) {
-            for (let i = 0; i < states.length; i++) {
-                const id = this.removeNamespace(states[i]._id);
-
-                // Check if the state is a direct child (e.g. channels.HausAutomatisierungCom)
-                if (id.split('.').length === 2) {
-                    channelsAll.push(id);
-                }
-            }
-        }
-
-        if (channels && Array.isArray(channels)) {
-            this.log.debug(`[onReady] found ${channels.length} channels in config, fetching data`);
-
-            for (const c in channels) {
-                const channel = channels[c];
-                const cleanChannelName = channel.name.replace(/\s/g, '').replace(/[^\p{Ll}\p{Lu}\p{Nd}]+/gu, '_');
-
-                channelsKeep.push(`channels.${cleanChannelName}`);
-
-                await this.setObjectNotExistsAsync(`channels.${cleanChannelName}`, {
-                    type: 'channel',
-                    common: {
-                        name: channel.name,
-                    },
-                    native: {},
-                });
-
-                try {
-                    const channelData = await this.getChannelData(channel.id, `channels.${cleanChannelName}`);
-                    if (typeof channelData === 'object') {
-                        channelDataList.push(channelData);
-                    }
-                } catch (err) {
-                    this.log.warn(`${err}`);
-                }
-            }
-
-            channelDataList.sort(function (a, b) {
-                return b.subscriberCount - a.subscriberCount;
-            });
-
-            await this.setStateAsync('summary.json', { val: JSON.stringify(channelDataList), ack: true });
-        } else {
-            this.log.warn('[onReady] No channels configured - check instance configuration');
-        }
-
-        // Delete non existent channels
-        for (let i = 0; i < channelsAll.length; i++) {
-            const id = channelsAll[i];
-
-            if (channelsKeep.indexOf(id) === -1) {
-                await this.delObjectAsync(id, { recursive: true });
-                this.log.debug(`[onReady] Channel deleted: ${id}`);
-            }
-        }
-
-        this.log.debug(`[onReady] everything done - instance will stop soon`);
-
-        this.stop();
     }
 
     removeNamespace(id) {
