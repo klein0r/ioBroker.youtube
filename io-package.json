@@ -123,7 +123,7 @@
     "instanceObjects": [
         {
             "_id": "channels",
-            "type": "channel",
+            "type": "folder",
             "common": {
                 "name": {
                     "en": "YouTube Channels",

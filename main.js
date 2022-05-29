@@ -307,7 +307,7 @@ class Youtube extends utils.Adapter {
 
                         const content = response.data;
 
-                        if (content && Object.prototype.hasOwnProperty.call(content, 'items') && Array.isArray(content['items']) && content['items'].length > 0) {
+                        if (content?.items && Array.isArray(content['items']) && content['items'].length > 0) {
                             const firstItem = content['items'][0];
 
                             if (firstItem?.statistics) {
@@ -335,7 +335,7 @@ class Youtube extends utils.Adapter {
                                 await this.getChannelVideoData(id, cpath);
                             }
 
-                            if (Object.prototype.hasOwnProperty.call(firstItem, 'statistics') && Object.prototype.hasOwnProperty.call(firstItem, 'snippet')) {
+                            if (firstItem?.statistics && firstItem?.snippet) {
                                 resolve({
                                     _id: id,
                                     title: firstItem.snippet.title,
