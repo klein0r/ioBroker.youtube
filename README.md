@@ -52,6 +52,10 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Dropped Admin 5 support
+
 ### 4.0.0 (2022-05-29)
 
 NodeJS 14.x is required (NodeJS 12.x is EOL)
