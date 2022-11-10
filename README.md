@@ -54,6 +54,7 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
 -->
 ### **WORK IN PROGRESS**
 
+* (klein0r) Fixed issue with unescaped characters in URL (e.g. API key)
 * (klein0r) Dropped Admin 5 support
 
 ### 4.0.0 (2022-05-29)

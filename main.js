@@ -2,6 +2,7 @@
 
 const utils = require('@iobroker/adapter-core');
 const axios = require('axios').default;
+const querystring = require('querystring');
 const adapterName = require('./package.json').name.split('.').pop();
 
 class Youtube extends utils.Adapter {
@@ -364,10 +365,16 @@ class Youtube extends utils.Adapter {
             if (apiKey) {
                 this.log.debug(`[getChannelData] youtube/v3/channels - request init: ${id}`);
 
+                const queryParameters = {
+                    part: 'snippet,statistics',
+                    id: id,
+                    key: apiKey,
+                };
+
                 axios({
                     method: 'get',
                     baseURL: 'https://www.googleapis.com/youtube/v3/',
-                    url: `/channels?part=snippet,statistics&id=${id}&key=${apiKey}`,
+                    url: `/channels?${querystring.stringify(queryParameters)}`,
                     timeout: 4500,
                     responseType: 'json',
                 })
@@ -455,10 +462,19 @@ class Youtube extends utils.Adapter {
 
             this.log.debug(`[getChannelVideoData] youtube/v3/search - request init: ${id}`);
 
+            const queryParameters = {
+                part: 'id,snippet',
+                type: 'video',
+                oder: 'date',
+                maxResults: 5,
+                channelId: id,
+                key: apiKey,
+            };
+
             axios({
                 method: 'get',
                 baseURL: 'https://www.googleapis.com/youtube/v3/',
-                url: `/search?part=id,snippet&type=video&order=date&maxResults=5&channelId=${id}&key=${apiKey}`,
+                url: `/search?${querystring.stringify(queryParameters)}`,
                 timeout: 4500,
                 responseType: 'json',
             })
