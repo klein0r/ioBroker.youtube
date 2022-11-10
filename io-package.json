@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "youtube",
-    "version": "4.0.0",
+    "version": "4.1.0",
     "news": {
+      "4.1.0": {
+        "en": "NodeJS >= 14.5 is required\n\n* Fixed issue with unescaped characters in URL (e.g. API key)\n* Dropped Admin 5 support",
+        "de": "NodeJS >= 14.5 ist erforderlich\n\n* Problem behoben mit unescaped Zeichen in URL (z.B. API-Schlüssel)\n* Dropped Admin 5 Unterstützung",
+        "ru": "NodeJS >= 14.5 требуется\n\n* Исправлена проблема с незабываемыми символами в URL (например API key)\n* Dropped Admin 5 поддержка",
+        "pt": "NodeJS > 14.5 é necessário\n\n* Corrigido problema com caracteres não-escapados em URL (por exemplo, chave API)\n* Suporte de Admin 5 Dropped",
+        "nl": "NodeJS 14,5 is vereist\n\nQuality over Quantity (QoQ) Releases Vertaling:\n♪ Dropped Admin 5 support",
+        "fr": "NodeJS anthropo= 14.5 est nécessaire\n\n* Problème fixe avec des caractères non aérés dans l'URL (par exemple clé API)\n* Soutien Dropped Admin 5",
+        "it": "NodeJS >= 14.5 è richiesto\n\n* Risolto problema con caratteri non espulsi in URL (ad esempio chiave API)\n* Sostegno di amministrazione goccia 5",
+        "es": "NodeJS= 14.5 Se requiere\n\n* Edición fija con caracteres no seleccionados en URL (por ejemplo, clave API)\n* Soporte de Admin 5",
+        "pl": "NodeJS (ang.). wymagany jest 14,5\n\n* Fixed problem z niezachwianymi postaciami w URL (np. klucz API)\n* Dropped Admin 5 support",
+        "uk": "NodeJS >= 14.5 потрібно\n\n* Виправлено проблему з нерозголошенням символів у URL (наприклад, ключ API)\n* Підтримка Dropped Admin 5",
+        "zh-cn": "无deJS >= 14.5 需要\n\n* 欧元的固定性问题(如API关键)\n* Dro Admin 5支助"
+      },
       "4.0.0": {
         "en": "NodeJS 14.x is required (NodeJS 12.x is EOL)\n\n* Fixed last update time",
         "de": "NodeJS 14.x ist erforderlich (NodeJS 12.x ist EOL)\n\n* Letzte Aktualisierungszeit behoben",
@@ -58,10 +71,6 @@
       "2.0.1": {
         "en": "Fixed missing translations",
         "de": "Fehlende Übersetzungen hinzugefügt"
-      },
-      "2.0.0": {
-        "en": "Admin 5 Support",
-        "de": "Admin 5 Support"
       }
     },
     "titleLang": {

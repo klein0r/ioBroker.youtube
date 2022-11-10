@@ -1,4 +1,8 @@
 # Older changes
+## 2.0.3 (2021-11-07)
+
+* (klein0r) Fixed missing VIS widget
+
 ## 2.0.1 (2021-11-06)
 
 * (klein0r) Fixed missing translations
