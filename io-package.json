@@ -1,215 +1,239 @@
 {
-  "common": {
-    "name": "youtube",
-    "version": "4.1.0",
-    "news": {
-      "4.1.0": {
-        "en": "NodeJS >= 14.5 is required\n\n* Fixed issue with unescaped characters in URL (e.g. API key)\n* Dropped Admin 5 support",
-        "de": "NodeJS >= 14.5 ist erforderlich\n\n* Problem behoben mit unescaped Zeichen in URL (z.B. API-Schlüssel)\n* Dropped Admin 5 Unterstützung",
-        "ru": "NodeJS >= 14.5 требуется\n\n* Исправлена проблема с незабываемыми символами в URL (например API key)\n* Dropped Admin 5 поддержка",
-        "pt": "NodeJS > 14.5 é necessário\n\n* Corrigido problema com caracteres não-escapados em URL (por exemplo, chave API)\n* Suporte de Admin 5 Dropped",
-        "nl": "NodeJS 14,5 is vereist\n\nQuality over Quantity (QoQ) Releases Vertaling:\n♪ Dropped Admin 5 support",
-        "fr": "NodeJS anthropo= 14.5 est nécessaire\n\n* Problème fixe avec des caractères non aérés dans l'URL (par exemple clé API)\n* Soutien Dropped Admin 5",
-        "it": "NodeJS >= 14.5 è richiesto\n\n* Risolto problema con caratteri non espulsi in URL (ad esempio chiave API)\n* Sostegno di amministrazione goccia 5",
-        "es": "NodeJS= 14.5 Se requiere\n\n* Edición fija con caracteres no seleccionados en URL (por ejemplo, clave API)\n* Soporte de Admin 5",
-        "pl": "NodeJS (ang.). wymagany jest 14,5\n\n* Fixed problem z niezachwianymi postaciami w URL (np. klucz API)\n* Dropped Admin 5 support",
-        "uk": "NodeJS >= 14.5 потрібно\n\n* Виправлено проблему з нерозголошенням символів у URL (наприклад, ключ API)\n* Підтримка Dropped Admin 5",
-        "zh-cn": "无deJS >= 14.5 需要\n\n* 欧元的固定性问题(如API关键)\n* Dro Admin 5支助"
-      },
-      "4.0.0": {
-        "en": "NodeJS 14.x is required (NodeJS 12.x is EOL)\n\n* Fixed last update time",
-        "de": "NodeJS 14.x ist erforderlich (NodeJS 12.x ist EOL)\n\n* Letzte Aktualisierungszeit behoben",
-        "ru": "Требуется NodeJS 14.x (NodeJS 12.x является EOL)\n\n* Исправлено время последнего обновления",
-        "pt": "NodeJS 14.x é necessário (NodeJS 12.x é EOL)\n\n* Corrigido o tempo da última atualização",
-        "nl": "NodeJS 14.x is vereist (NodeJS 12.x is EOL)\n\n* Vaste laatste updatetijd",
-        "fr": "NodeJS 14.x est requis (NodeJS 12.x est EOL)\n\n* Correction de l'heure de la dernière mise à jour",
-        "it": "NodeJS 14.x è richiesto (NodeJS 12.x è EOL)\n\n* Risolto il tempo dell'ultimo aggiornamento",
-        "es": "Se requiere NodeJS 14.x (NodeJS 12.x es EOL)\n\n* Tiempo de última actualización fijo",
-        "pl": "NodeJS 14.x jest wymagany (NodeJS 12.x to EOL)\n\n* Naprawiono czas ostatniej aktualizacji",
-        "zh-cn": "需要 NodeJS 14.x（NodeJS 12.x 已停产）\n\n* 修正最后更新时间"
-      },
-      "3.0.1": {
-        "en": "Just perform video info request if previous request was successful\nImproved error handling when API key is missing\nUpdated logging",
-        "de": "Führen Sie einfach eine Video-Info-Anfrage durch, wenn die vorherige Anfrage erfolgreich war\nVerbesserte Fehlerbehandlung bei fehlendem API-Schlüssel\nAktualisierte Protokollierung",
-        "ru": "Просто выполните запрос информации о видео, если предыдущий запрос был успешным\nУлучшена обработка ошибок при отсутствии ключа API.\nОбновлено ведение журнала",
-        "pt": "Basta realizar a solicitação de informações do vídeo se a solicitação anterior foi bem-sucedida\nTratamento de erros aprimorado quando a chave de API está ausente\nRegistro atualizado",
-        "nl": "Voer gewoon een video-infoverzoek uit als het vorige verzoek succesvol was\nVerbeterde foutafhandeling wanneer API-sleutel ontbreekt\nBijgewerkte logboekregistratie",
-        "fr": "Effectuez simplement une demande d'informations sur la vidéo si la demande précédente a réussi\nAmélioration de la gestion des erreurs lorsque la clé API est manquante\nJournalisation mise à jour",
-        "it": "Basta eseguire la richiesta di informazioni sul video se la richiesta precedente ha avuto esito positivo\nGestione degli errori migliorata quando manca la chiave API\nRegistrazione aggiornata",
-        "es": "Simplemente realice una solicitud de información de video si la solicitud anterior fue exitosa\nManejo de errores mejorado cuando falta la clave API\nRegistro actualizado",
-        "pl": "Po prostu wyślij żądanie informacji o filmie, jeśli poprzednie żądanie zakończyło się powodzeniem\nPoprawiona obsługa błędów w przypadku braku klucza API\nZaktualizowane logowanie",
-        "zh-cn": "如果之前的请求成功，只需执行视频信息请求\n改进了 API 密钥丢失时的错误处理\n更新的日志记录"
-      },
-      "3.0.0": {
-        "en": "Updated state roles\nAdded hint for Admin 4 configuration",
-        "de": "Statusrollen aktualisiert\nHinweis für die Konfiguration von Admin 4 hinzugefügt",
-        "ru": "Обновлены роли состояния\nДобавлена подсказка для конфигурации Admin 4",
-        "pt": "Funções de estado atualizadas\nAdicionada dica para configuração do Admin 4",
-        "nl": "Bijgewerkte statusrollen\nHint toegevoegd voor configuratie van Admin 4",
-        "fr": "Rôles d'état mis à jour\nAjout d'un indice pour la configuration d'Admin 4",
-        "it": "Ruoli statali aggiornati\nAggiunto suggerimento per la configurazione dell'amministratore 4",
-        "es": "Roles de estado actualizados\nSugerencia agregada para la configuración de Admin 4",
-        "pl": "Zaktualizowane role stanowe\nDodano wskazówkę dotyczącą konfiguracji Admin 4",
-        "zh-cn": "更新了状态角色\n添加了 Admin 4 配置的提示"
-      },
-      "2.0.4": {
-        "en": "Translated all objects\nUpdated dependencies",
-        "de": "Alle Objekte übersetzt\nAktualisierte Abhängigkeiten",
-        "ru": "Переведены все объекты\nОбновленные зависимости",
-        "pt": "Todos os objetos traduzidos\nDependências atualizadas",
-        "nl": "Alle objecten vertaald\nBijgewerkte afhankelijkheden",
-        "fr": "Traduit tous les objets\nDépendances mises à jour",
-        "it": "Tradotto tutti gli oggetti\nDipendenze aggiornate",
-        "es": "Traducido todos los objetos\nDependencias actualizadas",
-        "pl": "Przetłumaczono wszystkie obiekty\nZaktualizowane zależności",
-        "zh-cn": "翻译所有对象\n更新的依赖项"
-      },
-      "2.0.3": {
-        "en": "Fixed missing VIS widget",
-        "de": "Fehlendes VIS widget wieder hinzugefügt"
-      },
-      "2.0.1": {
-        "en": "Fixed missing translations",
-        "de": "Fehlende Übersetzungen hinzugefügt"
-      }
-    },
-    "titleLang": {
-      "en": "YouTube",
-      "de": "Youtube",
-      "ru": "YouTube",
-      "pt": "YouTube",
-      "nl": "YouTube",
-      "fr": "Youtube",
-      "it": "Youtube",
-      "es": "Youtube",
-      "pl": "Youtube",
-      "zh-cn": "YouTube"
-    },
-    "desc": {
-      "en": "Statistics like views, subscribers and videos",
-      "de": "Statistiken wie Aufrufe, Abonnenten und Videos",
-      "ru": "Статистика, такая как просмотры, подписчики и видео",
-      "pt": "Estatísticas como visualizações, inscritos e vídeos",
-      "nl": "Statistieken zoals weergaven, abonnees en video's",
-      "fr": "Statistiques comme les vues, les abonnés et les vidéos",
-      "it": "Statistiche come visualizzazioni, iscritti e video",
-      "es": "Estadísticas como vistas, suscriptores y videos.",
-      "pl": "Statystyki, takie jak wyświetlenia, subskrybenci i filmy",
-      "zh-cn": "观看次数、订阅者和视频等统计数据"
-    },
-    "authors": [
-      "Matthias Kleine <info@haus-automatisierung.com>"
-    ],
-    "keywords": [
-      "youtube",
-      "social",
-      "video",
-      "web"
-    ],
-    "license": "MIT",
-    "platform": "Javascript/Node.js",
-    "icon": "youtube.png",
-    "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.youtube/master/admin/youtube.png",
-    "enabled": true,
-    "readme": "https://github.com/klein0r/ioBroker.youtube/blob/master/README.md",
-    "loglevel": "info",
-    "mode": "schedule",
-    "allowInit": true,
-    "schedule": "0 0 * * *",
-    "type": "misc-data",
-    "compact": true,
-    "connectionType": "cloud",
-    "dataSource": "poll",
-    "adminUI": {
-      "config": "json"
-    },
-    "restartAdapters": [
-      "vis"
-    ],
-    "dependencies": [
-      {
-        "js-controller": ">=4.0.15"
-      }
-    ],
-    "globalDependencies": [
-      {
-        "admin": ">=6.0.0"
-      }
-    ]
-  },
-  "protectedNative": [
-    "apiKey"
-  ],
-  "encryptedNative": [
-    "apiKey"
-  ],
-  "native": {
-    "apiKey": "",
-    "enableVideoInformation": false,
-    "channels": []
-  },
-  "objects": [],
-  "instanceObjects": [
-    {
-      "_id": "channels",
-      "type": "folder",
-      "common": {
-        "name": {
-          "en": "YouTube Channels",
-          "de": "YouTube-Kanäle",
-          "ru": "Каналы YouTube",
-          "pt": "Canais do YouTube",
-          "nl": "YouTube-kanalen",
-          "fr": "Chaînes YouTube",
-          "it": "Canali YouTube",
-          "es": "Canales de YouTube",
-          "pl": "Kanały YouTube",
-          "zh-cn": "YouTube 频道"
-        }
-      },
-      "native": {}
-    },
-    {
-      "_id": "summary",
-      "type": "channel",
-      "common": {
-        "name": {
-          "en": "Channel summary",
-          "de": "Kanalzusammenfassung",
-          "ru": "Сводка канала",
-          "pt": "Resumo do canal",
-          "nl": "Kanaaloverzicht",
-          "fr": "Résumé de la chaîne",
-          "it": "Riepilogo del canale",
-          "es": "Resumen del canal",
-          "pl": "Podsumowanie kanału",
-          "zh-cn": "频道摘要"
-        }
-      },
-      "native": {}
-    },
-    {
-      "_id": "summary.json",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "JSON string for tables",
-          "de": "JSON-String für Tabellen",
-          "ru": "Строка JSON для таблиц",
-          "pt": "String JSON para tabelas",
-          "nl": "JSON-tekenreeks voor tabellen",
-          "fr": "Chaîne JSON pour les tableaux",
-          "it": "Stringa JSON per tabelle",
-          "es": "Cadena JSON para tablas",
-          "pl": "Ciąg JSON dla tabel",
-          "zh-cn": "表的 JSON 字符串"
+    "common": {
+        "name": "youtube",
+        "version": "4.1.0",
+        "news": {
+            "4.1.0": {
+                "en": "NodeJS >= 14.5 is required\n\n* Fixed issue with unescaped characters in URL (e.g. API key)\n* Dropped Admin 5 support",
+                "de": "NodeJS >= 14.5 ist erforderlich\n\n* Problem behoben mit unescaped Zeichen in URL (z.B. API-Schlüssel)\n* Dropped Admin 5 Unterstützung",
+                "ru": "NodeJS >= 14.5 требуется\n\n* Исправлена проблема с незабываемыми символами в URL (например API key)\n* Dropped Admin 5 поддержка",
+                "pt": "NodeJS > 14.5 é necessário\n\n* Corrigido problema com caracteres não-escapados em URL (por exemplo, chave API)\n* Suporte de Admin 5 Dropped",
+                "nl": "NodeJS 14,5 is vereist\n\nQuality over Quantity (QoQ) Releases Vertaling:\n♪ Dropped Admin 5 support",
+                "fr": "NodeJS anthropo= 14.5 est nécessaire\n\n* Problème fixe avec des caractères non aérés dans l'URL (par exemple clé API)\n* Soutien Dropped Admin 5",
+                "it": "NodeJS >= 14.5 è richiesto\n\n* Risolto problema con caratteri non espulsi in URL (ad esempio chiave API)\n* Sostegno di amministrazione goccia 5",
+                "es": "NodeJS= 14.5 Se requiere\n\n* Edición fija con caracteres no seleccionados en URL (por ejemplo, clave API)\n* Soporte de Admin 5",
+                "pl": "NodeJS (ang.). wymagany jest 14,5\n\n* Fixed problem z niezachwianymi postaciami w URL (np. klucz API)\n* Dropped Admin 5 support",
+                "uk": "NodeJS >= 14.5 потрібно\n\n* Виправлено проблему з нерозголошенням символів у URL (наприклад, ключ API)\n* Підтримка Dropped Admin 5",
+                "zh-cn": "无deJS >= 14.5 需要\n\n* 欧元的固定性问题(如API关键)\n* Dro Admin 5支助"
+            },
+            "4.0.0": {
+                "en": "NodeJS 14.x is required (NodeJS 12.x is EOL)\n\n* Fixed last update time",
+                "de": "NodeJS 14.x ist erforderlich (NodeJS 12.x ist EOL)\n\n* Letzte Aktualisierungszeit behoben",
+                "ru": "Требуется NodeJS 14.x (NodeJS 12.x является EOL)\n\n* Исправлено время последнего обновления",
+                "pt": "NodeJS 14.x é necessário (NodeJS 12.x é EOL)\n\n* Corrigido o tempo da última atualização",
+                "nl": "NodeJS 14.x is vereist (NodeJS 12.x is EOL)\n\n* Vaste laatste updatetijd",
+                "fr": "NodeJS 14.x est requis (NodeJS 12.x est EOL)\n\n* Correction de l'heure de la dernière mise à jour",
+                "it": "NodeJS 14.x è richiesto (NodeJS 12.x è EOL)\n\n* Risolto il tempo dell'ultimo aggiornamento",
+                "es": "Se requiere NodeJS 14.x (NodeJS 12.x es EOL)\n\n* Tiempo de última actualización fijo",
+                "pl": "NodeJS 14.x jest wymagany (NodeJS 12.x to EOL)\n\n* Naprawiono czas ostatniej aktualizacji",
+                "zh-cn": "需要 NodeJS 14.x（NodeJS 12.x 已停产）\n\n* 修正最后更新时间",
+                "uk": "Потрібен NodeJS 14.x (NodeJS 12.x є EOL)\n\n* Виправлено час останнього оновлення"
+            },
+            "3.0.1": {
+                "en": "Just perform video info request if previous request was successful\nImproved error handling when API key is missing\nUpdated logging",
+                "de": "Führen Sie einfach eine Video-Info-Anfrage durch, wenn die vorherige Anfrage erfolgreich war\nVerbesserte Fehlerbehandlung bei fehlendem API-Schlüssel\nAktualisierte Protokollierung",
+                "ru": "Просто выполните запрос информации о видео, если предыдущий запрос был успешным\nУлучшена обработка ошибок при отсутствии ключа API.\nОбновлено ведение журнала",
+                "pt": "Basta realizar a solicitação de informações do vídeo se a solicitação anterior foi bem-sucedida\nTratamento de erros aprimorado quando a chave de API está ausente\nRegistro atualizado",
+                "nl": "Voer gewoon een video-infoverzoek uit als het vorige verzoek succesvol was\nVerbeterde foutafhandeling wanneer API-sleutel ontbreekt\nBijgewerkte logboekregistratie",
+                "fr": "Effectuez simplement une demande d'informations sur la vidéo si la demande précédente a réussi\nAmélioration de la gestion des erreurs lorsque la clé API est manquante\nJournalisation mise à jour",
+                "it": "Basta eseguire la richiesta di informazioni sul video se la richiesta precedente ha avuto esito positivo\nGestione degli errori migliorata quando manca la chiave API\nRegistrazione aggiornata",
+                "es": "Simplemente realice una solicitud de información de video si la solicitud anterior fue exitosa\nManejo de errores mejorado cuando falta la clave API\nRegistro actualizado",
+                "pl": "Po prostu wyślij żądanie informacji o filmie, jeśli poprzednie żądanie zakończyło się powodzeniem\nPoprawiona obsługa błędów w przypadku braku klucza API\nZaktualizowane logowanie",
+                "zh-cn": "如果之前的请求成功，只需执行视频信息请求\n改进了 API 密钥丢失时的错误处理\n更新的日志记录",
+                "uk": "Просто виконайте запит інформації про відео, якщо попередній запит був успішним\nПокращена обробка помилок, коли ключ API відсутній\nОновлено журналювання"
+            },
+            "3.0.0": {
+                "en": "Updated state roles\nAdded hint for Admin 4 configuration",
+                "de": "Statusrollen aktualisiert\nHinweis für die Konfiguration von Admin 4 hinzugefügt",
+                "ru": "Обновлены роли состояния\nДобавлена подсказка для конфигурации Admin 4",
+                "pt": "Funções de estado atualizadas\nAdicionada dica para configuração do Admin 4",
+                "nl": "Bijgewerkte statusrollen\nHint toegevoegd voor configuratie van Admin 4",
+                "fr": "Rôles d'état mis à jour\nAjout d'un indice pour la configuration d'Admin 4",
+                "it": "Ruoli statali aggiornati\nAggiunto suggerimento per la configurazione dell'amministratore 4",
+                "es": "Roles de estado actualizados\nSugerencia agregada para la configuración de Admin 4",
+                "pl": "Zaktualizowane role stanowe\nDodano wskazówkę dotyczącą konfiguracji Admin 4",
+                "zh-cn": "更新了状态角色\n添加了 Admin 4 配置的提示",
+                "uk": "Оновлені ролі стану\nДодано підказку для конфігурації Admin 4"
+            },
+            "2.0.4": {
+                "en": "Translated all objects\nUpdated dependencies",
+                "de": "Alle Objekte übersetzt\nAktualisierte Abhängigkeiten",
+                "ru": "Переведены все объекты\nОбновленные зависимости",
+                "pt": "Todos os objetos traduzidos\nDependências atualizadas",
+                "nl": "Alle objecten vertaald\nBijgewerkte afhankelijkheden",
+                "fr": "Traduit tous les objets\nDépendances mises à jour",
+                "it": "Tradotto tutti gli oggetti\nDipendenze aggiornate",
+                "es": "Traducido todos los objetos\nDependencias actualizadas",
+                "pl": "Przetłumaczono wszystkie obiekty\nZaktualizowane zależności",
+                "zh-cn": "翻译所有对象\n更新的依赖项",
+                "uk": "Перекладено всі об'єкти\nОновлені залежності"
+            },
+            "2.0.3": {
+                "en": "Fixed missing VIS widget",
+                "de": "Fehlendes VIS widget wieder hinzugefügt",
+                "ru": "Исправлен отсутствующий виджет VIS",
+                "pt": "Widget VIS ausente corrigido",
+                "nl": "Vaste ontbrekende VIS-widget",
+                "fr": "Correction du widget VIS manquant",
+                "it": "Risolto il problema con il widget VIS mancante",
+                "es": "Se corrigió el widget VIS faltante",
+                "pl": "Naprawiono brakujący widżet VIS",
+                "uk": "Виправлено відсутність віджета VIS",
+                "zh-cn": "修复了丢失的 VIS 小部件"
+            },
+            "2.0.1": {
+                "en": "Fixed missing translations",
+                "de": "Fehlende Übersetzungen hinzugefügt",
+                "ru": "Исправлены отсутствующие переводы",
+                "pt": "Traduções ausentes corrigidas",
+                "nl": "Vaste ontbrekende vertalingen",
+                "fr": "Correction des traductions manquantes",
+                "it": "Risolte le traduzioni mancanti",
+                "es": "Se corrigieron las traducciones faltantes",
+                "pl": "Naprawiono brakujące tłumaczenia",
+                "uk": "Виправлено відсутні переклади",
+                "zh-cn": "修复了缺失的翻译"
+            }
         },
-        "type": "string",
-        "role": "json",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    }
-  ]
+        "titleLang": {
+            "en": "YouTube",
+            "de": "Youtube",
+            "ru": "YouTube",
+            "pt": "YouTube",
+            "nl": "YouTube",
+            "fr": "Youtube",
+            "it": "Youtube",
+            "es": "Youtube",
+            "pl": "Youtube",
+            "zh-cn": "YouTube",
+            "uk": "YouTube"
+        },
+        "desc": {
+            "en": "Statistics like views, subscribers and videos",
+            "de": "Statistiken wie Aufrufe, Abonnenten und Videos",
+            "ru": "Статистика, такая как просмотры, подписчики и видео",
+            "pt": "Estatísticas como visualizações, inscritos e vídeos",
+            "nl": "Statistieken zoals weergaven, abonnees en video's",
+            "fr": "Statistiques comme les vues, les abonnés et les vidéos",
+            "it": "Statistiche come visualizzazioni, iscritti e video",
+            "es": "Estadísticas como vistas, suscriptores y videos.",
+            "pl": "Statystyki, takie jak wyświetlenia, subskrybenci i filmy",
+            "zh-cn": "观看次数、订阅者和视频等统计数据",
+            "uk": "Такі статистичні дані, як перегляди, підписки та відео"
+        },
+        "authors": [
+            "Matthias Kleine <info@haus-automatisierung.com>"
+        ],
+        "keywords": [
+            "youtube",
+            "social",
+            "video",
+            "web"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "icon": "youtube.png",
+        "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.youtube/master/admin/youtube.png",
+        "enabled": true,
+        "readme": "https://github.com/klein0r/ioBroker.youtube/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "schedule",
+        "allowInit": true,
+        "schedule": "0 0 * * *",
+        "type": "misc-data",
+        "compact": true,
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "adminUI": {
+            "config": "json"
+        },
+        "restartAdapters": [
+            "vis"
+        ],
+        "dependencies": [
+            {
+                "js-controller": ">=4.0.15"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=6.0.0"
+            }
+        ]
+    },
+    "protectedNative": [
+        "apiKey"
+    ],
+    "encryptedNative": [
+        "apiKey"
+    ],
+    "native": {
+        "apiKey": "",
+        "enableVideoInformation": false,
+        "channels": []
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "channels",
+            "type": "folder",
+            "common": {
+                "name": {
+                    "en": "YouTube Channels",
+                    "de": "YouTube-Kanäle",
+                    "ru": "Каналы YouTube",
+                    "pt": "Canais do YouTube",
+                    "nl": "YouTube-kanalen",
+                    "fr": "Chaînes YouTube",
+                    "it": "Canali YouTube",
+                    "es": "Canales de YouTube",
+                    "pl": "Kanały YouTube",
+                    "zh-cn": "YouTube 频道"
+                }
+            },
+            "native": {}
+        },
+        {
+            "_id": "summary",
+            "type": "channel",
+            "common": {
+                "name": {
+                    "en": "Channel summary",
+                    "de": "Kanalzusammenfassung",
+                    "ru": "Сводка канала",
+                    "pt": "Resumo do canal",
+                    "nl": "Kanaaloverzicht",
+                    "fr": "Résumé de la chaîne",
+                    "it": "Riepilogo del canale",
+                    "es": "Resumen del canal",
+                    "pl": "Podsumowanie kanału",
+                    "zh-cn": "频道摘要"
+                }
+            },
+            "native": {}
+        },
+        {
+            "_id": "summary.json",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "JSON string for tables",
+                    "de": "JSON-String für Tabellen",
+                    "ru": "Строка JSON для таблиц",
+                    "pt": "String JSON para tabelas",
+                    "nl": "JSON-tekenreeks voor tabellen",
+                    "fr": "Chaîne JSON pour les tableaux",
+                    "it": "Stringa JSON per tabelle",
+                    "es": "Cadena JSON para tablas",
+                    "pl": "Ciąg JSON dla tabel",
+                    "zh-cn": "表的 JSON 字符串"
+                },
+                "type": "string",
+                "role": "json",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        }
+    ]
 }
