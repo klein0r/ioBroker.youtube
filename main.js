@@ -16,8 +16,11 @@ class Youtube extends utils.Adapter {
     }
 
     async onReady() {
+        const enableVideoInformation = this.config.enableVideoInformation;
+
         const channels = this.config.channels;
         const channelDataList = [];
+        const videoDataList = [];
 
         const states = await this.getChannelsOfAsync('channels');
 
@@ -45,20 +48,81 @@ class Youtube extends utils.Adapter {
 
                 channelsKeep.push(`channels.${cleanChannelName}`);
 
-                await this.setObjectNotExistsAsync(`channels.${cleanChannelName}`, {
+                await this.extendObjectAsync(`channels.${cleanChannelName}`, {
                     type: 'channel',
                     common: {
                         name: channel.name,
+                        statusStates: {
+                            onlineId: `${this.namespace}.channels.${cleanChannelName}.success`,
+                        },
+                    },
+                    native: {
+                        id: channel.id
+                    },
+                });
+
+                await this.setObjectNotExistsAsync(`channels.${cleanChannelName}.success`, {
+                    type: 'state',
+                    common: {
+                        name: {
+                            en: 'Data request successful',
+                            de: 'Datenanfrage erfolgreich',
+                            ru: 'Запрос данных успешно',
+                            pt: 'Pedido de dados bem sucedido',
+                            nl: 'Dataverzoek succesvol',
+                            fr: 'Demande de données réussie',
+                            it: 'Richiesta di dati di successo',
+                            es: 'Solicitud de datos con éxito',
+                            pl: 'Żądanie',
+                            uk: 'Запит даних успішним',
+                            'zh-cn': '数据要求获得成功',
+                        },
+                        type: 'boolean',
+                        role: 'indicator.reachable',
+                        read: true,
+                        write: false,
+                        def: false,
                     },
                     native: {},
                 });
 
                 try {
-                    const channelData = await this.getChannelData(channel.id, `channels.${cleanChannelName}`);
+                    const cpath = `channels.${cleanChannelName}`;
+                    const channelData = await this.getChannelData(channel.id, cpath);
+
                     if (typeof channelData === 'object') {
                         channelDataList.push(channelData);
+
+                        if (enableVideoInformation) {
+                            await this.setObjectNotExistsAsync(`${cpath}.video`, {
+                                type: 'channel',
+                                common: {
+                                    name: {
+                                        en: 'Videos',
+                                        de: 'Videos',
+                                        ru: 'Видео',
+                                        pt: 'Vídeos',
+                                        nl: 'Videos',
+                                        fr: 'Vidéos',
+                                        it: 'Video',
+                                        es: 'Videos',
+                                        pl: 'Filmy',
+                                        uk: 'Відео',
+                                        'zh-cn': '影片',
+                                    },
+                                },
+                                native: {},
+                            });
+
+                            videoDataList.push(...await this.getChannelVideoData(channel.id, `${cpath}.video`));
+                        } else {
+                            await this.delObjectAsync(`${cpath}.video`, { recursive: true });
+                        }
+
+                        await this.setStateAsync(`channels.${cleanChannelName}.success`, { val: true, ack: true });
                     }
                 } catch (err) {
+                    await this.setStateAsync(`channels.${cleanChannelName}.success`, { val: false, ack: true, c: JSON.stringify(err) });
                     this.log.warn(`${err}`);
                 }
             }
@@ -68,6 +132,13 @@ class Youtube extends utils.Adapter {
             });
 
             await this.setStateAsync('summary.json', { val: JSON.stringify(channelDataList), ack: true });
+
+            if (enableVideoInformation) {
+                const todayStart = new Date().setHours(0, 0, 0, 0);
+                await this.setStateAsync('summary.jsonVideosToday', { val: JSON.stringify(videoDataList.filter(v => v.published > todayStart)), ack: true });
+            } else {
+                await this.setStateAsync('summary.jsonVideosToday', { val: JSON.stringify([]), ack: true });
+            }
         } else {
             this.log.warn('[onReady] No channels configured - check instance configuration');
         }
@@ -89,9 +160,6 @@ class Youtube extends utils.Adapter {
 
     async getChannelData(id, cpath) {
         // Documentation: https://developers.google.com/youtube/v3/docs/channels
-
-        const apiKey = this.config.apiKey;
-        const enableVideoInformation = this.config.enableVideoInformation;
 
         await this.setObjectNotExistsAsync(`${cpath}.lastUpdate`, {
             type: 'state',
@@ -374,6 +442,8 @@ class Youtube extends utils.Adapter {
         });
 
         return new Promise((resolve, reject) => {
+            const apiKey = this.config.apiKey;
+
             if (apiKey) {
                 this.log.debug(`[getChannelData] youtube/v3/channels - request init: ${id}`);
 
@@ -419,11 +489,7 @@ class Youtube extends utils.Adapter {
                                 await this.setStateChangedAsync(`${cpath}.snippet.publishedAt`, { val: new Date(firstItem.snippet.publishedAt).getTime(), ack: true });
                             }
 
-                            await this.setStateAsync(`${cpath}.lastUpdate`, { val: new Date().getTime(), ack: true });
-
-                            if (enableVideoInformation) {
-                                await this.getChannelVideoData(id, cpath);
-                            }
+                            await this.setStateAsync(`${cpath}.lastUpdate`, { val: Date.now(), ack: true });
 
                             if (firstItem?.statistics && firstItem?.snippet) {
                                 resolve({
@@ -447,29 +513,8 @@ class Youtube extends utils.Adapter {
         });
     }
 
+    // Documentation: https://developers.google.com/youtube/v3/docs/search/list
     async getChannelVideoData(id, cpath) {
-        // Documentation: https://developers.google.com/youtube/v3/docs/search/list
-
-        await this.setObjectNotExistsAsync(`${cpath}.video`, {
-            type: 'channel',
-            common: {
-                name: {
-                    en: 'Videos',
-                    de: 'Videos',
-                    ru: 'Видео',
-                    pt: 'Vídeos',
-                    nl: 'Videos',
-                    fr: 'Vidéos',
-                    it: 'Video',
-                    es: 'Videos',
-                    pl: 'Filmy',
-                    uk: 'Відео',
-                    'zh-cn': '影片',
-                },
-            },
-            native: {},
-        });
-
         return new Promise((resolve) => {
             const apiKey = this.config.apiKey;
 
@@ -495,11 +540,22 @@ class Youtube extends utils.Adapter {
                     this.log.debug(`[getChannelVideoData] youtube/v3/search - received data for ${id} (${response.status}): ${JSON.stringify(response.data)}`);
 
                     const content = response.data;
+                    const videoList = [];
 
-                    if (content && Object.prototype.hasOwnProperty.call(content, 'items') && Array.isArray(content['items']) && content['items'].length > 0) {
-                        for (let i = 0; i < content['items'].length; i++) {
-                            const v = content['items'][i];
-                            const path = `${cpath}.video.${i}`;
+                    if (content?.items && Array.isArray(content.items) && content.items.length > 0) {
+                        for (let i = 0; i < content.items.length; i++) {
+                            const v = content.items[i];
+                            const path = `${cpath}.${i}`;
+
+                            const videoUrl = `https://youtu.be/${v.id.videoId}`;
+                            const videoPublishedDate = new Date(v.snippet.publishedAt).getTime();
+
+                            videoList.push({
+                                _id: v.id.videoId,
+                                title: v.snippet.title,
+                                url: videoUrl,
+                                published: videoPublishedDate,
+                            });
 
                             await this.setObjectNotExistsAsync(path, {
                                 type: 'channel',
@@ -557,7 +613,7 @@ class Youtube extends utils.Adapter {
                                 },
                                 native: {},
                             });
-                            await this.setStateChangedAsync(`${path}.url`, { val: 'https://youtu.be/' + v.id.videoId, ack: true });
+                            await this.setStateChangedAsync(`${path}.url`, { val: videoUrl, ack: true });
 
                             await this.setObjectNotExistsAsync(`${path}.title`, {
                                 type: 'state',
@@ -607,7 +663,7 @@ class Youtube extends utils.Adapter {
                                 },
                                 native: {},
                             });
-                            await this.setStateChangedAsync(`${path}.published`, { val: new Date(v.snippet.publishedAt).getTime(), ack: true });
+                            await this.setStateChangedAsync(`${path}.published`, { val: videoPublishedDate, ack: true });
 
                             await this.setObjectNotExistsAsync(`${path}.description`, {
                                 type: 'state',
@@ -638,11 +694,11 @@ class Youtube extends utils.Adapter {
                         this.log.warn(`[getChannelVideoData] youtube/v3/search - received empty response - check channel id: ${id}`);
                     }
 
-                    resolve(true);
+                    resolve(videoList);
                 })
                 .catch((err) => {
                     this.log.error(`[getChannelVideoData] youtube/v3/search - unable to fetch data for: ${id}: ${err}`);
-                    resolve(false);
+                    resolve([]); // Empty video list
                 });
         });
     }

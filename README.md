@@ -54,6 +54,7 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
 -->
 ### **WORK IN PROGRESS**
 
+* (klein0r) Added request success indicators
 * (klein0r) Added Ukrainian language
 
 ### 4.1.0 (2022-11-10)

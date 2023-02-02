@@ -1,9 +1,9 @@
 {
-    "API-Key": "api key",
-    "Channel id": "channel id",
-    "Channel name": "custom channel name",
-    "Channels": "channels",
-    "Enable video information": "add video information",
+    "API-Key": "API key",
+    "Channel id": "Channel ID",
+    "Channel name": "Custom channel name",
+    "Channels": "Channels",
+    "Enable video information": "Add video information",
     "Options": "Options",
-    "add": "add"
+    "add": "Add"
 }

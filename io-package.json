@@ -237,6 +237,30 @@
                 "write": false
             },
             "native": {}
+        },
+        {
+            "_id": "summary.jsonVideosToday",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "Published videos today",
+                    "de": "Veröffentlichte Videos heute",
+                    "ru": "Опубликовано видео сегодня",
+                    "pt": "Vídeos publicados hoje",
+                    "nl": "Gepubliceerde video's vandaag",
+                    "fr": "Publié des vidéos aujourd'hui",
+                    "it": "Pubblicato video oggi",
+                    "es": "Publicado videos hoy",
+                    "pl": "Obecnie",
+                    "uk": "Опубліковано відео сьогодні",
+                    "zh-cn": "今天出版的录像"
+                },
+                "type": "string",
+                "role": "json",
+                "read": true,
+                "write": false
+            },
+            "native": {}
         }
     ]
 }
