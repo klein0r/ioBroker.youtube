@@ -26,8 +26,8 @@
                 "it": "NodeJS 14.x è richiesto (NodeJS 12.x è EOL)\n\n* Risolto il tempo dell'ultimo aggiornamento",
                 "es": "Se requiere NodeJS 14.x (NodeJS 12.x es EOL)\n\n* Tiempo de última actualización fijo",
                 "pl": "NodeJS 14.x jest wymagany (NodeJS 12.x to EOL)\n\n* Naprawiono czas ostatniej aktualizacji",
-                "zh-cn": "需要 NodeJS 14.x（NodeJS 12.x 已停产）\n\n* 修正最后更新时间",
-                "uk": "Потрібен NodeJS 14.x (NodeJS 12.x є EOL)\n\n* Виправлено час останнього оновлення"
+                "uk": "Потрібен NodeJS 14.x (NodeJS 12.x є EOL)\n\n* Виправлено час останнього оновлення",
+                "zh-cn": "需要 NodeJS 14.x（NodeJS 12.x 已停产）\n\n* 修正最后更新时间"
             },
             "3.0.1": {
                 "en": "Just perform video info request if previous request was successful\nImproved error handling when API key is missing\nUpdated logging",
@@ -39,8 +39,8 @@
                 "it": "Basta eseguire la richiesta di informazioni sul video se la richiesta precedente ha avuto esito positivo\nGestione degli errori migliorata quando manca la chiave API\nRegistrazione aggiornata",
                 "es": "Simplemente realice una solicitud de información de video si la solicitud anterior fue exitosa\nManejo de errores mejorado cuando falta la clave API\nRegistro actualizado",
                 "pl": "Po prostu wyślij żądanie informacji o filmie, jeśli poprzednie żądanie zakończyło się powodzeniem\nPoprawiona obsługa błędów w przypadku braku klucza API\nZaktualizowane logowanie",
-                "zh-cn": "如果之前的请求成功，只需执行视频信息请求\n改进了 API 密钥丢失时的错误处理\n更新的日志记录",
-                "uk": "Просто виконайте запит інформації про відео, якщо попередній запит був успішним\nПокращена обробка помилок, коли ключ API відсутній\nОновлено журналювання"
+                "uk": "Просто виконайте запит інформації про відео, якщо попередній запит був успішним\nПокращена обробка помилок, коли ключ API відсутній\nОновлено журналювання",
+                "zh-cn": "如果之前的请求成功，只需执行视频信息请求\n改进了 API 密钥丢失时的错误处理\n更新的日志记录"
             },
             "3.0.0": {
                 "en": "Updated state roles\nAdded hint for Admin 4 configuration",
@@ -52,8 +52,8 @@
                 "it": "Ruoli statali aggiornati\nAggiunto suggerimento per la configurazione dell'amministratore 4",
                 "es": "Roles de estado actualizados\nSugerencia agregada para la configuración de Admin 4",
                 "pl": "Zaktualizowane role stanowe\nDodano wskazówkę dotyczącą konfiguracji Admin 4",
-                "zh-cn": "更新了状态角色\n添加了 Admin 4 配置的提示",
-                "uk": "Оновлені ролі стану\nДодано підказку для конфігурації Admin 4"
+                "uk": "Оновлені ролі стану\nДодано підказку для конфігурації Admin 4",
+                "zh-cn": "更新了状态角色\n添加了 Admin 4 配置的提示"
             },
             "2.0.4": {
                 "en": "Translated all objects\nUpdated dependencies",
@@ -65,8 +65,8 @@
                 "it": "Tradotto tutti gli oggetti\nDipendenze aggiornate",
                 "es": "Traducido todos los objetos\nDependencias actualizadas",
                 "pl": "Przetłumaczono wszystkie obiekty\nZaktualizowane zależności",
-                "zh-cn": "翻译所有对象\n更新的依赖项",
-                "uk": "Перекладено всі об'єкти\nОновлені залежності"
+                "uk": "Перекладено всі об'єкти\nОновлені залежності",
+                "zh-cn": "翻译所有对象\n更新的依赖项"
             },
             "2.0.3": {
                 "en": "Fixed missing VIS widget",
@@ -105,8 +105,8 @@
             "it": "Youtube",
             "es": "Youtube",
             "pl": "Youtube",
-            "zh-cn": "YouTube",
-            "uk": "YouTube"
+            "uk": "YouTube",
+            "zh-cn": "YouTube"
         },
         "desc": {
             "en": "Statistics like views, subscribers and videos",
@@ -118,8 +118,8 @@
             "it": "Statistiche come visualizzazioni, iscritti e video",
             "es": "Estadísticas como vistas, suscriptores y videos.",
             "pl": "Statystyki, takie jak wyświetlenia, subskrybenci i filmy",
-            "zh-cn": "观看次数、订阅者和视频等统计数据",
-            "uk": "Такі статистичні дані, як перегляди, підписки та відео"
+            "uk": "Такі статистичні дані, як перегляди, підписки та відео",
+            "zh-cn": "观看次数、订阅者和视频等统计数据"
         },
         "authors": [
             "Matthias Kleine <info@haus-automatisierung.com>"
@@ -188,6 +188,7 @@
                     "it": "Canali YouTube",
                     "es": "Canales de YouTube",
                     "pl": "Kanały YouTube",
+                    "uk": "Канали YouTube",
                     "zh-cn": "YouTube 频道"
                 }
             },
@@ -207,6 +208,7 @@
                     "it": "Riepilogo del canale",
                     "es": "Resumen del canal",
                     "pl": "Podsumowanie kanału",
+                    "uk": "Канал резюме",
                     "zh-cn": "频道摘要"
                 }
             },
@@ -226,6 +228,7 @@
                     "it": "Stringa JSON per tabelle",
                     "es": "Cadena JSON para tablas",
                     "pl": "Ciąg JSON dla tabel",
+                    "uk": "JSON string для таблиць",
                     "zh-cn": "表的 JSON 字符串"
                 },
                 "type": "string",

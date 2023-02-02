@@ -54,6 +54,7 @@
                                 "it": "Nome del canale",
                                 "es": "Nombre del Canal",
                                 "pl": "Nazwa kanału",
+                                "uk": "Назва каналу",
                                 "zh-cn": "频道名称"
                             },
                             "filter": true,
@@ -74,6 +75,7 @@
                                 "it": "Canale ID",
                                 "es": "Canal ID",
                                 "pl": "ID kanału",
+                                "uk": "Канал ID",
                                 "zh-cn": "频道编号"
                             },
                             "filter": false,
