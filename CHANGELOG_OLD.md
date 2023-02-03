@@ -1,4 +1,9 @@
 # Older changes
+## 2.0.4 (2021-12-23)
+
+* (klein0r) Translated all objects
+* (klein0r) Updated dependencies
+
 ## 2.0.3 (2021-11-07)
 
 * (klein0r) Fixed missing VIS widget
