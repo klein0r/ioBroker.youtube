@@ -57,7 +57,7 @@ class Youtube extends utils.Adapter {
                         },
                     },
                     native: {
-                        id: channel.id
+                        id: channel.id,
                     },
                 });
 
@@ -114,7 +114,7 @@ class Youtube extends utils.Adapter {
                                 native: {},
                             });
 
-                            videoDataList.push(...await this.getChannelVideoData(channel.id, `${cpath}.video`));
+                            videoDataList.push(...(await this.getChannelVideoData(channel.id, `${cpath}.video`)));
                         } else {
                             await this.delObjectAsync(`${cpath}.video`, { recursive: true });
                         }
@@ -135,7 +135,7 @@ class Youtube extends utils.Adapter {
 
             if (enableVideoInformation) {
                 const todayStart = new Date().setHours(0, 0, 0, 0);
-                await this.setStateAsync('summary.jsonVideosToday', { val: JSON.stringify(videoDataList.filter(v => v.published > todayStart)), ack: true });
+                await this.setStateAsync('summary.jsonVideosToday', { val: JSON.stringify(videoDataList.filter((v) => v.published > todayStart)), ack: true });
             } else {
                 await this.setStateAsync('summary.jsonVideosToday', { val: JSON.stringify([]), ack: true });
             }
