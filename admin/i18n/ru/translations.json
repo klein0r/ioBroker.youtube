@@ -1,9 +1,6 @@
 {
     "API-Key": "ключ API",
-    "Channel id": "идентификатор канала",
-    "Channel name": "произвольное название канала",
     "Channels": "каналы",
-    "Enable video information": "добавить видео информацию",
-    "Options": "Настройки",
-    "add": "Добавить"
+    "Enable video information": "Добавьте информацию о видео",
+    "Options": "Параметры"
 }

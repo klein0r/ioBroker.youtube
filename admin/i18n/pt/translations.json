@@ -1,9 +1,6 @@
 {
     "API-Key": "Chave API",
-    "Channel id": "ID do canal",
-    "Channel name": "nome do canal personalizado",
-    "Channels": "canais",
-    "Enable video information": "adicionar informações de vídeo",
-    "Options": "Opções",
-    "add": "adicionar"
+    "Channels": "Canais",
+    "Enable video information": "Adicionar informações de vídeo",
+    "Options": "Opções"
 }
