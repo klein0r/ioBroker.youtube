@@ -16,6 +16,7 @@ class Youtube extends utils.Adapter {
     }
 
     async onReady() {
+        const apiKey = this.config.apiKey;
         const enableVideoInformation = this.config.enableVideoInformation;
 
         const channels = this.config.channels;
@@ -42,53 +43,91 @@ class Youtube extends utils.Adapter {
         if (channels && Array.isArray(channels)) {
             this.log.debug(`[onReady] found ${channels.length} channels in config, fetching data`);
 
-            for (const c in channels) {
-                const channel = channels[c];
+            for (const channel of channels) {
                 const cleanChannelName = channel.name.replace(/\s/g, '').replace(/[^\p{Ll}\p{Lu}\p{Nd}]+/gu, '_');
 
                 channelsKeep.push(`channels.${cleanChannelName}`);
 
-                await this.extendObjectAsync(`channels.${cleanChannelName}`, {
-                    type: 'channel',
-                    common: {
-                        name: channel.name,
-                        statusStates: {
-                            onlineId: `${this.namespace}.channels.${cleanChannelName}.success`,
-                        },
-                    },
-                    native: {
-                        id: channel.id,
-                    },
-                });
-
-                await this.setObjectNotExistsAsync(`channels.${cleanChannelName}.success`, {
-                    type: 'state',
-                    common: {
-                        name: {
-                            en: 'Data request successful',
-                            de: 'Datenanfrage erfolgreich',
-                            ru: 'Запрос данных успешно',
-                            pt: 'Pedido de dados bem sucedido',
-                            nl: 'Dataverzoek succesvol',
-                            fr: 'Demande de données réussie',
-                            it: 'Richiesta di dati di successo',
-                            es: 'Solicitud de datos con éxito',
-                            pl: 'Żądanie',
-                            uk: 'Запит даних успішним',
-                            'zh-cn': '数据要求获得成功',
-                        },
-                        type: 'boolean',
-                        role: 'indicator.reachable',
-                        read: true,
-                        write: false,
-                        def: false,
-                    },
-                    native: {},
-                });
-
                 try {
+                    let channelId = channel.id;
+
+                    // Extract channelId from object or search via API
+                    const channelObj = await this.getObjectAsync(`channels.${cleanChannelName}`);
+                    if (!channelObj || !channelObj.native?.channelId) {
+                        if (channelId.startsWith('@')) {
+                            this.log.debug(`[onReady] youtube/v3/search - request init for custom url / alias: ${channelId}`);
+
+                            const queryParameters = {
+                                part: 'id',
+                                type: 'channel',
+                                q: channelId, // e.g. @haus_automation
+                                fields: 'items(id(kind,channelId))',
+                                key: apiKey,
+                            };
+
+                            const getChannelIdResponse = await axios({
+                                method: 'get',
+                                baseURL: 'https://www.googleapis.com/youtube/v3/',
+                                url: `/search?${querystring.stringify(queryParameters)}`,
+                                timeout: 4500,
+                                responseType: 'json',
+                            });
+
+                            if (getChannelIdResponse.status == 200) {
+                                this.log.debug(`[onReady] youtube/v3/search - received data for ${channelId} (${getChannelIdResponse.status}): ${JSON.stringify(getChannelIdResponse.data)}`);
+
+                                const channelItems = getChannelIdResponse.data.items;
+                                if (channelItems && channelItems.length > 0) {
+                                    channelId = channelItems[0].id.channelId;
+                                }
+                            }
+                        }
+
+                        await this.extendObjectAsync(`channels.${cleanChannelName}`, {
+                            type: 'channel',
+                            common: {
+                                name: channel.name,
+                                statusStates: {
+                                    onlineId: `${this.namespace}.channels.${cleanChannelName}.success`,
+                                },
+                            },
+                            native: {
+                                channelId: channelId,
+                            },
+                        });
+                    } else {
+                        channelId = channelObj.native.channelId;
+
+                        this.log.debug(`[onReady] using existing channel id "${channelId}" of object for "${channel.name}"`);
+                    }
+
+                    await this.setObjectNotExistsAsync(`channels.${cleanChannelName}.success`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Data request successful',
+                                de: 'Datenanfrage erfolgreich',
+                                ru: 'Запрос данных успешно',
+                                pt: 'Pedido de dados bem sucedido',
+                                nl: 'Dataverzoek succesvol',
+                                fr: 'Demande de données réussie',
+                                it: 'Richiesta di dati di successo',
+                                es: 'Solicitud de datos con éxito',
+                                pl: 'Żądanie',
+                                uk: 'Запит даних успішним',
+                                'zh-cn': '数据要求获得成功',
+                            },
+                            type: 'boolean',
+                            role: 'indicator.reachable',
+                            read: true,
+                            write: false,
+                            def: false,
+                        },
+                        native: {},
+                    });
+
                     const cpath = `channels.${cleanChannelName}`;
-                    const channelData = await this.getChannelData(channel.id, cpath);
+                    const channelData = await this.getChannelData(channelId, cpath);
 
                     if (typeof channelData === 'object') {
                         channelDataList.push(channelData);
@@ -114,7 +153,7 @@ class Youtube extends utils.Adapter {
                                 native: {},
                             });
 
-                            videoDataList.push(...(await this.getChannelVideoData(channel.id, `${cpath}.video`)));
+                            videoDataList.push(...(await this.getChannelVideoData(channelId, `${cpath}.video`)));
                         } else {
                             await this.delObjectAsync(`${cpath}.video`, { recursive: true });
                         }
