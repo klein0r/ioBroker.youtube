@@ -523,7 +523,7 @@ class Youtube extends utils.Adapter {
             const queryParameters = {
                 part: 'id,snippet',
                 type: 'video',
-                oder: 'date',
+                order: 'date',
                 maxResults: 5,
                 channelId: id,
                 key: apiKey,
