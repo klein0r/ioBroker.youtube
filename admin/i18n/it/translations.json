@@ -2,5 +2,6 @@
     "API-Key": "Chiave dell'API",
     "Channels": "Canali",
     "Enable video information": "Aggiungi informazioni sul video",
-    "Options": "Opzioni"
+    "Options": "Opzioni",
+    "Generate a key using the Google developer console": "Genera una chiave utilizzando la console per sviluppatori di Google"
 }

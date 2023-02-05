@@ -2,5 +2,6 @@
     "API-Key": "ключ API",
     "Channels": "каналы",
     "Enable video information": "Добавьте информацию о видео",
-    "Options": "Параметры"
+    "Options": "Параметры",
+    "Generate a key using the Google developer console": "Сгенерируйте ключ с помощью консоли разработчика Google."
 }

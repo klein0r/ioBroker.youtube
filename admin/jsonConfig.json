@@ -11,7 +11,9 @@
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
-                    "label": "API-Key"
+                    "label": "API-Key",
+                    "help": "Generate a key using the Google developer console",
+                    "helpLink": "https://console.cloud.google.com/apis/library/youtube.googleapis.com"
                 },
                 "enableVideoInformation": {
                     "newLine": true,
