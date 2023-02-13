@@ -79,6 +79,8 @@ class Youtube extends utils.Adapter {
                                 const channelItems = getChannelIdResponse.data.items;
                                 if (channelItems && channelItems.length > 0) {
                                     channelId = channelItems[0].id.channelId;
+
+                                    this.log.info(`[onReady] found channel id "${channelId}" by custom url / alias for "${channel.name}"`);
                                 }
                             }
                         }
