@@ -1,4 +1,9 @@
 # Older changes
+## 3.0.0 (2022-02-12)
+
+* (klein0r) Updated state roles
+* (klein0r) Added hint for Admin 4 configuration
+
 ## 2.0.4 (2021-12-23)
 
 * (klein0r) Translated all objects

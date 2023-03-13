@@ -52,7 +52,7 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 4.2.1 (2023-03-13)
 
 * (klein0r) Video data as JSON
 
@@ -81,11 +81,6 @@ NodeJS 14.x is required (NodeJS 12.x is EOL)
 * (klein0r) Just perform video info request if previous request was successful
 * (klein0r) Improved error handling when API key is missing
 * (klein0r) Updated logging
-
-### 3.0.0 (2022-02-12)
-
-* (klein0r) Updated state roles
-* (klein0r) Added hint for Admin 4 configuration
 
 ## License
 
