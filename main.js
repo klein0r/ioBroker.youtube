@@ -81,6 +81,8 @@ class Youtube extends utils.Adapter {
                                     channelId = channelItems[0].id.channelId;
 
                                     this.log.info(`[onReady] found channel id "${channelId}" by custom url / alias for "${channel.name}"`);
+                                } else {
+                                    this.log.warn(`[onReady] unable to find channel id by custom url / alias for "${channel.name}`);
                                 }
                             }
                         }
@@ -103,7 +105,9 @@ class Youtube extends utils.Adapter {
                         this.log.debug(`[onReady] using existing channel id "${channelId}" of object for "${channel.name}"`);
                     }
 
-                    await this.setObjectNotExistsAsync(`channels.${cleanChannelName}.success`, {
+                    const cpath = `channels.${cleanChannelName}`;
+
+                    await this.setObjectNotExistsAsync(`${cpath}.success`, {
                         type: 'state',
                         common: {
                             name: {
@@ -128,13 +132,295 @@ class Youtube extends utils.Adapter {
                         native: {},
                     });
 
-                    const cpath = `channels.${cleanChannelName}`;
+                    await this.setObjectNotExistsAsync(`${cpath}.lastUpdate`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Last update',
+                                de: 'Letztes Update',
+                                ru: 'Последнее обновление',
+                                pt: 'Última atualização',
+                                nl: 'Laatste update',
+                                fr: 'Dernière mise à jour',
+                                it: 'Ultimo aggiornamento',
+                                es: 'Última actualización',
+                                pl: 'Ostatnia aktualizacja',
+                                uk: 'Останнє оновлення',
+                                'zh-cn': '最后更新',
+                            },
+                            type: 'number',
+                            role: 'date',
+                            read: true,
+                            write: false,
+                        },
+                        native: {},
+                    });
+
+                    await this.setObjectNotExistsAsync(`${cpath}.statistics`, {
+                        type: 'channel',
+                        common: {
+                            name: {
+                                en: 'Statistics',
+                                de: 'Statistiken',
+                                ru: 'Статистика',
+                                pt: 'Estatisticas',
+                                nl: 'Statistieken',
+                                fr: 'Statistiques',
+                                it: 'Statistiche',
+                                es: 'Estadísticas',
+                                pl: 'Statystyka',
+                                uk: 'Статистика',
+                                'zh-cn': '统计数据',
+                            },
+                        },
+                        native: {},
+                    });
+
+                    await this.setObjectNotExistsAsync(`${cpath}.statistics.viewCount`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'View count',
+                                de: 'Anzahl der Aufrufe',
+                                ru: 'Счетчик просмотров',
+                                pt: 'Ver contagem',
+                                nl: 'Kijkcijfers',
+                                fr: 'Nombre de vues',
+                                it: 'Visualizza conteggio',
+                                es: 'Conteo de visitas',
+                                pl: 'Licznik wyświetleń',
+                                uk: 'Перегляд графіка',
+                                'zh-cn': '查看次数',
+                            },
+                            type: 'number',
+                            role: 'value',
+                            read: true,
+                            write: false,
+                        },
+                        native: {},
+                    });
+
+                    await this.setObjectNotExistsAsync(`${cpath}.statistics.videoViewCountAvg`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Avg views per video',
+                                de: 'Durchschnittliche Aufrufe pro Video',
+                                ru: 'Среднее количество просмотров на видео',
+                                pt: 'Média de visualizações por vídeo',
+                                nl: 'Gem. weergaven per video',
+                                fr: 'Vues moyennes par vidéo',
+                                it: 'Media visualizzazioni per video',
+                                es: 'Promedio de visualizaciones por video',
+                                pl: 'Średnia liczba wyświetleń na film',
+                                uk: 'Середній погляд на відео',
+                                'zh-cn': '每个视频的平均观看次数',
+                            },
+                            type: 'number',
+                            role: 'value',
+                            read: true,
+                            write: false,
+                        },
+                        native: {},
+                    });
+
+                    await this.setObjectNotExistsAsync(`${cpath}.statistics.subscriberCount`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Subscriber Count',
+                                de: 'Abonnentenzahl',
+                                ru: 'Количество подписчиков',
+                                pt: 'Contagem de assinantes',
+                                nl: 'Aantal abonnees',
+                                fr: "Nombre d'abonnés",
+                                it: 'Numero di iscritti',
+                                es: 'Cuenta de suscriptores',
+                                pl: 'Liczba subskrybentów',
+                                uk: 'Абонентський облік',
+                                'zh-cn': '订阅人数',
+                            },
+                            type: 'number',
+                            role: 'value',
+                            read: true,
+                            write: false,
+                        },
+                        native: {},
+                    });
+
+                    await this.setObjectNotExistsAsync(`${cpath}.statistics.videoSubscriberCountAvg`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Avg subscribers per video',
+                                de: 'Durchschnittliche Abonnenten pro Video',
+                                ru: 'Среднее количество подписчиков на видео',
+                                pt: 'Média de assinantes por vídeo',
+                                nl: 'Gem. abonnees per video',
+                                fr: "Nombre moyen d'abonnés par vidéo",
+                                it: 'Iscritti medi per video',
+                                es: 'Promedio de suscriptores por video',
+                                pl: 'Średnia liczba subskrybentów na film',
+                                uk: 'Середні абоненти на відео',
+                                'zh-cn': '每个视频的平均订阅人数',
+                            },
+                            type: 'number',
+                            role: 'value',
+                            read: true,
+                            write: false,
+                        },
+                        native: {},
+                    });
+
+                    await this.setObjectNotExistsAsync(`${cpath}.statistics.videoCount`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Video count',
+                                de: 'Videoanzahl',
+                                ru: 'Количество видео',
+                                pt: 'Contagem de Vídeo',
+                                nl: "Aantal video's",
+                                fr: 'Nombre de vidéos',
+                                it: 'Conteggio video',
+                                es: 'Recuento de videos',
+                                pl: 'Liczba filmów',
+                                uk: 'Відео Граф',
+                                'zh-cn': '视频数',
+                            },
+                            type: 'number',
+                            role: 'value',
+                            read: true,
+                            write: false,
+                        },
+                        native: {},
+                    });
+
+                    await this.setObjectNotExistsAsync(`${cpath}.snippet`, {
+                        type: 'channel',
+                        common: {
+                            name: {
+                                en: 'Snippet',
+                                de: 'Ausschnitt',
+                                ru: 'Фрагмент',
+                                pt: 'Trecho',
+                                nl: 'fragment',
+                                fr: 'Fragment',
+                                it: 'Frammento',
+                                es: 'Retazo',
+                                pl: 'Skrawek',
+                                uk: 'Сніппе',
+                                'zh-cn': '片段',
+                            },
+                        },
+                        native: {},
+                    });
+
+                    await this.setObjectNotExistsAsync(`${cpath}.snippet.title`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Channel name',
+                                de: 'Kanal Name',
+                                ru: 'Название канала',
+                                pt: 'Nome do canal',
+                                nl: 'Kanaal naam',
+                                fr: 'Nom du canal',
+                                it: 'Nome del canale',
+                                es: 'Nombre del Canal',
+                                pl: 'Nazwa kanału',
+                                uk: 'Назва каналу',
+                                'zh-cn': '频道名称',
+                            },
+                            type: 'string',
+                            role: 'text',
+                            read: true,
+                            write: false,
+                        },
+                        native: {},
+                    });
+
+                    await this.setObjectNotExistsAsync(`${cpath}.snippet.description`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Channel description',
+                                de: 'Kanal Beschreibung',
+                                ru: 'Описание канала',
+                                pt: 'Descrição do canal',
+                                nl: 'Kanaal beschrijving',
+                                fr: 'Description de la chaîne',
+                                it: 'Descrizione del canale',
+                                es: 'Descripción del canal',
+                                pl: 'Opis kanału',
+                                uk: 'Опис радіостанції',
+                                'zh-cn': '频道说明',
+                            },
+                            type: 'string',
+                            role: 'text',
+                            read: true,
+                            write: false,
+                        },
+                        native: {},
+                    });
+
+                    await this.setObjectNotExistsAsync(`${cpath}.snippet.customUrl`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Channel custom url',
+                                de: 'Benutzerdefinierte Kanal-URL',
+                                ru: 'Пользовательский URL канала',
+                                pt: 'URL personalizado do canal',
+                                nl: 'Aangepaste kanaal-URL',
+                                fr: 'URL personnalisée de la chaîne',
+                                it: 'URL personalizzato del canale',
+                                es: 'URL personalizada del canal',
+                                pl: 'Niestandardowy adres URL kanału',
+                                uk: 'Канал Custom Урл',
+                                'zh-cn': '频道自定义网址',
+                            },
+                            type: 'string',
+                            role: 'text',
+                            read: true,
+                            write: false,
+                        },
+                        native: {},
+                    });
+
+                    await this.setObjectNotExistsAsync(`${cpath}.snippet.publishedAt`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'Channel publish date',
+                                de: 'Datum der Veröffentlichung des Kanals',
+                                ru: 'Дата публикации канала',
+                                pt: 'Data de Publicação do Canal',
+                                nl: 'Publicatiedatum kanaal',
+                                fr: 'Date de publication de la chaîne',
+                                it: 'Data di pubblicazione del canale',
+                                es: 'Fecha de publicación del canal',
+                                pl: 'Data publikacji kanału',
+                                uk: 'Дата публікації каналу',
+                                'zh-cn': '频道发布日期',
+                            },
+                            type: 'number',
+                            role: 'date',
+                            read: true,
+                            write: false,
+                        },
+                        native: {},
+                    });
+
                     const channelData = await this.getChannelData(channelId, cpath);
 
                     if (typeof channelData === 'object') {
                         channelDataList.push(channelData);
 
                         if (enableVideoInformation) {
+                            const videoData = await this.getChannelVideoData(channelId, `${cpath}.video`);
+                            videoDataList.push(...videoData);
+
                             await this.setObjectNotExistsAsync(`${cpath}.video`, {
                                 type: 'channel',
                                 common: {
@@ -155,7 +441,30 @@ class Youtube extends utils.Adapter {
                                 native: {},
                             });
 
-                            videoDataList.push(...(await this.getChannelVideoData(channelId, `${cpath}.video`)));
+                            await this.setObjectNotExistsAsync(`${cpath}.video.json`, {
+                                type: 'state',
+                                common: {
+                                    name: {
+                                        en: 'JSON string for tables',
+                                        de: 'JSON-String für Tabellen',
+                                        ru: 'Строка JSON для таблиц',
+                                        pt: 'String JSON para tabelas',
+                                        nl: 'JSON-tekenreeks voor tabellen',
+                                        fr: 'Chaîne JSON pour les tableaux',
+                                        it: 'Stringa JSON per tabelle',
+                                        es: 'Cadena JSON para tablas',
+                                        pl: 'Ciąg JSON dla tabel',
+                                        uk: 'JSON string для таблиць',
+                                        'zh-cn': '表的 JSON 字符串',
+                                    },
+                                    type: 'string',
+                                    role: 'json',
+                                    read: true,
+                                    write: false,
+                                },
+                                native: {},
+                            });
+                            await this.setStateAsync(`${cpath}.video.json`, { val: JSON.stringify(videoData), ack: true });
                         } else {
                             await this.delObjectAsync(`${cpath}.video`, { recursive: true });
                         }
@@ -178,7 +487,7 @@ class Youtube extends utils.Adapter {
                 const todayStart = new Date().setHours(0, 0, 0, 0);
                 await this.setStateAsync('summary.jsonVideosToday', { val: JSON.stringify(videoDataList.filter((v) => v.published > todayStart)), ack: true });
             } else {
-                await this.setStateAsync('summary.jsonVideosToday', { val: JSON.stringify([]), ack: true });
+                await this.setStateAsync('summary.jsonVideosToday', { val: JSON.stringify([]), ack: true, q: 0x02, c: 'Video information disabled in instance configuration' });
             }
         } else {
             this.log.warn('[onReady] No channels configured - check instance configuration');
@@ -199,289 +508,7 @@ class Youtube extends utils.Adapter {
         this.stop();
     }
 
-    async getChannelData(id, cpath) {
-        // Documentation: https://developers.google.com/youtube/v3/docs/channels
-
-        await this.setObjectNotExistsAsync(`${cpath}.lastUpdate`, {
-            type: 'state',
-            common: {
-                name: {
-                    en: 'Last update',
-                    de: 'Letztes Update',
-                    ru: 'Последнее обновление',
-                    pt: 'Última atualização',
-                    nl: 'Laatste update',
-                    fr: 'Dernière mise à jour',
-                    it: 'Ultimo aggiornamento',
-                    es: 'Última actualización',
-                    pl: 'Ostatnia aktualizacja',
-                    uk: 'Останнє оновлення',
-                    'zh-cn': '最后更新',
-                },
-                type: 'number',
-                role: 'date',
-                read: true,
-                write: false,
-            },
-            native: {},
-        });
-
-        await this.setObjectNotExistsAsync(`${cpath}.statistics`, {
-            type: 'channel',
-            common: {
-                name: {
-                    en: 'Statistics',
-                    de: 'Statistiken',
-                    ru: 'Статистика',
-                    pt: 'Estatisticas',
-                    nl: 'Statistieken',
-                    fr: 'Statistiques',
-                    it: 'Statistiche',
-                    es: 'Estadísticas',
-                    pl: 'Statystyka',
-                    uk: 'Статистика',
-                    'zh-cn': '统计数据',
-                },
-            },
-            native: {},
-        });
-
-        await this.setObjectNotExistsAsync(`${cpath}.statistics.viewCount`, {
-            type: 'state',
-            common: {
-                name: {
-                    en: 'View count',
-                    de: 'Anzahl der Aufrufe',
-                    ru: 'Счетчик просмотров',
-                    pt: 'Ver contagem',
-                    nl: 'Kijkcijfers',
-                    fr: 'Nombre de vues',
-                    it: 'Visualizza conteggio',
-                    es: 'Conteo de visitas',
-                    pl: 'Licznik wyświetleń',
-                    uk: 'Перегляд графіка',
-                    'zh-cn': '查看次数',
-                },
-                type: 'number',
-                role: 'value',
-                read: true,
-                write: false,
-            },
-            native: {},
-        });
-
-        await this.setObjectNotExistsAsync(`${cpath}.statistics.videoViewCountAvg`, {
-            type: 'state',
-            common: {
-                name: {
-                    en: 'Avg views per video',
-                    de: 'Durchschnittliche Aufrufe pro Video',
-                    ru: 'Среднее количество просмотров на видео',
-                    pt: 'Média de visualizações por vídeo',
-                    nl: 'Gem. weergaven per video',
-                    fr: 'Vues moyennes par vidéo',
-                    it: 'Media visualizzazioni per video',
-                    es: 'Promedio de visualizaciones por video',
-                    pl: 'Średnia liczba wyświetleń na film',
-                    uk: 'Середній погляд на відео',
-                    'zh-cn': '每个视频的平均观看次数',
-                },
-                type: 'number',
-                role: 'value',
-                read: true,
-                write: false,
-            },
-            native: {},
-        });
-
-        await this.setObjectNotExistsAsync(`${cpath}.statistics.subscriberCount`, {
-            type: 'state',
-            common: {
-                name: {
-                    en: 'Subscriber Count',
-                    de: 'Abonnentenzahl',
-                    ru: 'Количество подписчиков',
-                    pt: 'Contagem de assinantes',
-                    nl: 'Aantal abonnees',
-                    fr: "Nombre d'abonnés",
-                    it: 'Numero di iscritti',
-                    es: 'Cuenta de suscriptores',
-                    pl: 'Liczba subskrybentów',
-                    uk: 'Абонентський облік',
-                    'zh-cn': '订阅人数',
-                },
-                type: 'number',
-                role: 'value',
-                read: true,
-                write: false,
-            },
-            native: {},
-        });
-
-        await this.setObjectNotExistsAsync(`${cpath}.statistics.videoSubscriberCountAvg`, {
-            type: 'state',
-            common: {
-                name: {
-                    en: 'Avg subscribers per video',
-                    de: 'Durchschnittliche Abonnenten pro Video',
-                    ru: 'Среднее количество подписчиков на видео',
-                    pt: 'Média de assinantes por vídeo',
-                    nl: 'Gem. abonnees per video',
-                    fr: "Nombre moyen d'abonnés par vidéo",
-                    it: 'Iscritti medi per video',
-                    es: 'Promedio de suscriptores por video',
-                    pl: 'Średnia liczba subskrybentów na film',
-                    uk: 'Середні абоненти на відео',
-                    'zh-cn': '每个视频的平均订阅人数',
-                },
-                type: 'number',
-                role: 'value',
-                read: true,
-                write: false,
-            },
-            native: {},
-        });
-
-        await this.setObjectNotExistsAsync(`${cpath}.statistics.videoCount`, {
-            type: 'state',
-            common: {
-                name: {
-                    en: 'Video count',
-                    de: 'Videoanzahl',
-                    ru: 'Количество видео',
-                    pt: 'Contagem de Vídeo',
-                    nl: "Aantal video's",
-                    fr: 'Nombre de vidéos',
-                    it: 'Conteggio video',
-                    es: 'Recuento de videos',
-                    pl: 'Liczba filmów',
-                    uk: 'Відео Граф',
-                    'zh-cn': '视频数',
-                },
-                type: 'number',
-                role: 'value',
-                read: true,
-                write: false,
-            },
-            native: {},
-        });
-
-        await this.setObjectNotExistsAsync(`${cpath}.snippet`, {
-            type: 'channel',
-            common: {
-                name: {
-                    en: 'Snippet',
-                    de: 'Ausschnitt',
-                    ru: 'Фрагмент',
-                    pt: 'Trecho',
-                    nl: 'fragment',
-                    fr: 'Fragment',
-                    it: 'Frammento',
-                    es: 'Retazo',
-                    pl: 'Skrawek',
-                    uk: 'Сніппе',
-                    'zh-cn': '片段',
-                },
-            },
-            native: {},
-        });
-
-        await this.setObjectNotExistsAsync(`${cpath}.snippet.title`, {
-            type: 'state',
-            common: {
-                name: {
-                    en: 'Channel name',
-                    de: 'Kanal Name',
-                    ru: 'Название канала',
-                    pt: 'Nome do canal',
-                    nl: 'Kanaal naam',
-                    fr: 'Nom du canal',
-                    it: 'Nome del canale',
-                    es: 'Nombre del Canal',
-                    pl: 'Nazwa kanału',
-                    uk: 'Назва каналу',
-                    'zh-cn': '频道名称',
-                },
-                type: 'string',
-                role: 'text',
-                read: true,
-                write: false,
-            },
-            native: {},
-        });
-
-        await this.setObjectNotExistsAsync(`${cpath}.snippet.description`, {
-            type: 'state',
-            common: {
-                name: {
-                    en: 'Channel description',
-                    de: 'Kanal Beschreibung',
-                    ru: 'Описание канала',
-                    pt: 'Descrição do canal',
-                    nl: 'Kanaal beschrijving',
-                    fr: 'Description de la chaîne',
-                    it: 'Descrizione del canale',
-                    es: 'Descripción del canal',
-                    pl: 'Opis kanału',
-                    uk: 'Опис радіостанції',
-                    'zh-cn': '频道说明',
-                },
-                type: 'string',
-                role: 'text',
-                read: true,
-                write: false,
-            },
-            native: {},
-        });
-
-        await this.setObjectNotExistsAsync(`${cpath}.snippet.customUrl`, {
-            type: 'state',
-            common: {
-                name: {
-                    en: 'Channel custom url',
-                    de: 'Benutzerdefinierte Kanal-URL',
-                    ru: 'Пользовательский URL канала',
-                    pt: 'URL personalizado do canal',
-                    nl: 'Aangepaste kanaal-URL',
-                    fr: 'URL personnalisée de la chaîne',
-                    it: 'URL personalizzato del canale',
-                    es: 'URL personalizada del canal',
-                    pl: 'Niestandardowy adres URL kanału',
-                    uk: 'Канал Custom Урл',
-                    'zh-cn': '频道自定义网址',
-                },
-                type: 'string',
-                role: 'text',
-                read: true,
-                write: false,
-            },
-            native: {},
-        });
-
-        await this.setObjectNotExistsAsync(`${cpath}.snippet.publishedAt`, {
-            type: 'state',
-            common: {
-                name: {
-                    en: 'Channel publish date',
-                    de: 'Datum der Veröffentlichung des Kanals',
-                    ru: 'Дата публикации канала',
-                    pt: 'Data de Publicação do Canal',
-                    nl: 'Publicatiedatum kanaal',
-                    fr: 'Date de publication de la chaîne',
-                    it: 'Data di pubblicazione del canale',
-                    es: 'Fecha de publicación del canal',
-                    pl: 'Data publikacji kanału',
-                    uk: 'Дата публікації каналу',
-                    'zh-cn': '频道发布日期',
-                },
-                type: 'number',
-                role: 'date',
-                read: true,
-                write: false,
-            },
-            native: {},
-        });
-
+    getChannelData(id, cpath) {
         return new Promise((resolve, reject) => {
             const apiKey = this.config.apiKey;
 
@@ -494,6 +521,7 @@ class Youtube extends utils.Adapter {
                     key: apiKey,
                 };
 
+                // Documentation: https://developers.google.com/youtube/v3/docs/channels
                 axios({
                     method: 'get',
                     baseURL: 'https://www.googleapis.com/youtube/v3/',
@@ -554,8 +582,7 @@ class Youtube extends utils.Adapter {
         });
     }
 
-    // Documentation: https://developers.google.com/youtube/v3/docs/search/list
-    async getChannelVideoData(id, cpath) {
+    getChannelVideoData(id, cpath) {
         return new Promise((resolve) => {
             const apiKey = this.config.apiKey;
 
@@ -570,6 +597,7 @@ class Youtube extends utils.Adapter {
                 key: apiKey,
             };
 
+            // Documentation: https://developers.google.com/youtube/v3/docs/search/list
             axios({
                 method: 'get',
                 baseURL: 'https://www.googleapis.com/youtube/v3/',
