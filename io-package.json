@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "youtube",
-    "version": "4.2.1",
+    "version": "4.3.0",
     "news": {
+      "4.3.0": {
+        "en": "Added customUrl to JSON summary",
+        "de": "Hinzugefügt benutzerdefinierte Url to JSON Zusammenfassung",
+        "ru": "Добавленный пользовательский Url к JSON резюме",
+        "pt": "Adicionado personalizado Resumo de Url para JSON",
+        "nl": "Toegevoegd. Url tot JSON Sumary",
+        "fr": "Ajout personnalisé Résumé de Url à JSON",
+        "it": "Aggiunto personalizzato Riepilogo da Url a JSON",
+        "es": "Añadido personalizado Resumen Url a JSON",
+        "pl": "Dodać zwyczaj Tekst JSON",
+        "uk": "Додати замовлення Урл до JSON резюме",
+        "zh-cn": "增加习俗 F. 敦促联合执行会摘要"
+      },
       "4.2.1": {
         "en": "Video data as JSON",
         "de": "Videodaten als JSON",
@@ -80,19 +93,6 @@
         "pl": "Zaktualizowane role stanowe\nDodano wskazówkę dotyczącą konfiguracji Admin 4",
         "uk": "Оновлені ролі стану\nДодано підказку для конфігурації Admin 4",
         "zh-cn": "更新了状态角色\n添加了 Admin 4 配置的提示"
-      },
-      "2.0.4": {
-        "en": "Translated all objects\nUpdated dependencies",
-        "de": "Alle Objekte übersetzt\nAktualisierte Abhängigkeiten",
-        "ru": "Переведены все объекты\nОбновленные зависимости",
-        "pt": "Todos os objetos traduzidos\nDependências atualizadas",
-        "nl": "Alle objecten vertaald\nBijgewerkte afhankelijkheden",
-        "fr": "Traduit tous les objets\nDépendances mises à jour",
-        "it": "Tradotto tutti gli oggetti\nDipendenze aggiornate",
-        "es": "Traducido todos los objetos\nDependencias actualizadas",
-        "pl": "Przetłumaczono wszystkie obiekty\nZaktualizowane zależności",
-        "uk": "Перекладено всі об'єкти\nОновлені залежності",
-        "zh-cn": "翻译所有对象\n更新的依赖项"
       }
     },
     "titleLang": {
