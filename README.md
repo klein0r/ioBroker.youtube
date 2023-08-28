@@ -52,6 +52,10 @@ To get an API-Key you have to go to [console.developers.google.com](https://cons
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Added customUrl to JSON summary
+
 ### 4.2.1 (2023-03-13)
 
 * (klein0r) Video data as JSON

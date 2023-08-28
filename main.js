@@ -563,6 +563,7 @@ class Youtube extends utils.Adapter {
                             if (firstItem?.statistics && firstItem?.snippet) {
                                 resolve({
                                     _id: id,
+                                    customUrl: firstItem.snippet.customUrl,
                                     title: firstItem.snippet.title,
                                     subscriberCount: firstItem.statistics.subscriberCount,
                                     viewCount: firstItem.statistics.viewCount,
