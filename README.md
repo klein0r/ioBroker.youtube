@@ -36,15 +36,11 @@ Please use the "adapter list" in ioBroker to install a stable version of this ad
 iobroker add youtube
 ```
 
-## Configuration
+## Documentation
 
-To get an API-Key you have to go to [console.developers.google.com](https://console.developers.google.com/apis/dashboard).
+[🇺🇸 Documentation](./docs/en/README.md)
 
-1. Create a new Project
-2. Create a new API key
-3. Add "YouTube Data API v3" of the library
-4. Use that API-Key in the options panel
-5. Add multiple channels in the channels tab by using the id and a custom name
+[🇩🇪 Dokumentation](./docs/de/README.md)
 
 ## Changelog
 
