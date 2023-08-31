@@ -96,7 +96,7 @@ class Youtube extends utils.Adapter {
                                 },
                             },
                             native: {
-                                channelId: channelId,
+                                channelId,
                             },
                         });
                     } else {
