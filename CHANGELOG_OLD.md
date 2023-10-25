@@ -1,4 +1,10 @@
 # Older changes
+## 4.0.0 (2022-05-29)
+
+NodeJS 14.x is required (NodeJS 12.x is EOL)
+
+* (klein0r) Fixed last update time
+
 ## 3.0.1 (2022-03-17)
 
 * (klein0r) Just perform video info request if previous request was successful

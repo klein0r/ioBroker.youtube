@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "youtube",
-    "version": "4.3.0",
+    "version": "4.4.0",
     "news": {
+      "4.4.0": {
+        "en": "NodeJS 16.x is required\n\n* Added icons to admin tabs",
+        "de": "NodeJS 16.x ist erforderlich\n\n* Hinzufügen von Icons zu Admin-Tabs",
+        "ru": "NodeJS 16.x требуется\n\n* Добавлены иконки для админ вкладки",
+        "pt": "NodeJS 16.x é necessário\n\n* Ícones adicionados para guias de administrador",
+        "nl": "NodeJS 16.x is vereist\n\n♪ Added icons to admin tabs ♪",
+        "fr": "NodeJS 16.x est nécessaire\n\n* Ajout d'icônes aux onglets d'administration",
+        "it": "NodeJS 16.x è richiesto\n\n* Aggiunte icone a schede di amministrazione",
+        "es": "NodeJS 16.x es necesario\n\n* iconos añadidos a pestañas de administración",
+        "pl": "NodeJS 16 (ang.)\n\n* Added icons to admin tabs (ang.)",
+        "uk": "NodeJS 16.x обов'язковий\n\n* Додано іконки до вкладок адміністратора",
+        "zh-cn": "不需要16.JS16x。\n\n* 增列图表"
+      },
       "4.3.0": {
         "en": "Added customUrl to JSON summary",
         "de": "Hinzugefügt benutzerdefinierte Url to JSON Zusammenfassung",
@@ -80,19 +93,6 @@
         "pl": "Po prostu wyślij żądanie informacji o filmie, jeśli poprzednie żądanie zakończyło się powodzeniem\nPoprawiona obsługa błędów w przypadku braku klucza API\nZaktualizowane logowanie",
         "uk": "Просто виконайте запит інформації про відео, якщо попередній запит був успішним\nПокращена обробка помилок, коли ключ API відсутній\nОновлено журналювання",
         "zh-cn": "如果之前的请求成功，只需执行视频信息请求\n改进了 API 密钥丢失时的错误处理\n更新的日志记录"
-      },
-      "3.0.0": {
-        "en": "Updated state roles\nAdded hint for Admin 4 configuration",
-        "de": "Statusrollen aktualisiert\nHinweis für die Konfiguration von Admin 4 hinzugefügt",
-        "ru": "Обновлены роли состояния\nДобавлена подсказка для конфигурации Admin 4",
-        "pt": "Funções de estado atualizadas\nAdicionada dica para configuração do Admin 4",
-        "nl": "Bijgewerkte statusrollen\nHint toegevoegd voor configuratie van Admin 4",
-        "fr": "Rôles d'état mis à jour\nAjout d'un indice pour la configuration d'Admin 4",
-        "it": "Ruoli statali aggiornati\nAggiunto suggerimento per la configurazione dell'amministratore 4",
-        "es": "Roles de estado actualizados\nSugerencia agregada para la configuración de Admin 4",
-        "pl": "Zaktualizowane role stanowe\nDodano wskazówkę dotyczącą konfiguracji Admin 4",
-        "uk": "Оновлені ролі стану\nДодано підказку для конфігурації Admin 4",
-        "zh-cn": "更新了状态角色\n添加了 Admin 4 配置的提示"
       }
     },
     "titleLang": {
