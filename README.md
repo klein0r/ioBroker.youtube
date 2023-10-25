@@ -50,6 +50,8 @@ iobroker add youtube
 
 NodeJS 16.x is required
 
+* (klein0r) Added icons to admin tabs
+
 ### 4.3.0 (2023-08-28)
 
 * (klein0r) Added customUrl to JSON summary
