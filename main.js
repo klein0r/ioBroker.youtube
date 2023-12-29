@@ -505,7 +505,9 @@ class Youtube extends utils.Adapter {
 
         this.log.debug(`[onReady] everything done - instance will stop soon`);
 
-        this.stop();
+        if (typeof this.stop === 'function') {
+            this.stop();
+        }
     }
 
     getChannelData(id, cpath) {
