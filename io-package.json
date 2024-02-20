@@ -130,10 +130,12 @@
       "video",
       "web"
     ],
+    "tier": 3,
     "licenseInformation": {
       "license": "MIT",
       "type": "free"
     },
+    "automaticUpgrade": "patch",
     "platform": "Javascript/Node.js",
     "icon": "youtube.png",
     "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.youtube/master/admin/youtube.png",
