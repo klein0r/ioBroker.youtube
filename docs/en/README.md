@@ -4,8 +4,8 @@
 
 ## Requirements
 
-- nodejs 16.0 (or later)
-- js-controller 4.0.15 (or later)
+- nodejs 18.0 (or later)
+- js-controller 5.0.0 (or later)
 - Admin Adapter 6.0.0 (or later)
 
 ## Configuration
