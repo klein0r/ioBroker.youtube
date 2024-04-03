@@ -182,7 +182,12 @@
   "native": {
     "apiKey": "",
     "enableVideoInformation": false,
-    "channels": []
+    "channels": [
+      {
+        "name": "HausAutomatisierungCom",
+        "id": "@haus_automation"
+      }
+    ]
   },
   "objects": [],
   "instanceObjects": [

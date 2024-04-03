@@ -50,6 +50,8 @@ iobroker add youtube
 
 NodeJS >= 18.x and js-controller >= 5 is required
 
+* (klein0r) Better way to get channel id by alias
+
 ### 4.4.0 (2023-10-25)
 
 NodeJS 16.x is required

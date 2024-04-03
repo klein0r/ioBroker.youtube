@@ -49,62 +49,6 @@ class Youtube extends utils.Adapter {
                 channelsKeep.push(`channels.${cleanChannelName}`);
 
                 try {
-                    let channelId = channel.id;
-
-                    // Extract channelId from object or search via API
-                    const channelObj = await this.getObjectAsync(`channels.${cleanChannelName}`);
-                    if (!channelObj || !channelObj.native?.channelId) {
-                        if (channelId.startsWith('@')) {
-                            this.log.debug(`[onReady] youtube/v3/search - request init for custom url / alias: ${channelId}`);
-
-                            const queryParameters = {
-                                part: 'id',
-                                type: 'channel',
-                                q: channelId, // e.g. @haus_automation
-                                fields: 'items(id(kind,channelId))',
-                                key: apiKey,
-                            };
-
-                            const getChannelIdResponse = await axios({
-                                method: 'get',
-                                baseURL: 'https://www.googleapis.com/youtube/v3/',
-                                url: `/search?${querystring.stringify(queryParameters)}`,
-                                timeout: 4500,
-                                responseType: 'json',
-                            });
-
-                            if (getChannelIdResponse.status == 200) {
-                                this.log.debug(`[onReady] youtube/v3/search - received data for ${channelId} (${getChannelIdResponse.status}): ${JSON.stringify(getChannelIdResponse.data)}`);
-
-                                const channelItems = getChannelIdResponse.data.items;
-                                if (channelItems && channelItems.length > 0) {
-                                    channelId = channelItems[0].id.channelId;
-
-                                    this.log.info(`[onReady] found channel id "${channelId}" by custom url / alias for "${channel.name}"`);
-                                } else {
-                                    this.log.warn(`[onReady] unable to find channel id by custom url / alias for "${channel.name}`);
-                                }
-                            }
-                        }
-
-                        await this.extendObjectAsync(`channels.${cleanChannelName}`, {
-                            type: 'channel',
-                            common: {
-                                name: channel.name,
-                                statusStates: {
-                                    onlineId: `${this.namespace}.channels.${cleanChannelName}.success`,
-                                },
-                            },
-                            native: {
-                                channelId,
-                            },
-                        });
-                    } else {
-                        channelId = channelObj.native.channelId;
-
-                        this.log.debug(`[onReady] using existing channel id "${channelId}" of object for "${channel.name}"`);
-                    }
-
                     const cpath = `channels.${cleanChannelName}`;
 
                     await this.setObjectNotExistsAsync(`${cpath}.success`, {
@@ -411,6 +355,61 @@ class Youtube extends utils.Adapter {
                         },
                         native: {},
                     });
+
+                    let channelId = channel.id;
+
+                    // Extract channelId from object or search via API
+                    const channelObj = await this.getObjectAsync(`channels.${cleanChannelName}`);
+                    if (!channelObj || !channelObj.native?.channelId) {
+                        if (channelId.startsWith('@')) {
+                            this.log.debug(`[onReady] youtube/v3/channels - request init for alias: "${channelId}"`);
+
+                            const queryParameters = {
+                                part: 'contentDetails',
+                                forHandle: channelId,
+                                key: apiKey,
+                            };
+
+                            // Documentation: https://developers.google.com/youtube/v3/docs/channels/list
+                            const getChannelIdResponse = await axios({
+                                method: 'get',
+                                baseURL: 'https://www.googleapis.com/youtube/v3/',
+                                url: `/channels?${querystring.stringify(queryParameters)}`,
+                                timeout: 4500,
+                                responseType: 'json',
+                            });
+
+                            if (getChannelIdResponse.status == 200) {
+                                this.log.debug(`[onReady] youtube/v3/channels - received data for "${channelId}" (${getChannelIdResponse.status}): ${JSON.stringify(getChannelIdResponse.data)}`);
+
+                                const channelItems = getChannelIdResponse.data.items;
+                                if (channelItems && channelItems.length > 0) {
+                                    channelId = channelItems[0].id;
+
+                                    this.log.info(`[onReady] found channel id "${channelId}" by alias for "${channel.name}"`);
+                                } else {
+                                    this.log.warn(`[onReady] unable to find channel id by alias for "${channel.name}`);
+                                }
+                            }
+                        }
+
+                        await this.extendObjectAsync(cpath, {
+                            type: 'channel',
+                            common: {
+                                name: channel.name,
+                                statusStates: {
+                                    onlineId: `${this.namespace}.channels.${cleanChannelName}.success`,
+                                },
+                            },
+                            native: {
+                                channelId,
+                            },
+                        });
+                    } else {
+                        channelId = channelObj.native.channelId;
+
+                        this.log.debug(`[onReady] using existing channel id "${channelId}" of object for "${channel.name}"`);
+                    }
 
                     const channelData = await this.getChannelData(channelId, cpath);
 
