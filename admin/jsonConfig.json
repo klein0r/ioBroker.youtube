@@ -64,7 +64,7 @@
                             },
                             "filter": true,
                             "sort": true,
-                            "default": "hausAutomatisierungCom"
+                            "default": ""
                         },
                         {
                             "type": "text",
@@ -85,7 +85,7 @@
                             },
                             "filter": false,
                             "sort": false,
-                            "default": "UCRDCsZvUg75Bibp9qYbHivw"
+                            "default": ""
                         }
                     ]
                 }

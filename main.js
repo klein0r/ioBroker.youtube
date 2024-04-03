@@ -44,8 +44,12 @@ class Youtube extends utils.Adapter {
             this.log.debug(`[onReady] found ${channels.length} channels in config, fetching data`);
 
             for (const channel of channels) {
-                if (channel.name.trim().length > 0 && channel.id.trim().length > 0) {
-                    const cleanChannelName = channel.name.replace(/\s/g, '').replace(/[^\p{Ll}\p{Lu}\p{Nd}]+/gu, '_');
+                const cleanChannelName = channel.name
+                    .trim()
+                    .replace(/\s/g, '')
+                    .replace(/[^\p{Ll}\p{Lu}\p{Nd}]+/gu, '_');
+
+                if (cleanChannelName.length > 0 && channel.id.trim().length > 0) {
                     const cpath = `channels.${cleanChannelName}`;
 
                     channelsKeep.push(cpath);
