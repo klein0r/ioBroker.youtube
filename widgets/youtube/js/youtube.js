@@ -1,7 +1,7 @@
 /*
     ioBroker.vis YouTube Widget-Set
 
-    Copyright 2022 Matthias Kleine info@haus-automatisierung.com
+    Copyright 2024 Matthias Kleine info@haus-automatisierung.com
 */
 'use strict';
 
