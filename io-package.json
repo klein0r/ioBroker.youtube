@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "youtube",
-    "version": "4.4.0",
+    "version": "5.0.0",
     "news": {
+      "5.0.0": {
+        "en": "NodeJS >= 18.x and js-controller >= 5 is required\n\n* Better way to get channel id by alias",
+        "de": "NodeJS >= 18.x und js-Controller >= 5 ist erforderlich\n\n* Bessere Möglichkeit, Channel id von Alias zu erhalten",
+        "ru": "NodeJS >= 18.x и js-контроллер >= 5 требуется\n\n* Лучший способ получить канал id by alias",
+        "pt": "NodeJS >= 18.x e js-controller >= 5 é necessário\n\n* Melhor maneira de obter canal id por alias",
+        "nl": "Voor de toepassing van de onderverdelingen 870190 tot en met 870290 wordt onder post 8702 verstaan: 5 is vereist\n\n* Betere manier om kanaal id door alias te krijgen",
+        "fr": "NodeJS >= 18.x et js-controller >= 5 est nécessaire\n\n* Meilleure façon d'obtenir id canal par alias",
+        "it": "NodeJS >= 18.x e js-controller 5 è richiesto\n\n# modo migliore per ottenere canale id da alias",
+        "es": "NodeJS >= 18.x y js-controller Se requiere 5\n\n* Mejor manera de conseguir canal id por alias",
+        "pl": "NodeJS > = 18.x i kontroler js- > = 5 jest wymagane\n\n* Lepszy sposób, aby uzyskać id kanału przez alias",
+        "uk": "NodeJS >= 18.x та js-controller >= 5 обов'язково\n\nІм'я * Кращий спосіб отримати канал id від alias",
+        "zh-cn": "节点JS18x和js控制器QQ 需要5个\n\n* 《大会正式记录,第五十八届会议,补编第5号》(A/C.6/61/Rev.1)。 用别名获取频道标识的更好方法"
+      },
       "4.4.0": {
         "en": "NodeJS 16.x is required\n\n* Added icons to admin tabs",
         "de": "NodeJS 16.x ist erforderlich\n\n* Hinzufügen von Icons zu Admin-Tabs",
@@ -80,19 +93,6 @@
         "pl": "NodeJS 14.x jest wymagany (NodeJS 12.x to EOL)\n\n* Naprawiono czas ostatniej aktualizacji",
         "uk": "Потрібен NodeJS 14.x (NodeJS 12.x є EOL)\n\n* Виправлено час останнього оновлення",
         "zh-cn": "需要 NodeJS 14.x（NodeJS 12.x 已停产）\n\n* 修正最后更新时间"
-      },
-      "3.0.1": {
-        "en": "Just perform video info request if previous request was successful\nImproved error handling when API key is missing\nUpdated logging",
-        "de": "Führen Sie einfach eine Video-Info-Anfrage durch, wenn die vorherige Anfrage erfolgreich war\nVerbesserte Fehlerbehandlung bei fehlendem API-Schlüssel\nAktualisierte Protokollierung",
-        "ru": "Просто выполните запрос информации о видео, если предыдущий запрос был успешным\nУлучшена обработка ошибок при отсутствии ключа API.\nОбновлено ведение журнала",
-        "pt": "Basta realizar a solicitação de informações do vídeo se a solicitação anterior foi bem-sucedida\nTratamento de erros aprimorado quando a chave de API está ausente\nRegistro atualizado",
-        "nl": "Voer gewoon een video-infoverzoek uit als het vorige verzoek succesvol was\nVerbeterde foutafhandeling wanneer API-sleutel ontbreekt\nBijgewerkte logboekregistratie",
-        "fr": "Effectuez simplement une demande d'informations sur la vidéo si la demande précédente a réussi\nAmélioration de la gestion des erreurs lorsque la clé API est manquante\nJournalisation mise à jour",
-        "it": "Basta eseguire la richiesta di informazioni sul video se la richiesta precedente ha avuto esito positivo\nGestione degli errori migliorata quando manca la chiave API\nRegistrazione aggiornata",
-        "es": "Simplemente realice una solicitud de información de video si la solicitud anterior fue exitosa\nManejo de errores mejorado cuando falta la clave API\nRegistro actualizado",
-        "pl": "Po prostu wyślij żądanie informacji o filmie, jeśli poprzednie żądanie zakończyło się powodzeniem\nPoprawiona obsługa błędów w przypadku braku klucza API\nZaktualizowane logowanie",
-        "uk": "Просто виконайте запит інформації про відео, якщо попередній запит був успішним\nПокращена обробка помилок, коли ключ API відсутній\nОновлено журналювання",
-        "zh-cn": "如果之前的请求成功，只需执行视频信息请求\n改进了 API 密钥丢失时的错误处理\n更新的日志记录"
       }
     },
     "titleLang": {

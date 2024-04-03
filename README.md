@@ -46,7 +46,7 @@ iobroker add youtube
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 5.0.0 (2024-04-03)
 
 NodeJS >= 18.x and js-controller >= 5 is required
 
@@ -70,14 +70,6 @@ NodeJS 16.x is required
 
 * (klein0r) Allow alias or custom url in configuration
 * (klein0r) Added request success indicators
-* (klein0r) Added Ukrainian language
-
-### 4.1.0 (2022-11-10)
-
-NodeJS >= 14.5 is required
-
-* (klein0r) Fixed issue with unescaped characters in URL (e.g. API key)
-* (klein0r) Dropped Admin 5 support
 * (klein0r) Added Ukrainian language
 
 ## License
