@@ -1,5 +1,5 @@
 {
-  "plugins": ["iobroker", "license"],
+  "plugins": ["iobroker", "license", "manual-review"],
   "versionFiles": [
     ["widgets/*.html", "(?<=Version: ')(.*?)(?=')"],
     ["widgets/youtube/js/*.js", "(?<=version: ')(.*?)(?=',)"]
