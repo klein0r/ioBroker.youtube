@@ -1,4 +1,10 @@
 # Older changes
+## 4.2.0 (2023-02-03)
+
+* (klein0r) Allow alias or custom url in configuration
+* (klein0r) Added request success indicators
+* (klein0r) Added Ukrainian language
+
 ## 4.1.0 (2022-11-10)
 
 NodeJS >= 14.5 is required

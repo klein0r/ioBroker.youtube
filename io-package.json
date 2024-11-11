@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "youtube",
-    "version": "5.0.0",
+    "version": "5.1.0",
     "news": {
+      "5.1.0": {
+        "en": "Added groups\nAdded icons of channels to object list",
+        "de": "Gruppen hinzufügen\nIcons der Kanäle zur Objektliste hinzugefügt",
+        "ru": "Добавленные группы\nДобавлены иконки каналов для списка объектов",
+        "pt": "Grupos adicionados\nÍcones adicionados de canais para lista de objetos",
+        "nl": "Groepen toegevoegd\nPictogrammen van kanalen aan objectlijst toegevoegd",
+        "fr": "Groupes ajoutés\nAjout d'icônes de canaux à la liste des objets",
+        "it": "Gruppi aggiunti\nAggiunte icone di canali a elenco oggetti",
+        "es": "Grupos adicionales\nAñadido iconos de canales a la lista de objetos",
+        "pl": "Dodano grupy\nDodano ikony kanałów do listy obiektów",
+        "uk": "Додано групи\nДодано іконки каналів до списку об'єктів",
+        "zh-cn": "添加组\n添加频道图标到对象列表"
+      },
       "5.0.0": {
         "en": "NodeJS >= 18.x and js-controller >= 5 is required\n\n* Better way to get channel id by alias",
         "de": "NodeJS >= 18.x und js-Controller >= 5 ist erforderlich\n\n* Bessere Möglichkeit, Channel id von Alias zu erhalten",
@@ -80,19 +93,6 @@
         "pl": "NodeJS (ang.). wymagany jest 14,5\n\n* Fixed problem z niezachwianymi postaciami w URL (np. klucz API)\n* Dropped Admin 5 support",
         "uk": "NodeJS >= 14.5 потрібно\n\n* Виправлено проблему з нерозголошенням символів у URL (наприклад, ключ API)\n* Підтримка Dropped Admin 5",
         "zh-cn": "无deJS >= 14.5 需要\n\n* 欧元的固定性问题(如API关键)\n* Dro Admin 5支助"
-      },
-      "4.0.0": {
-        "en": "NodeJS 14.x is required (NodeJS 12.x is EOL)\n\n* Fixed last update time",
-        "de": "NodeJS 14.x ist erforderlich (NodeJS 12.x ist EOL)\n\n* Letzte Aktualisierungszeit behoben",
-        "ru": "Требуется NodeJS 14.x (NodeJS 12.x является EOL)\n\n* Исправлено время последнего обновления",
-        "pt": "NodeJS 14.x é necessário (NodeJS 12.x é EOL)\n\n* Corrigido o tempo da última atualização",
-        "nl": "NodeJS 14.x is vereist (NodeJS 12.x is EOL)\n\n* Vaste laatste updatetijd",
-        "fr": "NodeJS 14.x est requis (NodeJS 12.x est EOL)\n\n* Correction de l'heure de la dernière mise à jour",
-        "it": "NodeJS 14.x è richiesto (NodeJS 12.x è EOL)\n\n* Risolto il tempo dell'ultimo aggiornamento",
-        "es": "Se requiere NodeJS 14.x (NodeJS 12.x es EOL)\n\n* Tiempo de última actualización fijo",
-        "pl": "NodeJS 14.x jest wymagany (NodeJS 12.x to EOL)\n\n* Naprawiono czas ostatniej aktualizacji",
-        "uk": "Потрібен NodeJS 14.x (NodeJS 12.x є EOL)\n\n* Виправлено час останнього оновлення",
-        "zh-cn": "需要 NodeJS 14.x（NodeJS 12.x 已停产）\n\n* 修正最后更新时间"
       }
     },
     "titleLang": {
