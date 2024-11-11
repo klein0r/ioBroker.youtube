@@ -185,7 +185,8 @@
     "channels": [
       {
         "name": "HausAutomatisierungCom",
-        "id": "@haus_automation"
+        "id": "@haus_automation",
+        "group": "ioBroker"
       }
     ]
   },
@@ -207,6 +208,26 @@
           "pl": "Kanały YouTube",
           "uk": "Канали YouTube",
           "zh-cn": "YouTube 频道"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "groups",
+      "type": "folder",
+      "common": {
+        "name": {
+          "en": "Groups",
+          "de": "Gruppen",
+          "ru": "Группы",
+          "pt": "Grupos",
+          "nl": "Groepen",
+          "fr": "Groupes",
+          "it": "Gruppi",
+          "es": "Grupos",
+          "pl": "Grupy",
+          "uk": "Групи",
+          "zh-cn": "组"
         }
       },
       "native": {}

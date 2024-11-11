@@ -363,7 +363,7 @@ class Youtube extends utils.Adapter {
                         let channelId = channel.id;
 
                         // Extract channelId from object or search via API
-                        const channelObj = await this.getObjectAsync(`channels.${cleanChannelName}`);
+                        let channelObj = await this.getObjectAsync(`channels.${cleanChannelName}`);
                         if (!channelObj || !channelObj.native?.channelId) {
                             if (channelId.startsWith('@')) {
                                 this.log.debug(`[onReady] youtube/v3/channels - request init for alias: "${channelId}"`);
@@ -397,7 +397,7 @@ class Youtube extends utils.Adapter {
                                 }
                             }
 
-                            await this.extendObjectAsync(cpath, {
+                            await this.extendObject(cpath, {
                                 type: 'channel',
                                 common: {
                                     name: channel.name,
@@ -409,6 +409,8 @@ class Youtube extends utils.Adapter {
                                     channelId,
                                 },
                             });
+
+                            channelObj = await this.getObjectAsync(`channels.${cleanChannelName}`);
                         } else {
                             channelId = channelObj.native.channelId;
 
@@ -416,6 +418,26 @@ class Youtube extends utils.Adapter {
                         }
 
                         const channelData = await this.getChannelData(channelId, cpath);
+
+                        // Add channel icons to object as icon
+                        if (!channelObj?.common?.icon && channelData._thumbnailUrl) {
+                            this.log.debug(`[onReady] Downloading icon for channel "${channel.name}"`);
+
+                            const getChannelIconResponse = await axios({
+                                method: 'get',
+                                url: channelData._thumbnailUrl,
+                                timeout: 4500,
+                                responseType: 'arraybuffer',
+                            });
+
+                            const image = btoa(String.fromCharCode(...new Uint8Array(getChannelIconResponse.data)));
+
+                            await this.extendObject(cpath, {
+                                common: {
+                                    icon: `data:${getChannelIconResponse.headers?.['Content-Type'] ?? 'image/jpeg'};base64,${image}`,
+                                },
+                            });
+                        }
 
                         if (typeof channelData === 'object') {
                             channelDataList.push(channelData);
@@ -569,6 +591,7 @@ class Youtube extends utils.Adapter {
                             if (firstItem?.statistics && firstItem?.snippet) {
                                 resolve({
                                     _id: id,
+                                    _thumbnailUrl: firstItem?.snippet?.thumbnails?.default?.url,
                                     customUrl: firstItem.snippet.customUrl,
                                     title: firstItem.snippet.title,
                                     subscriberCount: firstItem.statistics.subscriberCount,

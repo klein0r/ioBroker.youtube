@@ -48,7 +48,7 @@
                         {
                             "type": "text",
                             "attr": "name",
-                            "width": "50%",
+                            "width": "40%",
                             "title": {
                                 "en": "Channel name",
                                 "de": "Kanal Name",
@@ -69,7 +69,7 @@
                         {
                             "type": "text",
                             "attr": "id",
-                            "width": "50%",
+                            "width": "40%",
                             "title": {
                                 "en": "Channel ID",
                                 "de": "Kanal ID",
@@ -85,6 +85,27 @@
                             },
                             "filter": false,
                             "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "text",
+                            "attr": "group",
+                            "width": "20%",
+                            "title": {
+                                "en": "Group",
+                                "de": "Gruppe",
+                                "ru": "Группа",
+                                "pt": "Grupo",
+                                "nl": "Groep",
+                                "fr": "Groupe",
+                                "it": "Gruppo",
+                                "es": "Grupo",
+                                "pl": "Grupa",
+                                "uk": "Група",
+                                "zh-cn": "组"
+                              },
+                            "filter": true,
+                            "sort": true,
                             "default": ""
                         }
                     ]

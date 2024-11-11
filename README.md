@@ -46,6 +46,11 @@ iobroker add youtube
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Added groups
+* (klein0r) Added icons of channels to object list
+
 ### 5.0.0 (2024-04-03)
 
 NodeJS >= 18.x and js-controller >= 5 is required
