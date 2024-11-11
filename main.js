@@ -43,7 +43,14 @@ class Youtube extends utils.Adapter {
         if (channels && Array.isArray(channels)) {
             this.log.debug(`[onReady] found ${channels.length} channels in config, fetching data`);
 
+            const groupNames = [];
+
             for (const channel of channels) {
+                const channelGroup = String(channel.group ?? '')
+                    .trim()
+                    .replace(/\s/g, '')
+                    .replace(/[^\p{Ll}\p{Lu}\p{Nd}]+/gu, '_');
+
                 const cleanChannelName = channel.name
                     .trim()
                     .replace(/\s/g, '')
@@ -53,6 +60,10 @@ class Youtube extends utils.Adapter {
                     const cpath = `channels.${cleanChannelName}`;
 
                     channelsKeep.push(cpath);
+
+                    if (channelGroup && !groupNames.includes(channelGroup)) {
+                        groupNames.push(channelGroup);
+                    }
 
                     await this.extendObject(`${cpath}.success`, {
                         type: 'state',
@@ -417,7 +428,7 @@ class Youtube extends utils.Adapter {
                             this.log.debug(`[onReady] using existing channel id "${channelId}" of object for "${channel.name}"`);
                         }
 
-                        const channelData = await this.getChannelData(channelId, cpath);
+                        const channelData = await this.getChannelData(channelId, cpath, channelGroup);
 
                         // Add channel icons to object as icon
                         if (!channelObj?.common?.icon && channelData._thumbnailUrl) {
@@ -507,6 +518,48 @@ class Youtube extends utils.Adapter {
                 return b.subscriberCount - a.subscriberCount;
             });
 
+            // Groups
+            if (groupNames.length > 0) {
+                for (const groupName of groupNames) {
+                    const groupChannelDataList = channelDataList.filter((c) => c._group === groupName);
+
+                    await this.extendObject(`groups.${groupName}`, {
+                        type: 'channel',
+                        common: {
+                            name: groupName,
+                        },
+                        native: {},
+                    });
+
+                    await this.extendObject(`groups.${groupName}.json`, {
+                        type: 'state',
+                        common: {
+                            name: {
+                                en: 'JSON string for tables',
+                                de: 'JSON-String für Tabellen',
+                                ru: 'Строка JSON для таблиц',
+                                pt: 'String JSON para tabelas',
+                                nl: 'JSON-tekenreeks voor tabellen',
+                                fr: 'Chaîne JSON pour les tableaux',
+                                it: 'Stringa JSON per tabelle',
+                                es: 'Cadena JSON para tablas',
+                                pl: 'Ciąg JSON dla tabel',
+                                uk: 'JSON string для таблиць',
+                                'zh-cn': '表的 JSON 字符串',
+                            },
+                            type: 'string',
+                            role: 'json',
+                            read: true,
+                            write: false,
+                        },
+                        native: {},
+                    });
+
+                    await this.setState(`groups.${groupName}.json`, { val: JSON.stringify(groupChannelDataList), ack: true });
+                }
+            }
+
+            // Summary
             await this.setState('summary.json', { val: JSON.stringify(channelDataList), ack: true });
 
             if (enableVideoInformation) {
@@ -536,7 +589,7 @@ class Youtube extends utils.Adapter {
         }
     }
 
-    getChannelData(id, cpath) {
+    getChannelData(id, cpath, group) {
         return new Promise((resolve, reject) => {
             const apiKey = this.config.apiKey;
 
@@ -591,6 +644,7 @@ class Youtube extends utils.Adapter {
                             if (firstItem?.statistics && firstItem?.snippet) {
                                 resolve({
                                     _id: id,
+                                    _group: group,
                                     _thumbnailUrl: firstItem?.snippet?.thumbnails?.default?.url,
                                     customUrl: firstItem.snippet.customUrl,
                                     title: firstItem.snippet.title,
@@ -659,7 +713,7 @@ class Youtube extends utils.Adapter {
                             await this.extendObject(path, {
                                 type: 'channel',
                                 common: {
-                                    name: 'Video data ' + (i + 1),
+                                    name: `Video data ${i + 1}`,
                                 },
                                 native: {},
                             });
