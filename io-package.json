@@ -283,15 +283,39 @@
         "name": {
           "en": "Published videos today",
           "de": "Veröffentlichte Videos heute",
-          "ru": "Опубликовано видео сегодня",
+          "ru": "Опубликованные видео сегодня",
           "pt": "Vídeos publicados hoje",
           "nl": "Gepubliceerde video's vandaag",
-          "fr": "Publié des vidéos aujourd'hui",
+          "fr": "Vidéos publiées aujourd'hui",
           "it": "Pubblicato video oggi",
           "es": "Publicado videos hoy",
-          "pl": "Obecnie",
+          "pl": "Opublikowane filmy dzisiaj",
           "uk": "Опубліковано відео сьогодні",
-          "zh-cn": "今天出版的录像"
+          "zh-cn": "今天出版的视频"
+        },
+        "type": "string",
+        "role": "json",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "summary.jsonVideosYesterday",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Published videos yesterday",
+          "de": "Veröffentlichte Videos gestern",
+          "ru": "Опубликовано видео вчера",
+          "pt": "Vídeos publicados ontem",
+          "nl": "Gepubliceerde video's gisteren",
+          "fr": "Publié des vidéos hier",
+          "it": "Pubblicato video di ieri",
+          "es": "Publicado videos ayer",
+          "pl": "Opublikowane filmy wczoraj",
+          "uk": "Опубліковано відео вчора",
+          "zh-cn": "昨天出版的录像"
         },
         "type": "string",
         "role": "json",

@@ -454,7 +454,7 @@ class Youtube extends utils.Adapter {
                             channelDataList.push(channelData);
 
                             if (enableVideoInformation) {
-                                const videoData = await this.getChannelVideoData(channelId, `${cpath}.video`);
+                                const videoData = await this.getChannelVideoData(channelId, `${cpath}.video`, { channel: channelData.customUrl, _group: channelGroup });
                                 videoDataList.push(...videoData);
 
                                 await this.extendObject(`${cpath}.video`, {
@@ -500,7 +500,7 @@ class Youtube extends utils.Adapter {
                                     },
                                     native: {},
                                 });
-                                await this.setState(`${cpath}.video.json`, { val: JSON.stringify(videoData), ack: true });
+                                await this.setState(`${cpath}.video.json`, { val: JSON.stringify(videoData, null, 2), ack: true });
                             } else {
                                 await this.delObjectAsync(`${cpath}.video`, { recursive: true });
                             }
@@ -509,7 +509,7 @@ class Youtube extends utils.Adapter {
                         }
                     } catch (err) {
                         await this.setState(`channels.${cleanChannelName}.success`, { val: false, ack: true, c: JSON.stringify(err) });
-                        this.log.warn(`${err}`);
+                        this.log.warn(`Update failed for "${channel.name}": ${err}`);
                     }
                 }
             }
@@ -555,18 +555,45 @@ class Youtube extends utils.Adapter {
                         native: {},
                     });
 
-                    await this.setState(`groups.${groupName}.json`, { val: JSON.stringify(groupChannelDataList), ack: true });
+                    await this.setState(`groups.${groupName}.json`, { val: JSON.stringify(groupChannelDataList, null, 2), ack: true });
                 }
             }
 
             // Summary
-            await this.setState('summary.json', { val: JSON.stringify(channelDataList), ack: true });
+            await this.setState('summary.json', { val: JSON.stringify(channelDataList, null, 2), ack: true });
 
             if (enableVideoInformation) {
-                const todayStart = new Date().setHours(0, 0, 0, 0);
-                await this.setState('summary.jsonVideosToday', { val: JSON.stringify(videoDataList.filter((v) => v.published > todayStart)), ack: true });
+                const todayStart = new Date();
+                todayStart.setHours(0, 0, 0, 0);
+
+                const yesterdayStart = new Date();
+                yesterdayStart.setHours(0, 0, 0, 0);
+                yesterdayStart.setDate(todayStart.getDate() - 1);
+
+                this.log.debug(`[onReady] Search videos (today) from ${todayStart.toISOString()} to now`);
+
+                await this.setState('summary.jsonVideosToday', {
+                    val: JSON.stringify(
+                        videoDataList.filter((v) => v.published >= todayStart.getTime()),
+                        null,
+                        2,
+                    ),
+                    ack: true,
+                });
+
+                this.log.debug(`[onReady] Search videos (yesterday) from ${yesterdayStart.toISOString()} to ${todayStart.toISOString()}`);
+
+                await this.setState('summary.jsonVideosYesterday', {
+                    val: JSON.stringify(
+                        videoDataList.filter((v) => v.published >= yesterdayStart && v.published < todayStart),
+                        null,
+                        2,
+                    ),
+                    ack: true,
+                });
             } else {
                 await this.setState('summary.jsonVideosToday', { val: JSON.stringify([]), ack: true, q: 0x02, c: 'Video information disabled in instance configuration' });
+                await this.setState('summary.jsonVideosYesterday', { val: JSON.stringify([]), ack: true, q: 0x02, c: 'Video information disabled in instance configuration' });
             }
         } else {
             this.log.warn('[onReady] No channels configured - check instance configuration');
@@ -666,7 +693,7 @@ class Youtube extends utils.Adapter {
         });
     }
 
-    getChannelVideoData(id, cpath) {
+    getChannelVideoData(id, cpath, additionalData) {
         return new Promise((resolve) => {
             const apiKey = this.config.apiKey;
 
@@ -708,6 +735,7 @@ class Youtube extends utils.Adapter {
                                 title: v.snippet.title,
                                 url: videoUrl,
                                 published: videoPublishedDate,
+                                ...additionalData,
                             });
 
                             await this.extendObject(path, {

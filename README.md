@@ -46,6 +46,10 @@ iobroker add youtube
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (@klein0r) Added video list (yesterday)
+
 ### 5.1.0 (2024-11-11)
 
 * (klein0r) Added groups
