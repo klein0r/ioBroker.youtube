@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "youtube",
-    "version": "5.1.0",
+    "version": "5.1.1",
     "news": {
+      "5.1.1": {
+        "en": "Added video list (yesterday)",
+        "de": "Videoliste hinzugefügt (yesterday)",
+        "ru": "Добавленный список видео (вчера)",
+        "pt": "Lista de vídeo adicionada (yesterday)",
+        "nl": "Videolijst toegevoegd (Gisteren)",
+        "fr": "Ajout de la liste vidéo (hier)",
+        "it": "Elenco video aggiunto (giovedì)",
+        "es": "Lista de video adicional (ayer)",
+        "pl": "Dodano listę wideo (wczoraj)",
+        "uk": "Додано список відео",
+        "zh-cn": "添加的视频列表( 七月一日)"
+      },
       "5.1.0": {
         "en": "Added groups\nAdded icons of channels to object list",
         "de": "Gruppen hinzufügen\nIcons der Kanäle zur Objektliste hinzugefügt",
@@ -80,19 +93,6 @@
         "pl": "Allow alias lub zwyczaj url w konfiguracji\nAdddictive revenue indicator\nJęzyk ukraiński",
         "uk": "Allow alias або користувацький виворіт в конфігурації\nДодані показники успіху запиту\nУкраїнська мова",
         "zh-cn": "备选案文:\n增加请求成功指标\n增加乌克兰语"
-      },
-      "4.1.0": {
-        "en": "NodeJS >= 14.5 is required\n\n* Fixed issue with unescaped characters in URL (e.g. API key)\n* Dropped Admin 5 support",
-        "de": "NodeJS >= 14.5 ist erforderlich\n\n* Problem behoben mit unescaped Zeichen in URL (z.B. API-Schlüssel)\n* Dropped Admin 5 Unterstützung",
-        "ru": "NodeJS >= 14.5 требуется\n\n* Исправлена проблема с незабываемыми символами в URL (например API key)\n* Dropped Admin 5 поддержка",
-        "pt": "NodeJS > 14.5 é necessário\n\n* Corrigido problema com caracteres não-escapados em URL (por exemplo, chave API)\n* Suporte de Admin 5 Dropped",
-        "nl": "NodeJS 14,5 is vereist\n\nQuality over Quantity (QoQ) Releases Vertaling:\n♪ Dropped Admin 5 support",
-        "fr": "NodeJS anthropo= 14.5 est nécessaire\n\n* Problème fixe avec des caractères non aérés dans l'URL (par exemple clé API)\n* Soutien Dropped Admin 5",
-        "it": "NodeJS >= 14.5 è richiesto\n\n* Risolto problema con caratteri non espulsi in URL (ad esempio chiave API)\n* Sostegno di amministrazione goccia 5",
-        "es": "NodeJS= 14.5 Se requiere\n\n* Edición fija con caracteres no seleccionados en URL (por ejemplo, clave API)\n* Soporte de Admin 5",
-        "pl": "NodeJS (ang.). wymagany jest 14,5\n\n* Fixed problem z niezachwianymi postaciami w URL (np. klucz API)\n* Dropped Admin 5 support",
-        "uk": "NodeJS >= 14.5 потрібно\n\n* Виправлено проблему з нерозголошенням символів у URL (наприклад, ключ API)\n* Підтримка Dropped Admin 5",
-        "zh-cn": "无deJS >= 14.5 需要\n\n* 欧元的固定性问题(如API关键)\n* Dro Admin 5支助"
       }
     },
     "titleLang": {

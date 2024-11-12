@@ -46,7 +46,7 @@ iobroker add youtube
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 5.1.1 (2024-11-12)
 
 * (@klein0r) Added video list (yesterday)
 
@@ -70,10 +70,6 @@ NodeJS 16.x is required
 ### 4.3.0 (2023-08-28)
 
 * (klein0r) Added customUrl to JSON summary
-
-### 4.2.1 (2023-03-13)
-
-* (klein0r) Video data as JSON
 
 ## License
 
