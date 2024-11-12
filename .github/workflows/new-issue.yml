@@ -12,6 +12,14 @@ jobs:
     permissions:
       issues: write
     steps:
+      - name: Create label (not beta version)
+        id: create_label_version
+        run: gh label create not-latest-version --description "Beta version not found in issue" --color B02727 --force
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+
       - name: Setup node
         id: setup_node
         uses: actions/setup-node@v4
@@ -60,9 +68,8 @@ jobs:
       - name: Add label (not beta version)
         id: add_label_version
         if: ${{ !contains(github.event.issue.body, steps.get_npm_version.outputs.LATEST_VERSION) }}
-        run: gh issue edit "$NUMBER" --add-label "$LABELS"
+        run: gh issue edit "$NUMBER" --add-label not-latest-version
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
-          LABELS: not-latest-version
