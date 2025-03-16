@@ -885,16 +885,15 @@ class Youtube extends utils.Adapter {
     }
 
     removeNamespace(id) {
-        const re = new RegExp(this.namespace + '*\\.', 'g');
+        const re = new RegExp(`${this.namespace}*\\.`, 'g');
         return id.replace(re, '');
     }
 }
 
-// @ts-ignore parent is a valid property on module
 if (module.parent) {
     // Export the constructor in compact mode
     /**
-     * @param {Partial<ioBroker.AdapterOptions>} [options={}]
+     * @param {Partial<ioBroker.AdapterOptions>} [options] Instance options
      */
     module.exports = (options) => new Youtube(options);
 } else {
