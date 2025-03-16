@@ -10,9 +10,11 @@
             "items": {
                 "apiKey": {
                     "type": "text",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
+                    "xl": 4,
                     "label": "API-Key",
                     "help": "Generate a key using the Google developer console",
                     "helpLink": "https://console.cloud.google.com/apis/library/youtube.googleapis.com"
@@ -20,14 +22,21 @@
                 "enableVideoInformation": {
                     "newLine": true,
                     "type": "checkbox",
-                    "label": "Enable video information"
+                    "label": "Enable video information",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "xl": 4
                 },
                 "_ioBrokerKursBanner": {
                     "newLine": true,
                     "type": "staticImage",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
+                    "xl": 4,
                     "href": "https://haus-automatisierung.com/iobroker-kurs/?refid=iobroker-youtube",
                     "src": "https://haus-automatisierung.com/images/ads/ioBroker-Kurs.png"
                 }
@@ -40,9 +49,11 @@
             "items": {
                 "channels": {
                     "type": "table",
+                    "xs": 12,
                     "sm": 12,
                     "md": 12,
                     "lg": 12,
+                    "xl": 12,
                     "label": "Channels",
                     "items": [
                         {
