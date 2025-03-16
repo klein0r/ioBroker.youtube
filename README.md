@@ -46,7 +46,7 @@ iobroker add youtube
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 6.0.0 (2025-03-16)
 
 NodeJS >= 20.x and js-controller >= 6 is required
 
@@ -70,10 +70,6 @@ NodeJS >= 18.x and js-controller >= 5 is required
 NodeJS 16.x is required
 
 * (klein0r) Added icons to admin tabs
-
-### 4.3.0 (2023-08-28)
-
-* (klein0r) Added customUrl to JSON summary
 
 ## License
 

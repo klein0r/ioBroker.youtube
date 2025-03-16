@@ -1,6 +1,6 @@
 {
   "name": "iobroker.youtube",
-  "version": "5.1.1",
+  "version": "6.0.0",
   "description": "ioBroker YouTube Adapter",
   "author": {
     "name": "Matthias Kleine",

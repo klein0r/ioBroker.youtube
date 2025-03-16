@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "youtube",
-    "version": "5.1.1",
+    "version": "6.0.0",
     "news": {
+      "6.0.0": {
+        "en": "NodeJS >= 20.x and js-controller >= 6 is required",
+        "de": "NodeJS >= 20.x und js-Controller >= 6 ist erforderlich",
+        "ru": "NodeJS >= 20.x и js-контроллер >= 6 Требуется",
+        "pt": "NodeJS >= 20.x e js-controller >= 6 é necessário",
+        "nl": "Van niet-gelegeerd staal 6 is vereist",
+        "fr": "NodeJS >= 20.x et js-controller >= 6 est nécessaire",
+        "it": "NodeJS >= 20.x e js-controller >= 6 è richiesto",
+        "es": "NodeJS ю= 20.x y js-controller Se requiere 6",
+        "pl": "NodeJS > = 20 x i kontroler js- > = 6 jest wymagane",
+        "uk": "NodeJS >= 20.x та js-controller >= 6 обов'язковий",
+        "zh-cn": "节点JS20x和js控制器QQ 需要6个"
+      },
       "5.1.1": {
         "en": "Added video list (yesterday)",
         "de": "Videoliste hinzugefügt (yesterday)",
@@ -80,19 +93,6 @@
         "pl": "Dane wideo",
         "uk": "Відеодані JSON",
         "zh-cn": "数据作为联合数据"
-      },
-      "4.2.0": {
-        "en": "Allow alias or custom url in configuration\nAdded request success indicators\nAdded Ukrainian language",
-        "de": "Erlauben Sie Alias oder benutzerdefinierte URL in der Konfiguration\nErfolgsindikatoren für die Nachfrage\nUkrainische Sprache",
-        "ru": "Разрешить псевдоним или пользовательский URL в конфигурации\nДобавлены показатели успеха запросов\nДобавлен украинский язык",
-        "pt": "Permitir pseudônimo ou url personalizado na configuração\nAdicionados indicadores de sucesso de pedido\nAdicionado idioma ucraniano",
-        "nl": "Laat alias of gebruikelijke urine in vertrouwen\nToegevoegd verzoek tot succes indicatoren\nVoeg Oekraïense taal toe",
-        "fr": "Permettre l'alias ou l'url personnalisé dans la configuration\nAjout d ' indicateurs de succès\nAjout de la langue ukrainienne",
-        "it": "Consentire alias o url personalizzato in configurazione\nIndicatori di successo richiesta aggiunti\nAggiunto lingua ucraina",
-        "es": "Permitir alias o url personalizado en configuración\nIndicadores de éxito de solicitud adicional\nIdioma ucraniano añadido",
-        "pl": "Allow alias lub zwyczaj url w konfiguracji\nAdddictive revenue indicator\nJęzyk ukraiński",
-        "uk": "Allow alias або користувацький виворіт в конфігурації\nДодані показники успіху запиту\nУкраїнська мова",
-        "zh-cn": "备选案文:\n增加请求成功指标\n增加乌克兰语"
       }
     },
     "titleLang": {

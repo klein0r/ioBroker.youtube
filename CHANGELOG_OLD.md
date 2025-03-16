@@ -1,4 +1,8 @@
 # Older changes
+## 4.3.0 (2023-08-28)
+
+* (klein0r) Added customUrl to JSON summary
+
 ## 4.2.1 (2023-03-13)
 
 * (klein0r) Video data as JSON
