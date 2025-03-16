@@ -46,6 +46,10 @@ iobroker add youtube
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+NodeJS >= 20.x and js-controller >= 6 is required
+
 ### 5.1.1 (2024-11-12)
 
 * (@klein0r) Added video list (yesterday)
