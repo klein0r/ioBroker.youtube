@@ -152,7 +152,8 @@
       "config": "json"
     },
     "restartAdapters": [
-      "vis"
+      "vis",
+      "vis-2"
     ],
     "docs": {
       "en": [
