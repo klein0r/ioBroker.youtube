@@ -46,7 +46,7 @@ iobroker add youtube
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 6.1.0 (2025-12-11)
 
 * (@klein0r) Update channel icons every week
 * (@klein0r) admin 7.6.17 and js-controller 6.0.11 (or later) are required
@@ -70,12 +70,6 @@ NodeJS >= 20.x and js-controller >= 6 is required
 NodeJS >= 18.x and js-controller >= 5 is required
 
 * (klein0r) Better way to get channel id by alias
-
-### 4.4.0 (2023-10-25)
-
-NodeJS 16.x is required
-
-* (klein0r) Added icons to admin tabs
 
 ## License
 

@@ -15,7 +15,7 @@ $.extend(
 
 // this code can be placed directly in youtube.html
 vis.binds['youtube'] = {
-    version: '6.0.0',
+    version: '6.1.0',
     showVersion: function () {
         if (vis.binds['youtube'].version) {
             console.log('Version youtube: ' + vis.binds['youtube'].version);

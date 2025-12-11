@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "youtube",
-    "version": "6.0.0",
+    "version": "6.1.0",
     "news": {
+      "6.1.0": {
+        "en": "Update channel icons every week\nadmin 7.6.17 and js-controller 6.0.11 (or later) are required\nUpdated dependencies",
+        "de": "Aktualisieren Sie Kanalsymbole jede Woche\nadmin 7.6.17 und js-controller 6.0.11 (oder später) sind erforderlich\nAktualisierte Abhängigkeiten",
+        "ru": "Обновление иконок каналов каждую неделю\nadmin 7.6.17 и js-контроллер 6.0.11 (или более поздние)\nОбновленные зависимости",
+        "pt": "Atualizar os ícones do canal todas as semanas\nadmin 7.6.17 e js-controller 6.0.11 (ou posterior) são necessários\nDependências atualizadas",
+        "nl": "Kanaalpictogrammen elke week bijwerken\nadmin 7.6.17 en js-controller 6.0.11 (of later) zijn vereist\nBijgewerkte afhankelijkheden",
+        "fr": "Mettre à jour les icônes des canaux chaque semaine\nadmin 7.6.17 et js-contrôleur 6.0.11 (ou plus tard) sont requis\nDépendances actualisées",
+        "it": "Aggiornare le icone del canale ogni settimana\nadmin 7.6.17 e js-controller 6.0.11 (o successivo) sono richiesti\nDipendenze aggiornate",
+        "es": "Actualizar iconos de canales cada semana\nadmin 7.6.17 y js-controller 6.0.11 (o posterior) son necesarios\nDependencias actualizadas",
+        "pl": "Aktualizuj ikony kanału co tydzień\nwymagany jest admin 7.6.17 i kontroler js- 6.0.11 (lub późniejszy)\nAktualizacja zależności",
+        "uk": "Оновлення іконок каналів на тиждень\nadmin 7.6.17 та js-controller 6.0.11 (або пізніше) обов’язкові\nОновлені залежності",
+        "zh-cn": "每周更新频道图标\n需要admin 7.6.17和js控制器 6.0.11(或以后)\n更新的依赖关系"
+      },
       "6.0.0": {
         "en": "NodeJS >= 20.x and js-controller >= 6 is required",
         "de": "NodeJS >= 20.x und js-Controller >= 6 ist erforderlich",
@@ -80,19 +93,6 @@
         "pl": "Dodać zwyczaj Tekst JSON",
         "uk": "Додати замовлення Урл до JSON резюме",
         "zh-cn": "增加习俗 F. 敦促联合执行会摘要"
-      },
-      "4.2.1": {
-        "en": "Video data as JSON",
-        "de": "Videodaten als JSON",
-        "ru": "Видео данные как JSON",
-        "pt": "Dados de vídeo como JSON",
-        "nl": "Video data als JSON",
-        "fr": "Données vidéo comme JSON",
-        "it": "Dati video come JSON",
-        "es": "Datos de vídeo como JSON",
-        "pl": "Dane wideo",
-        "uk": "Відеодані JSON",
-        "zh-cn": "数据作为联合数据"
       }
     },
     "titleLang": {
