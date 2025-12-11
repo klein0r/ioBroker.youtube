@@ -374,7 +374,7 @@ class Youtube extends utils.Adapter {
                         let channelId = channel.id;
 
                         // Extract channelId from object or search via API
-                        let channelObj = await this.getObjectAsync(`channels.${cleanChannelName}`);
+                        let channelObj = await this.getObjectAsync(cpath);
                         if (!channelObj || !channelObj.native?.channelId) {
                             if (channelId.startsWith('@')) {
                                 this.log.debug(`[onReady] youtube/v3/channels - request init for alias: "${channelId}"`);
@@ -413,7 +413,7 @@ class Youtube extends utils.Adapter {
                                 common: {
                                     name: channel.name,
                                     statusStates: {
-                                        onlineId: `${this.namespace}.channels.${cleanChannelName}.success`,
+                                        onlineId: `${this.namespace}.${cpath}.success`,
                                     },
                                 },
                                 native: {
@@ -421,7 +421,7 @@ class Youtube extends utils.Adapter {
                                 },
                             });
 
-                            channelObj = await this.getObjectAsync(`channels.${cleanChannelName}`);
+                            channelObj = await this.getObjectAsync(cpath);
                         } else {
                             channelId = channelObj.native.channelId;
 
@@ -430,9 +430,13 @@ class Youtube extends utils.Adapter {
 
                         const channelData = await this.getChannelData(channelId, cpath, channelGroup);
 
+                        const hasIcon = !!channelObj?.common?.icon;
+                        const iconUpdatedAt = channelObj?.native?.iconUpdatedAt;
+                        const hasOldIcon = !iconUpdatedAt || Date.now() - iconUpdatedAt > 60 * 60 * 24 * 7 * 1000;
+
                         // Add channel icons to object as icon
-                        if (!channelObj?.common?.icon && channelData._thumbnailUrl) {
-                            this.log.debug(`[onReady] Downloading icon for channel "${channel.name}"`);
+                        if (channelData._thumbnailUrl && (!hasIcon || hasOldIcon)) {
+                            this.log.debug(`[onReady] Downloading (updated) icon for channel "${channel.name}"`);
 
                             const getChannelIconResponse = await axios({
                                 method: 'get',
@@ -446,6 +450,9 @@ class Youtube extends utils.Adapter {
                             await this.extendObject(cpath, {
                                 common: {
                                     icon: `data:${getChannelIconResponse.headers?.['Content-Type'] ?? 'image/jpeg'};base64,${image}`,
+                                },
+                                native: {
+                                    iconUpdatedAt: Date.now(),
                                 },
                             });
                         }
@@ -505,10 +512,10 @@ class Youtube extends utils.Adapter {
                                 await this.delObjectAsync(`${cpath}.video`, { recursive: true });
                             }
 
-                            await this.setState(`channels.${cleanChannelName}.success`, { val: true, ack: true });
+                            await this.setState(`${cpath}.success`, { val: true, ack: true });
                         }
                     } catch (err) {
-                        await this.setState(`channels.${cleanChannelName}.success`, { val: false, ack: true, c: JSON.stringify(err) });
+                        await this.setState(`${cpath}.success`, { val: false, ack: true, c: JSON.stringify(err) });
                         this.log.warn(`Update failed for "${channel.name}": ${err}`);
                     }
                 }

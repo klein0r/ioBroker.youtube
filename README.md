@@ -48,6 +48,7 @@ iobroker add youtube
 -->
 ### **WORK IN PROGRESS**
 
+* (@klein0r) Update channel icons every week
 * (@klein0r) admin 7.6.17 and js-controller 6.0.11 (or later) are required
 * (@klein0r) Updated dependencies
 
