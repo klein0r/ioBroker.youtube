@@ -21,6 +21,11 @@ Um einen API-Key zu erstellen, gehe zu [console.developers.google.com](https://c
 ## Statistiken aller Kanäle in InfluxDB speichern
 
 ```javascript
+// v0.2
+
+const targetDb = 'influxdb.0';
+const currentInstance = `javascript.${instance}`;
+
 on({ id: 'youtube.0.summary.json', change: 'any' }, async (obj) => {
     try {
         const youtubeJson = obj.state.val;
@@ -30,23 +35,23 @@ on({ id: 'youtube.0.summary.json', change: 'any' }, async (obj) => {
         for (const channel of channels) {
             const alias = channel.customUrl.substr(1); // remove leading @
 
-            await this.sendToAsync('influxdb.0', 'storeState', {
+            await this.sendToAsync(targetDb, 'storeState', {
                 id: `youtube.0.channels.${alias}.subscribers`,
                 state: {
                     ts,
                     val: channel.subscriberCount,
                     ack: true,
-                    from: `system.adapter.javascript.0.${scriptName}`,
+                    from: `system.adapter.${currentInstance}.${scriptName}`,
                 }
             });
 
-            await this.sendToAsync('influxdb.0', 'storeState', {
+            await this.sendToAsync(targetDb, 'storeState', {
                 id: `youtube.0.channels.${alias}.views`,
                 state: {
                     ts,
                     val: channel.viewCount,
                     ack: true,
-                    from: `system.adapter.javascript.0.${scriptName}`,
+                    from: `system.adapter.${currentInstance}.${scriptName}`,
                 }
             });
         }
