@@ -2,7 +2,7 @@
 
 const utils = require('@iobroker/adapter-core');
 const axios = require('axios').default;
-const querystring = require('querystring');
+const querystring = require('node:querystring');
 const adapterName = require('./package.json').name.split('.').pop();
 
 class Youtube extends utils.Adapter {
