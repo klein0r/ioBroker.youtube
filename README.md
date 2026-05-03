@@ -71,6 +71,8 @@ NodeJS >= 18.x and js-controller >= 5 is required
 
 * (klein0r) Better way to get channel id by alias
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 
 The MIT License (MIT)
