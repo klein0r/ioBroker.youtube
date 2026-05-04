@@ -46,6 +46,9 @@ iobroker add youtube
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+- (copilot) Adapter requires node.js >= 22 now
+
 ### 6.1.0 (2025-12-11)
 
 * (@klein0r) Update channel icons every week
