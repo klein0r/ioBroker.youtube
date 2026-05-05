@@ -1,4 +1,12 @@
 # Older changes
+## 5.0.0 (2024-04-03)
+
+NodeJS >= 18.x and js-controller >= 5 is required
+
+* (klein0r) Better way to get channel id by alias
+
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## 4.4.0 (2023-10-25)
 
 NodeJS 16.x is required

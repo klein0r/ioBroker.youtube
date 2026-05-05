@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "youtube",
-    "version": "6.1.0",
+    "version": "7.0.0",
     "news": {
+      "7.0.0": {
+        "en": "Adapter requires node.js >= 22 now\nadmin 7.6.20 and js-controller 6.0.11 (or later) are required",
+        "de": "Adapter benötigt node.js >= 22 jetzt\nadmin 7.6.20 und js-controller 6.0.11 (oder später) sind erforderlich",
+        "ru": "Адаптер требует node.js >= 22 сейчас\nadmin 7.6.20 и js-контроллер 6.0.11 (или более поздний)",
+        "pt": "Adaptador requer nod.js >= 22 agora\nadmin 7.6.20 e js-controller 6.0.11 (ou posterior) são necessários",
+        "nl": "Voor de adapter zijn node.js < 22 nu nodig\nadmin 7.6.20 en js-controller 6.0.11 (of later) zijn vereist",
+        "fr": "Adaptateur nécessite node.js >= 22 maintenant\nadmin 7.6.20 et js-controller 6.0.11 (ou plus tard) sont requis",
+        "it": "Adattatore richiede node.js >= 22 ora\nadmin 7.6.20 e js-controller 6.0.11 (o più tardi) sono richiesti",
+        "es": "Adaptador requiere node.js ю= 22 ahora\nadmin 7.6.20 y js-controller 6.0.11 (o posterior) son necesarios",
+        "pl": "Adapter wymaga node.js > = 22\nwymagane jest admin 7.6.20 i js- controller 6.0.11 (lub później)",
+        "uk": "Адаптер вимагає node.js >= 22 тепер\nadmin 7.6.20 і js-controller 6.0.11 (або пізніше) обов'язкові",
+        "zh-cn": "适配器需要节点.js 现在22\n需要admin 7.6.20和js控制器 6.0.11(或以后)"
+      },
       "6.1.0": {
         "en": "Update channel icons every week\nadmin 7.6.17 and js-controller 6.0.11 (or later) are required\nUpdated dependencies",
         "de": "Aktualisieren Sie Kanalsymbole jede Woche\nadmin 7.6.17 und js-controller 6.0.11 (oder später) sind erforderlich\nAktualisierte Abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "NodeJS 16 (ang.)\n\n* Added icons to admin tabs (ang.)",
         "uk": "NodeJS 16.x обов'язковий\n\n* Додано іконки до вкладок адміністратора",
         "zh-cn": "不需要16.JS16x。\n\n* 增列图表"
-      },
-      "4.3.0": {
-        "en": "Added customUrl to JSON summary",
-        "de": "Hinzugefügt benutzerdefinierte Url to JSON Zusammenfassung",
-        "ru": "Добавленный пользовательский Url к JSON резюме",
-        "pt": "Adicionado personalizado Resumo de Url para JSON",
-        "nl": "Toegevoegd. Url tot JSON Sumary",
-        "fr": "Ajout personnalisé Résumé de Url à JSON",
-        "it": "Aggiunto personalizzato Riepilogo da Url a JSON",
-        "es": "Añadido personalizado Resumen Url a JSON",
-        "pl": "Dodać zwyczaj Tekst JSON",
-        "uk": "Додати замовлення Урл до JSON резюме",
-        "zh-cn": "增加习俗 F. 敦促联合执行会摘要"
       }
     },
     "titleLang": {
