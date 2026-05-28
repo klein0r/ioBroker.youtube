@@ -377,7 +377,9 @@ class Youtube extends utils.Adapter {
                         let channelObj = await this.getObjectAsync(cpath);
                         if (!channelObj || !channelObj.native?.channelId) {
                             if (channelId.startsWith('@')) {
-                                this.log.debug(`[onReady] youtube/v3/channels - request init for alias: "${channelId}"`);
+                                this.log.debug(
+                                    `[onReady] youtube/v3/channels - request init for alias: "${channelId}"`,
+                                );
 
                                 const queryParameters = {
                                     part: 'contentDetails',
@@ -395,15 +397,21 @@ class Youtube extends utils.Adapter {
                                 });
 
                                 if (getChannelIdResponse.status == 200) {
-                                    this.log.debug(`[onReady] youtube/v3/channels - received data for "${channelId}" (${getChannelIdResponse.status}): ${JSON.stringify(getChannelIdResponse.data)}`);
+                                    this.log.debug(
+                                        `[onReady] youtube/v3/channels - received data for "${channelId}" (${getChannelIdResponse.status}): ${JSON.stringify(getChannelIdResponse.data)}`,
+                                    );
 
                                     const channelItems = getChannelIdResponse.data.items;
                                     if (channelItems && channelItems.length > 0) {
                                         channelId = channelItems[0].id;
 
-                                        this.log.info(`[onReady] found channel id "${channelId}" by alias for "${channel.name}"`);
+                                        this.log.info(
+                                            `[onReady] found channel id "${channelId}" by alias for "${channel.name}"`,
+                                        );
                                     } else {
-                                        this.log.warn(`[onReady] unable to find channel id by alias for "${channel.name}`);
+                                        this.log.warn(
+                                            `[onReady] unable to find channel id by alias for "${channel.name}`,
+                                        );
                                     }
                                 }
                             }
@@ -425,7 +433,9 @@ class Youtube extends utils.Adapter {
                         } else {
                             channelId = channelObj.native.channelId;
 
-                            this.log.debug(`[onReady] using existing channel id "${channelId}" of object for "${channel.name}"`);
+                            this.log.debug(
+                                `[onReady] using existing channel id "${channelId}" of object for "${channel.name}"`,
+                            );
                         }
 
                         const channelData = await this.getChannelData(channelId, cpath, channelGroup);
@@ -461,7 +471,10 @@ class Youtube extends utils.Adapter {
                             channelDataList.push(channelData);
 
                             if (enableVideoInformation) {
-                                const videoData = await this.getChannelVideoData(channelId, `${cpath}.video`, { channel: channelData.customUrl, _group: channelGroup });
+                                const videoData = await this.getChannelVideoData(channelId, `${cpath}.video`, {
+                                    channel: channelData.customUrl,
+                                    _group: channelGroup,
+                                });
                                 videoDataList.push(...videoData);
 
                                 await this.extendObject(`${cpath}.video`, {
@@ -507,7 +520,10 @@ class Youtube extends utils.Adapter {
                                     },
                                     native: {},
                                 });
-                                await this.setState(`${cpath}.video.json`, { val: JSON.stringify(videoData, null, 2), ack: true });
+                                await this.setState(`${cpath}.video.json`, {
+                                    val: JSON.stringify(videoData, null, 2),
+                                    ack: true,
+                                });
                             } else {
                                 await this.delObjectAsync(`${cpath}.video`, { recursive: true });
                             }
@@ -528,7 +544,7 @@ class Youtube extends utils.Adapter {
             // Groups
             if (groupNames.length > 0) {
                 for (const groupName of groupNames) {
-                    const groupChannelDataList = channelDataList.filter((c) => c._group === groupName);
+                    const groupChannelDataList = channelDataList.filter(c => c._group === groupName);
 
                     await this.extendObject(`groups.${groupName}`, {
                         type: 'channel',
@@ -562,7 +578,10 @@ class Youtube extends utils.Adapter {
                         native: {},
                     });
 
-                    await this.setState(`groups.${groupName}.json`, { val: JSON.stringify(groupChannelDataList, null, 2), ack: true });
+                    await this.setState(`groups.${groupName}.json`, {
+                        val: JSON.stringify(groupChannelDataList, null, 2),
+                        ack: true,
+                    });
                 }
             }
 
@@ -581,26 +600,38 @@ class Youtube extends utils.Adapter {
 
                 await this.setState('summary.jsonVideosToday', {
                     val: JSON.stringify(
-                        videoDataList.filter((v) => v.published >= todayStart.getTime()),
+                        videoDataList.filter(v => v.published >= todayStart.getTime()),
                         null,
                         2,
                     ),
                     ack: true,
                 });
 
-                this.log.debug(`[onReady] Search videos (yesterday) from ${yesterdayStart.toISOString()} to ${todayStart.toISOString()}`);
+                this.log.debug(
+                    `[onReady] Search videos (yesterday) from ${yesterdayStart.toISOString()} to ${todayStart.toISOString()}`,
+                );
 
                 await this.setState('summary.jsonVideosYesterday', {
                     val: JSON.stringify(
-                        videoDataList.filter((v) => v.published >= yesterdayStart && v.published < todayStart),
+                        videoDataList.filter(v => v.published >= yesterdayStart && v.published < todayStart),
                         null,
                         2,
                     ),
                     ack: true,
                 });
             } else {
-                await this.setState('summary.jsonVideosToday', { val: JSON.stringify([]), ack: true, q: 0x02, c: 'Video information disabled in instance configuration' });
-                await this.setState('summary.jsonVideosYesterday', { val: JSON.stringify([]), ack: true, q: 0x02, c: 'Video information disabled in instance configuration' });
+                await this.setState('summary.jsonVideosToday', {
+                    val: JSON.stringify([]),
+                    ack: true,
+                    q: 0x02,
+                    c: 'Video information disabled in instance configuration',
+                });
+                await this.setState('summary.jsonVideosYesterday', {
+                    val: JSON.stringify([]),
+                    ack: true,
+                    q: 0x02,
+                    c: 'Video information disabled in instance configuration',
+                });
             }
         } else {
             this.log.warn('[onReady] No channels configured - check instance configuration');
@@ -644,8 +675,10 @@ class Youtube extends utils.Adapter {
                     timeout: 4500,
                     responseType: 'json',
                 })
-                    .then(async (response) => {
-                        this.log.debug(`[getChannelData] youtube/v3/channels - received data for ${id} (${response.status}): ${JSON.stringify(response.data)}`);
+                    .then(async response => {
+                        this.log.debug(
+                            `[getChannelData] youtube/v3/channels - received data for ${id} (${response.status}): ${JSON.stringify(response.data)}`,
+                        );
 
                         const content = response.data;
 
@@ -653,24 +686,47 @@ class Youtube extends utils.Adapter {
                             const firstItem = content['items'][0];
 
                             if (firstItem?.statistics) {
-                                await this.setState(`${cpath}.statistics.viewCount`, { val: parseInt(firstItem.statistics.viewCount), ack: true });
+                                await this.setState(`${cpath}.statistics.viewCount`, {
+                                    val: parseInt(firstItem.statistics.viewCount),
+                                    ack: true,
+                                });
                                 await this.setState(`${cpath}.statistics.videoViewCountAvg`, {
                                     val: Math.round(firstItem.statistics.viewCount / firstItem.statistics.videoCount),
                                     ack: true,
                                 });
-                                await this.setState(`${cpath}.statistics.subscriberCount`, { val: parseInt(firstItem.statistics.subscriberCount), ack: true });
-                                await this.setState(`${cpath}.statistics.videoSubscriberCountAvg`, {
-                                    val: Math.round(firstItem.statistics.subscriberCount / firstItem.statistics.videoCount),
+                                await this.setState(`${cpath}.statistics.subscriberCount`, {
+                                    val: parseInt(firstItem.statistics.subscriberCount),
                                     ack: true,
                                 });
-                                await this.setState(`${cpath}.statistics.videoCount`, { val: parseInt(firstItem.statistics.videoCount), ack: true });
+                                await this.setState(`${cpath}.statistics.videoSubscriberCountAvg`, {
+                                    val: Math.round(
+                                        firstItem.statistics.subscriberCount / firstItem.statistics.videoCount,
+                                    ),
+                                    ack: true,
+                                });
+                                await this.setState(`${cpath}.statistics.videoCount`, {
+                                    val: parseInt(firstItem.statistics.videoCount),
+                                    ack: true,
+                                });
                             }
 
                             if (firstItem?.snippet) {
-                                await this.setState(`${cpath}.snippet.title`, { val: firstItem.snippet.title, ack: true });
-                                await this.setState(`${cpath}.snippet.description`, { val: firstItem.snippet.description, ack: true });
-                                await this.setState(`${cpath}.snippet.customUrl`, { val: firstItem.snippet.customUrl, ack: true });
-                                await this.setState(`${cpath}.snippet.publishedAt`, { val: new Date(firstItem.snippet.publishedAt).getTime(), ack: true });
+                                await this.setState(`${cpath}.snippet.title`, {
+                                    val: firstItem.snippet.title,
+                                    ack: true,
+                                });
+                                await this.setState(`${cpath}.snippet.description`, {
+                                    val: firstItem.snippet.description,
+                                    ack: true,
+                                });
+                                await this.setState(`${cpath}.snippet.customUrl`, {
+                                    val: firstItem.snippet.customUrl,
+                                    ack: true,
+                                });
+                                await this.setState(`${cpath}.snippet.publishedAt`, {
+                                    val: new Date(firstItem.snippet.publishedAt).getTime(),
+                                    ack: true,
+                                });
                             }
 
                             await this.setState(`${cpath}.lastUpdate`, { val: Date.now(), ack: true });
@@ -687,10 +743,14 @@ class Youtube extends utils.Adapter {
                                     videoCount: firstItem.statistics.videoCount,
                                 });
                             } else {
-                                reject(`[getChannelData] youtube/v3/channels - missing statistic information in response`);
+                                reject(
+                                    `[getChannelData] youtube/v3/channels - missing statistic information in response`,
+                                );
                             }
                         } else {
-                            reject(`[getChannelData] youtube/v3/channels - received empty response - check channel id: ${id}`);
+                            reject(
+                                `[getChannelData] youtube/v3/channels - received empty response - check channel id: ${id}`,
+                            );
                         }
                     })
                     .catch(reject);
@@ -701,7 +761,7 @@ class Youtube extends utils.Adapter {
     }
 
     getChannelVideoData(id, cpath, additionalData) {
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
             const apiKey = this.config.apiKey;
 
             this.log.debug(`[getChannelVideoData] youtube/v3/search - request init: ${id}`);
@@ -723,8 +783,10 @@ class Youtube extends utils.Adapter {
                 timeout: 4500,
                 responseType: 'json',
             })
-                .then(async (response) => {
-                    this.log.debug(`[getChannelVideoData] youtube/v3/search - received data for ${id} (${response.status}): ${JSON.stringify(response.data)}`);
+                .then(async response => {
+                    this.log.debug(
+                        `[getChannelVideoData] youtube/v3/search - received data for ${id} (${response.status}): ${JSON.stringify(response.data)}`,
+                    );
 
                     const content = response.data;
                     const videoList = [];
@@ -851,7 +913,10 @@ class Youtube extends utils.Adapter {
                                 },
                                 native: {},
                             });
-                            await this.setStateChangedAsync(`${path}.published`, { val: videoPublishedDate, ack: true });
+                            await this.setStateChangedAsync(`${path}.published`, {
+                                val: videoPublishedDate,
+                                ack: true,
+                            });
 
                             await this.extendObject(`${path}.description`, {
                                 type: 'state',
@@ -876,15 +941,20 @@ class Youtube extends utils.Adapter {
                                 },
                                 native: {},
                             });
-                            await this.setStateChangedAsync(`${path}.description`, { val: v.snippet.description, ack: true });
+                            await this.setStateChangedAsync(`${path}.description`, {
+                                val: v.snippet.description,
+                                ack: true,
+                            });
                         }
                     } else {
-                        this.log.warn(`[getChannelVideoData] youtube/v3/search - received empty response - check channel id: ${id}`);
+                        this.log.warn(
+                            `[getChannelVideoData] youtube/v3/search - received empty response - check channel id: ${id}`,
+                        );
                     }
 
                     resolve(videoList);
                 })
-                .catch((err) => {
+                .catch(err => {
                     this.log.error(`[getChannelVideoData] youtube/v3/search - unable to fetch data for: ${id}: ${err}`);
                     resolve([]); // Empty video list
                 });
@@ -902,7 +972,7 @@ if (module.parent) {
     /**
      * @param {Partial<ioBroker.AdapterOptions>} [options] Instance options
      */
-    module.exports = (options) => new Youtube(options);
+    module.exports = options => new Youtube(options);
 } else {
     // otherwise start the instance directly
     new Youtube();
