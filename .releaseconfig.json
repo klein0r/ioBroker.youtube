@@ -3,5 +3,8 @@
   "versionFiles": [
     ["widgets/*.html", "(?<=Version: ')(.*?)(?=')"],
     ["widgets/youtube/js/*.js", "(?<=version: ')(.*?)(?=',)"]
-  ]
+  ],
+  "exec": {
+    "before_check": "npm run lint"
+  }
 }
